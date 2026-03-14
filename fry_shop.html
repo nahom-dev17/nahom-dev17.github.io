@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frituur 't Belgisch Goud | Authentieke Friet</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            /* Standaard Donkere Modus - Geïnspireerd op de Belgische vlag */
+            --primary-bg: #1a1a1a;
+            --secondary-bg: #242424;
+            --text-main: #fdfdfd;
+            --accent-yellow: #ffb703;
+            --accent-red: #e63946;
+            --footer-bg: #111111;
+            --border-color: #333;
+        }
+
+        /* Lichte Modus Kleuren */
+        body.light-mode {
+            --primary-bg: #fdfdfd;
+            --secondary-bg: #f0f0f0;
+            --text-main: #1a1a1a;
+            --accent-yellow: #fb8500; 
+            --accent-red: #d90429;
+            --footer-bg: #e5e5e5;
+            --border-color: #ccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navigatie */
+        header {
+            background-color: var(--secondary-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--accent-red);
+            transition: background-color 0.3s;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        /* Thema Schakelaar Knop */
+        #theme-toggle {
+            background: transparent;
+            border: 1px solid var(--accent-yellow);
+            color: var(--text-main);
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--accent-yellow);
+            color: #111;
+        }
+
+        .order-btn {
+            background-color: var(--accent-red);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .order-btn:hover {
+            background-color: #b52b38;
+        }
+
+        /* Hero Sectie (Bovenste grote afbeelding) */
+        .hero {
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 0 20px;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 span {
+            color: var(--accent-yellow);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            font-weight: 500;
+        }
+
+        /* Menu Sectie */
+        .menu {
+            padding: 5rem 5%;
+            background-color: var(--primary-bg);
+            transition: background-color 0.3s;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title span {
+            color: var(--accent-yellow);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background-color: var(--secondary-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--accent-yellow);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .menu-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            color: var(--accent-red);
+            font-weight: 900;
+        }
+
+        /* Info Sectie */
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: var(--secondary-bg);
+            padding: 5rem 5%;
+            gap: 3rem;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            text-align: center;
+            background-color: var(--primary-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-box h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .info-box ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .info-box li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.4rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--footer-bg);
+            color: var(--text-main);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Mobiele Weergave */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .actions {
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">'t Belgisch <span>Goud</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Ons Menu</a></li>
+                <li><a href="#visit">Bezoek Ons</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <button id="theme-toggle">☀️ Licht</button>
+            <a href="#menu" class="order-btn">Bestel Nu</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>De Perfecte <span>Kraak</span></h1>
+        <p>Authentieke Belgische frieten, dubbel gebakken in ossenwit tot gouden perfectie. Vers geserveerd in een traditionele puntzak.</p>
+        <a href="#menu" class="order-btn" style="font-size: 1.2rem; padding: 1rem 2.5rem;">Bekijk Menu</a>
+    </section>
+
+    <section class="menu" id="menu">
+        <h2 class="section-title">Klassiek <span>Frituur</span> Menu</h2>
+        <div class="menu-grid">
+            
+            <div class="menu-card">
+                <h3>Puntzak Friet</h3>
+                <p>Onze kenmerkende dik gesneden Bintjes, perfect krokant van buiten en zacht van binnen. Geserveerd in een klassieke puntzak.</p>
+                <div class="price">€3.50 / €4.50</div>
+            </div>
+
+            <div class="menu-card">
+                <h3>De Mitraillette</h3>
+                <p>Een half stokbrood ruim belegd met vlees naar keuze, bedolven onder onze gouden frieten en overgoten met heerlijke saus.</p>
+                <div class="price">€7.00</div>
+            </div>
+
+            <div class="menu-card">
+                <h3>Klassieke Snacks</h3>
+                <p>Frikandel, Viandel, een Luikse Boulet of een ambachtelijke kaaskroket. De perfecte bijgerechten voor je friet.</p>
+                <div class="price">Vanaf €2.20</div>
+            </div>
+
+            <div class="menu-card">
+                <h3>Belgische Sauzen</h3>
+                <p>Mayonaise, Andalouse, Samouraï, Dallas of Joppiesaus. Vraag je frietjes "met saus erop" of lekker apart in een potje!</p>
+                <div class="price">€0.90 p/st</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="info-section" id="visit">
+        <div class="info-box">
+            <h3>Openingstijden</h3>
+            <ul>
+                <li><span>Maandag</span> <span>Gesloten</span></li>
+                <li><span>Dinsdag - Donderdag</span> <span>11:30 - 22:00</span></li>
+                <li><span>Vrijdag - Zaterdag</span> <span>11:30 - 23:30</span></li>
+                <li><span>Zondag</span> <span>16:00 - 22:00</span></li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>Vind Onze Frituur</h3>
+            <p style="margin-bottom: 1rem; text-align: left;">
+                <strong>Place Saint-Lambert 42</strong><br>
+                4000 Luik, België
+            </p>
+            <p style="margin-bottom: 1rem; text-align: left;"><strong>Telefoon:</strong> +32 4 123 45 67</p>
+            <p style="text-align: left;"><strong>E-mail:</strong> miam@belgischgoud.be</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Frituur 't Belgisch Goud. Met trots gebakken in Luik.</p>
+    </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Controleer of de gebruiker eerder voor de lichte modus koos
+        if (localStorage.getItem('frituur-theme') === 'light') {
+            body.classList.add('light-mode');
+            toggleBtn.textContent = '🌙 Donker';
+        }
+
+        // Luister naar klikken op de knop
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('frituur-theme', 'light');
+                toggleBtn.textContent = '🌙 Donker';
+            } else {
+                localStorage.setItem('frituur-theme', 'dark');
+                toggleBtn.textContent = '☀️ Licht';
+            }
+        });
+    </script>
+</body>
+</html>
