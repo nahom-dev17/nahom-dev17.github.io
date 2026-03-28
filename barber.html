@@ -3,59 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Classic Blade | Barber Shop</title>
+    <title>The Classic Blade | Premium Grooming</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
         /* CSS Styles */
         :root {
             /* Default Dark Mode Colors */
-            --primary-bg: #121212;
-            --secondary-bg: #1e1e1e;
+            --primary-bg: #111111;
+            --secondary-bg: #1a1a1a;
             --text-main: #f4f4f4;
+            --text-muted: #aaaaaa;
             --accent-gold: #d4af37;
-            --footer-bg: #0a0a0a;
+            --footer-bg: #080808;
             --border-color: #333;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(26, 26, 26, 0.85);
         }
 
         /* Light Mode Colors */
         body.light-mode {
-            --primary-bg: #ffffff;
-            --secondary-bg: #f9f9f9;
+            --primary-bg: #f8f9fa;
+            --secondary-bg: #ffffff;
             --text-main: #222222;
-            --accent-gold: #b5952f; /* Slightly darker gold for readability */
-            --footer-bg: #e0e0e0;
-            --border-color: #ccc;
+            --text-muted: #555555;
+            --accent-gold: #b5952f; 
+            --footer-bg: #e9ecef;
+            --border-color: #dddddd;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.85);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
+            font-family: 'Inter', sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-main);
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Navigation */
+        h1, h2, h3, .logo {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        /* Glassmorphism Navigation */
         header {
-            background-color: var(--secondary-bg);
-            padding: 1rem 5%;
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
-            transition: background-color 0.3s;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -64,14 +86,17 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
@@ -81,271 +106,499 @@
 
         .actions {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
-        /* Theme Toggle Button */
-        #theme-toggle {
+        /* Header Icon Buttons (Theme & Lang) */
+        .icon-btn {
             background: transparent;
-            border: 1px solid var(--accent-gold);
+            border: none;
             color: var(--text-main);
-            padding: 0.4rem 0.8rem;
             cursor: pointer;
-            border-radius: 3px;
-            font-weight: bold;
-            transition: all 0.3s;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: transform 0.3s, color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        #theme-toggle:hover {
-            background-color: var(--accent-gold);
-            color: #fff;
+        .icon-btn:hover {
+            transform: scale(1.1);
+            color: var(--accent-gold);
         }
 
-        .book-btn {
+        .btn {
             background-color: var(--accent-gold);
             color: #fff;
-            padding: 0.5rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
         }
 
-        .book-btn:hover {
-            background-color: #8f7520;
+        .btn:hover {
+            background-color: #a38222;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            height: 80vh;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Added a slightly darker overlay so white text always pops on the image */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
-                        url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(17, 17, 17, 0.9)), 
+                        url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
             padding: 0 20px;
-            color: #f4f4f4; /* Force white text on hero */
+            color: #ffffff;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
+            line-height: 1.1;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
         }
 
         .hero p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            color: #ddd;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            font-weight: 300;
+            color: #e0e0e0;
         }
 
-        /* Services Section */
-        .services {
-            padding: 5rem 5%;
-            background-color: var(--primary-bg);
-            transition: background-color 0.3s;
-        }
+        /* Section Global */
+        section { padding: 6rem 5%; }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 3rem;
+            font-size: 3rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 4rem;
+        }
+
+        /* About Section */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text { flex: 1; }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img { transform: scale(1.05); }
+
+        /* Services Section */
+        .services { background-color: var(--secondary-bg); }
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .service-card {
-            background-color: var(--secondary-bg);
-            padding: 2rem;
-            border-radius: 5px;
-            text-align: center;
-            border-bottom: 3px solid var(--accent-gold);
-            transition: background-color 0.3s;
+            background-color: var(--primary-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        body.light-mode .service-card:hover { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
+
+        .service-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.6rem;
             margin-bottom: 1rem;
         }
 
-        .price {
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            font-weight: bold;
-            margin: 1rem 0;
+        .service-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
+
+        .price {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img { transform: scale(1.1); }
 
         /* Info Section */
         .info-section {
             display: flex;
             flex-wrap: wrap;
             background-color: var(--secondary-bg);
-            padding: 5rem 5%;
-            gap: 2rem;
+            gap: 3rem;
             justify-content: center;
-            transition: background-color 0.3s;
+            max-width: 100%;
         }
 
         .info-box {
             flex: 1;
             min-width: 300px;
             max-width: 500px;
-            text-align: center;
+            background-color: var(--primary-bg);
+            padding: 3rem;
+            border-radius: 6px;
+            box-shadow: var(--card-shadow);
         }
 
         .info-box h3 {
             color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-align: center;
         }
 
-        .info-box ul {
-            list-style: none;
-        }
+        .info-box ul { list-style: none; }
 
         .info-box li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px dashed var(--border-color);
             padding-bottom: 0.5rem;
-            transition: border-color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             background-color: var(--footer-bg);
-            color: var(--text-main);
-            transition: background-color 0.3s, color 0.3s;
+            color: var(--text-muted);
         }
 
         /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .about { flex-direction: column; }
+            .hero h1 { font-size: 3.5rem; }
+        }
+
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
+            nav ul { display: none; }
+            .actions { gap: 1rem; }
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
             }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+            .hero h1 { font-size: 2.8rem; }
+            .icon-btn span { display: none; } /* Hides 'NL' text on mobile, just shows globe */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">The Classic Blade</div>
+        <div class="logo">Classic Blade</div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#info">Location & Hours</a></li>
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
             </ul>
         </nav>
         <div class="actions">
-            <button id="theme-toggle">☀️ Light Mode</button>
-            <a href="#book" class="book-btn">Book Now</a>
+            <button id="lang-toggle" class="icon-btn" title="Switch Language">🌐 <span>NL</span></button>
+            <button id="theme-toggle" class="icon-btn" title="Toggle Light/Dark Mode">☀️</button>
+            
+            <a href="#info" class="btn" data-i18n="nav_book">Book Now</a>
         </div>
     </header>
 
     <section class="hero" id="home">
-        <h1>Sharp Looks. <br>Classic Feel.</h1>
-        <p>Experience the finest traditional grooming and modern cuts in the heart of the city. Walk-ins welcome, appointments preferred.</p>
-        <a href="#book" class="book-btn" style="font-size: 1.2rem; padding: 1rem 2rem;">Schedule an Appointment</a>
+        <h1>
+            <span data-i18n="hero_title1">Mastering the</span> <br>
+            <span style="color: var(--accent-gold);" data-i18n="hero_title2">Art of Grooming</span>
+        </h1>
+        <p data-i18n="hero_desc">Experience the finest traditional barbering mixed with modern styling. Where every cut is a masterpiece and every client is treated like royalty.</p>
+        <a href="#info" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;" data-i18n="hero_btn">Schedule Your Visit</a>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2 data-i18n="about_title">More Than Just a Haircut</h2>
+            <p data-i18n="about_p1">Founded on the principles of classic barbering, The Classic Blade brings back the traditional gentleman's grooming experience. We believe that a trip to the barber should be a ritual, not a chore.</p>
+            <p data-i18n="about_p2">Our master barbers are trained in both old-school hot towel shaves and the latest contemporary hair trends. Sit back, enjoy a complimentary beverage, and let us elevate your style.</p>
+        </div>
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Barber cutting hair">
+        </div>
     </section>
 
     <section class="services" id="services">
-        <h2 class="section-title">Our Services</h2>
+        <h2 class="section-title" data-i18n="services_title">Grooming Services</h2>
+        <p class="section-subtitle" data-i18n="services_sub">Tailored specifically for you</p>
+        
         <div class="service-grid">
-            
             <div class="service-card">
-                <h3>Gentleman's Haircut</h3>
-                <p>A tailored haircut, neck shave, hair wash, and professional styling.</p>
-                <div class="price">$35</div>
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Haircut" class="service-img">
+                <div class="service-content">
+                    <h3 data-i18n="srv1_title">Classic Haircut</h3>
+                    <p data-i18n="srv1_desc">A precision cut tailored to your head shape and lifestyle, finished with a straight razor neck shave and styling.</p>
+                    <div class="price">€35</div>
+                </div>
             </div>
 
             <div class="service-card">
-                <h3>Beard Trim & Line Up</h3>
-                <p>Sculpting and shaping of the beard finished with a hot towel and beard oil.</p>
-                <div class="price">$20</div>
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Beard Trim" class="service-img">
+                <div class="service-content">
+                    <h3 data-i18n="srv2_title">Beard Sculpting</h3>
+                    <p data-i18n="srv2_desc">Expert shaping and trimming of the beard, lined up with a straight razor and finished with premium beard oils.</p>
+                    <div class="price">€25</div>
+                </div>
             </div>
 
             <div class="service-card">
-                <h3>Traditional Hot Towel Shave</h3>
-                <p>Classic straight razor shave with hot lather, hot towels, and facial massage.</p>
-                <div class="price">$40</div>
+                <img src="https://www.styleseat.com/blog/wp-content/uploads/2021/11/smiling-man-getting-a-hot-towel-shave-1.jpg" alt="Hot Towel Shave" class="service-img">
+                <div class="service-content">
+                    <h3 data-i18n="srv3_title">Hot Towel Shave</h3>
+                    <p data-i18n="srv3_desc">The ultimate relaxation. Pre-shave oil, hot lather, multiple hot towels, and a meticulous straight razor shave.</p>
+                    <div class="price">€45</div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="service-card">
-                <h3>The Full Package</h3>
-                <p>Haircut, hot towel shave, eyebrow trim, and a complimentary drink.</p>
-                <div class="price">$70</div>
-            </div>
-
+    <section class="gallery" id="gallery">
+        <h2 class="section-title" data-i18n="gallery_title">Our Work</h2>
+        <p class="section-subtitle" data-i18n="gallery_sub">Precision in every detail</p>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Barber work 1"></div>
+            <div class="gallery-item"><img src="https://www.tonyorrsbarbershop.com/IMG_0703.JPG" alt="Barber work 2"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Barber tools"></div>
+            <div class="gallery-item"><img src="https://loungebarbersalon.com/wp-content/uploads/2024/03/portfolio-work-lounge_barber_salon-anil-harricharan-05-700x700.jpg" alt="Barber work 3"></div>
         </div>
     </section>
 
     <section class="info-section" id="info">
         <div class="info-box">
-            <h3>Opening Hours</h3>
+            <h3 data-i18n="hours_title">Opening Hours</h3>
             <ul>
-                <li><span>Monday</span> <span>Closed</span></li>
-                <li><span>Tue - Fri</span> <span>9:00 AM - 7:00 PM</span></li>
-                <li><span>Saturday</span> <span>8:00 AM - 5:00 PM</span></li>
-                <li><span>Sunday</span> <span>10:00 AM - 3:00 PM</span></li>
+                <li><span data-i18n="day_mon">Monday</span> <span style="color: var(--text-muted)" data-i18n="closed">Closed</span></li>
+                <li><span data-i18n="day_tue">Tuesday</span> <span>9:00 - 19:00</span></li>
+                <li><span data-i18n="day_wed">Wednesday</span> <span>9:00 - 19:00</span></li>
+                <li><span data-i18n="day_thu">Thursday</span> <span>9:00 - 20:00</span></li>
+                <li><span data-i18n="day_fri">Friday</span> <span>9:00 - 19:00</span></li>
+                <li><span data-i18n="day_sat">Saturday</span> <span>8:00 - 17:00</span></li>
+                <li><span data-i18n="day_sun">Sunday</span> <span>10:00 - 15:00</span></li>
             </ul>
         </div>
 
-        <div class="info-box">
-            <h3>Location & Contact</h3>
-            <p style="margin-bottom: 1rem;">123 Main Street, Suite B<br>Your City, YC 12345</p>
-            <p style="margin-bottom: 1rem;"><strong>Phone:</strong> (555) 123-4567</p>
-            <p><strong>Email:</strong> info@classicbladebarber.com</p>
+        <div class="info-box contact-details">
+            <h3 data-i18n="contact_title">Visit The Shop</h3>
+            <p><strong>📍 <span data-i18n="address">Address</span>:</strong> <br>123 Gentleman's Row<br>2000 Antwerpen</p>
+            <p><strong>📞 <span data-i18n="phone">Phone</span>:</strong> <br><a href="tel:031234567" style="color: var(--text-main); text-decoration: none;">03 123 45 67</a></p>
+            <p><strong>✉️ <span data-i18n="email">Email</span>:</strong> <br><a href="mailto:booking@classicblade.be" style="color: var(--text-main); text-decoration: none;">booking@classicblade.be</a></p>
+            
+            <a href="tel:031234567" class="btn" style="width: 100%; text-align: center; margin-top: 1.5rem;" data-i18n="call_btn">Call to Book</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 The Classic Blade Barber Shop. All rights reserved.</p>
+        <h2 style="font-family: 'Oswald', sans-serif; color: var(--text-main); margin-bottom: 1rem;">The Classic Blade</h2>
+        <p>&copy; 2026 The Classic Blade. <span data-i18n="footer">All rights reserved.</span></p>
     </footer>
 
     <script>
-        const toggleBtn = document.getElementById('theme-toggle');
+        // --- THEME TOGGLE LOGIC ---
+        const themeBtn = document.getElementById('theme-toggle');
         const body = document.body;
 
-        // 1. Check if the user previously chose light mode
-        if (localStorage.getItem('theme') === 'light') {
+        if (localStorage.getItem('premium-theme') === 'light') {
             body.classList.add('light-mode');
-            toggleBtn.textContent = '🌙 Dark Mode';
+            themeBtn.textContent = '🌙';
         }
 
-        // 2. Listen for clicks on the toggle button
-        toggleBtn.addEventListener('click', () => {
-            // Toggle the 'light-mode' class on the body
+        themeBtn.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-            
-            // Update the button text and save preference
             if (body.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light');
-                toggleBtn.textContent = '🌙 Dark Mode';
+                localStorage.setItem('premium-theme', 'light');
+                themeBtn.textContent = '🌙';
             } else {
-                localStorage.setItem('theme', 'dark');
-                toggleBtn.textContent = '☀️ Light Mode';
+                localStorage.setItem('premium-theme', 'dark');
+                themeBtn.textContent = '☀️';
             }
+        });
+
+        // --- LANGUAGE TRANSLATION LOGIC ---
+        const langBtn = document.getElementById('lang-toggle');
+        const langSpan = langBtn.querySelector('span');
+        
+        // Dictionary containing our English and Dutch translations
+        const translations = {
+            en: {
+                nav_home: "Home", nav_about: "About", nav_services: "Services", nav_gallery: "Gallery", nav_book: "Book Now",
+                hero_title1: "Mastering the", hero_title2: "Art of Grooming",
+                hero_desc: "Experience the finest traditional barbering mixed with modern styling. Where every cut is a masterpiece and every client is treated like royalty.",
+                hero_btn: "Schedule Your Visit",
+                about_title: "More Than Just a Haircut",
+                about_p1: "Founded on the principles of classic barbering, The Classic Blade brings back the traditional gentleman's grooming experience. We believe that a trip to the barber should be a ritual, not a chore.",
+                about_p2: "Our master barbers are trained in both old-school hot towel shaves and the latest contemporary hair trends. Sit back, enjoy a complimentary beverage, and let us elevate your style.",
+                services_title: "Grooming Services", services_sub: "Tailored specifically for you",
+                srv1_title: "Classic Haircut", srv1_desc: "A precision cut tailored to your head shape and lifestyle, finished with a straight razor neck shave and styling.",
+                srv2_title: "Beard Sculpting", srv2_desc: "Expert shaping and trimming of the beard, lined up with a straight razor and finished with premium beard oils.",
+                srv3_title: "Hot Towel Shave", srv3_desc: "The ultimate relaxation. Pre-shave oil, hot lather, multiple hot towels, and a meticulous straight razor shave.",
+                gallery_title: "Our Work", gallery_sub: "Precision in every detail",
+                hours_title: "Opening Hours", day_mon: "Monday", day_tue: "Tuesday", day_wed: "Wednesday", day_thu: "Thursday", day_fri: "Friday", day_sat: "Saturday", day_sun: "Sunday", closed: "Closed",
+                contact_title: "Visit The Shop", address: "Address", phone: "Phone", email: "Email", call_btn: "Call to Book", footer: "All rights reserved."
+            },
+            nl: {
+                nav_home: "Start", nav_about: "Over Ons", nav_services: "Diensten", nav_gallery: "Galerij", nav_book: "Boek Nu",
+                hero_title1: "Meester in de", hero_title2: "Kunst van Verzorging",
+                hero_desc: "Ervaar de beste traditionele barbier technieken gemengd met moderne styling. Waar elke knipbeurt een meesterwerk is en elke klant als royalty wordt behandeld.",
+                hero_btn: "Plan Je Bezoek",
+                about_title: "Meer Dan Alleen Knippen",
+                about_p1: "Opgericht op de principes van het klassieke barbiersvak, brengt The Classic Blade de traditionele herenverzorging terug. Wij geloven dat een bezoek aan de barbier een ritueel moet zijn, geen verplichting.",
+                about_p2: "Onze meesterbarbiers zijn getraind in zowel de ouderwetse hot towel shaves als de nieuwste haartrends. Leun achterover, geniet van een drankje en laat ons je stijl naar een hoger niveau tillen.",
+                services_title: "Onze Diensten", services_sub: "Speciaal voor jou op maat gemaakt",
+                srv1_title: "Klassieke Knipbeurt", srv1_desc: "Een precisiesnit afgestemd op jouw hoofdvorm en levensstijl, afgewerkt met een open scheermes in de nek en styling.",
+                srv2_title: "Baard Trimmen", srv2_desc: "Vakkundig vormen en trimmen van de baard, strakke lijnen met een open scheermes en afgewerkt met premium baardolie.",
+                srv3_title: "Hot Towel Shave", srv3_desc: "Ultieme ontspanning. Pre-shave olie, warm schuim, meerdere warme handdoeken en een nauwkeurige scheerbeurt.",
+                gallery_title: "Ons Werk", gallery_sub: "Precisie in elk detail",
+                hours_title: "Openingsuren", day_mon: "Maandag", day_tue: "Dinsdag", day_wed: "Woensdag", day_thu: "Donderdag", day_fri: "Vrijdag", day_sat: "Zaterdag", day_sun: "Zondag", closed: "Gesloten",
+                contact_title: "Bezoek de Zaak", address: "Adres", phone: "Telefoon", email: "E-mail", call_btn: "Bel om te Boeken", footer: "Alle rechten voorbehouden."
+            }
+        };
+
+        // Determine current language (default to EN)
+        let currentLang = localStorage.getItem('website-lang') || 'en';
+
+        // Function to update the text on the page
+        function setLanguage(lang) {
+            // Find all elements with a 'data-i18n' attribute
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update button text to show what you can switch TO
+            if(lang === 'en') {
+                langSpan.textContent = 'NL';
+            } else {
+                langSpan.textContent = 'EN';
+            }
+        }
+
+        // Initialize language on load
+        setLanguage(currentLang);
+
+        // Listen for clicks on the language button
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'nl' : 'en'; // Switch it
+            localStorage.setItem('website-lang', currentLang); // Save preference
+            setLanguage(currentLang); // Update the page
         });
     </script>
 </body>
