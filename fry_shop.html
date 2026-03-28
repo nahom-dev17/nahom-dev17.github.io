@@ -3,77 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frituur 't Belgisch Goud | Authentieke Friet</title>
+    <title>Frituur 't Belgisch Goud | Premium Frites</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
         /* CSS Styles */
         :root {
-            /* Standaard Donkere Modus - Geïnspireerd op de Belgische vlag */
-            --primary-bg: #1a1a1a;
-            --secondary-bg: #242424;
+            /* Default Dark Mode Colors - Belgian Flag Inspired */
+            --primary-bg: #111111;
+            --secondary-bg: #1a1a1a;
             --text-main: #fdfdfd;
+            --text-muted: #aaaaaa;
             --accent-yellow: #ffb703;
             --accent-red: #e63946;
-            --footer-bg: #111111;
+            --footer-bg: #080808;
             --border-color: #333;
-            --shadow: 0 10px 20px rgba(0,0,0,0.3);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(26, 26, 26, 0.85);
         }
 
-        /* Lichte Modus Kleuren */
+        /* Light Mode Colors */
         body.light-mode {
-            --primary-bg: #fdfdfd;
-            --secondary-bg: #f0f0f0;
+            --primary-bg: #f8f9fa;
+            --secondary-bg: #ffffff;
             --text-main: #1a1a1a;
+            --text-muted: #555555;
             --accent-yellow: #fb8500; 
             --accent-red: #d90429;
-            --footer-bg: #e5e5e5;
-            --border-color: #ccc;
-            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --footer-bg: #e9ecef;
+            --border-color: #dddddd;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.85);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
+            font-family: 'Inter', sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-main);
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Navigatie */
+        h1, h2, h3, .logo, .filter-btn, .price {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        /* Glassmorphism Navigation */
         header {
-            background-color: var(--secondary-bg);
-            padding: 1rem 5%;
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             border-bottom: 2px solid var(--accent-red);
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--accent-yellow);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .logo span {
-            color: var(--accent-red);
-        }
+        .logo span { color: var(--accent-red); }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
@@ -83,102 +98,178 @@
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.9rem;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: var(--accent-yellow);
-        }
+        nav a:hover { color: var(--accent-yellow); }
 
         .actions {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
-        /* Thema Schakelaar Knop */
-        #theme-toggle {
+        /* Header Icon Buttons */
+        .icon-btn {
             background: transparent;
-            border: 1px solid var(--accent-yellow);
+            border: none;
             color: var(--text-main);
-            padding: 0.4rem 0.8rem;
             cursor: pointer;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: all 0.3s;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: transform 0.3s, color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        #theme-toggle:hover {
-            background-color: var(--accent-yellow);
-            color: #111;
+        .icon-btn:hover {
+            transform: scale(1.1);
+            color: var(--accent-yellow);
         }
 
-        .order-btn {
+        .btn {
             background-color: var(--accent-red);
             color: #fff;
-            padding: 0.5rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
         }
 
-        .order-btn:hover {
+        .btn:hover {
             background-color: #b52b38;
+            transform: translateY(-2px);
         }
 
-        /* Hero Sectie */
+        /* Hero Section */
         .hero {
-            height: 75vh;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Toegevoegde donkere overlay zodat tekst altijd leesbaar is */
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(17, 17, 17, 0.9)), 
+                        url('https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
             padding: 0 20px;
-            color: #fff;
+            color: #ffffff;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 5rem;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.1;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
         }
 
-        .hero h1 span {
-            color: var(--accent-yellow);
-        }
+        .hero h1 span { color: var(--accent-yellow); }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            font-weight: 500;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            font-weight: 300;
+            color: #e0e0e0;
         }
 
-        /* Menu Sectie */
-        .menu {
-            padding: 5rem 5%;
-            background-color: var(--primary-bg);
-            transition: background-color 0.3s;
-        }
+        /* Section Global */
+        section { padding: 6rem 5%; }
 
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: var(--text-main);
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent-yellow);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text { flex: 1; }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-yellow);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img { transform: scale(1.05); }
+
+        /* Menu Section & Filters */
+        .menu { background-color: var(--secondary-bg); }
+
+        .filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--accent-yellow);
+            color: var(--text-main);
+            padding: 0.5rem 1.8rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
             letter-spacing: 1px;
         }
 
-        .section-title span {
-            color: var(--accent-yellow);
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-yellow);
+            color: #111;
+            transform: translateY(-2px);
         }
 
         .menu-grid {
@@ -189,24 +280,24 @@
             margin: 0 auto;
         }
 
-        /* Aangepaste Menu Card voor Afbeeldingen */
         .menu-card {
-            background-color: var(--secondary-bg);
+            background-color: var(--primary-bg);
             border-radius: 12px;
-            overflow: hidden; /* Zorgt dat de afbeelding netjes in de ronde hoeken past */
+            overflow: hidden;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
         }
 
         .menu-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
 
-        /* Afbeelding Styling */
+        body.light-mode .menu-card:hover { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
+
         .menu-img-container {
             width: 100%;
             height: 220px;
@@ -221,16 +312,13 @@
             transition: transform 0.5s ease;
         }
 
-        .menu-card:hover .menu-img-container img {
-            transform: scale(1.1); /* Zoom effect op hover */
-        }
+        .menu-card:hover .menu-img-container img { transform: scale(1.1); }
 
         .menu-content {
             padding: 2rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         .menu-card h3 {
@@ -242,78 +330,109 @@
         .menu-card p {
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
-            opacity: 0.9;
+            color: var(--text-muted);
         }
 
         .price {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--accent-red);
-            font-weight: 900;
+            font-weight: 700;
             margin-top: auto;
         }
 
-        /* Info Sectie */
+        /* Gallery Section */
+        .gallery { background-color: var(--primary-bg); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* Info Section */
         .info-section {
             display: flex;
             flex-wrap: wrap;
             background-color: var(--secondary-bg);
-            padding: 5rem 5%;
             gap: 3rem;
             justify-content: center;
-            transition: background-color 0.3s;
+            max-width: 100%;
         }
 
         .info-box {
             flex: 1;
             min-width: 300px;
-            max-width: 450px;
-            text-align: center;
+            max-width: 500px;
             background-color: var(--primary-bg);
-            padding: 2rem;
+            padding: 3rem;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
         }
 
         .info-box h3 {
             color: var(--accent-yellow);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            text-align: center;
         }
 
-        .info-box ul {
-            list-style: none;
-            text-align: left;
-        }
+        .info-box ul { list-style: none; }
 
         .info-box li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
             border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.4rem;
+            padding-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             background-color: var(--footer-bg);
-            color: var(--text-main);
-            transition: background-color 0.3s, color 0.3s;
+            color: var(--text-muted);
         }
 
-        /* Mobiele Weergave */
+        /* Mobile */
+        @media (max-width: 900px) {
+            .about { flex-direction: column; }
+            .hero h1 { font-size: 3.5rem; }
+        }
+
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .actions {
-                gap: 0.5rem;
-            }
+            nav ul { display: none; }
+            .actions { gap: 1rem; }
+            .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .icon-btn span { display: none; }
         }
     </style>
 </head>
@@ -323,121 +442,260 @@
         <div class="logo">'t Belgisch <span>Goud</span></div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#menu">Ons Menu</a></li>
-                <li><a href="#visit">Bezoek Ons</a></li>
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">Over Ons</a></li>
+                <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
+                <li><a href="#visit" data-i18n="nav_visit">Bezoek Ons</a></li>
             </ul>
         </nav>
         <div class="actions">
-            <button id="theme-toggle">☀️ Licht</button>
-            <a href="#menu" class="order-btn">Bestel Nu</a>
+            <button id="lang-toggle" class="icon-btn" title="Switch Language">🌐 <span>EN</span></button>
+            <button id="theme-toggle" class="icon-btn" title="Toggle Light/Dark Mode">☀️</button>
+            <a href="#menu" class="btn" data-i18n="nav_order">Bestel Nu</a>
         </div>
     </header>
 
     <section class="hero" id="home">
-        <h1>De Perfecte <span>Kraak</span></h1>
-        <p>Authentieke Belgische frieten, dubbel gebakken in ossenwit tot gouden perfectie. Vers geserveerd in een traditionele puntzak.</p>
-        <a href="#menu" class="order-btn" style="font-size: 1.2rem; padding: 1rem 2.5rem; margin-top: 1rem;">Bekijk Menu</a>
+        <h1>
+            <span data-i18n="hero_title1">De Perfecte</span> <br>
+            <span style="color: var(--accent-yellow);" data-i18n="hero_title2">Kraak</span>
+        </h1>
+        <p data-i18n="hero_desc">Authentieke Belgische frieten, dubbel gebakken in ossenwit tot gouden perfectie. Vers geserveerd in een traditionele puntzak.</p>
+        <a href="#menu" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem; margin-top: 1rem;" data-i18n="hero_btn">Bekijk Menu</a>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2 data-i18n="about_title">De Echte Belgische Traditie</h2>
+            <p data-i18n="about_p1">Sinds 1998 bakken wij onze frieten volgens de authentieke Belgische traditie. Geen diepvries, maar vers gesneden Bintjes die dagelijks worden geleverd door lokale boeren.</p>
+            <p data-i18n="about_p2">Het geheim van onze gouden kleur en onweerstaanbare smaak? Wij bakken uitsluitend in 100% geraffineerd ossenwit (blanc de bœuf). Kom langs en proef het verschil!</p>
+        </div>
+        <div class="about-img">
+            <img src="https://image.parool.nl/130292246/width/2480/een-medewerker-van-patatkraam-manneken-pis-op-het-damrak-in-amsterdam" alt="Fresh potatoes and fries">
+        </div>
     </section>
 
     <section class="menu" id="menu">
-        <h2 class="section-title">Klassiek <span>Frituur</span> Menu</h2>
+        <h2 class="section-title"><span data-i18n="menu_title1">Klassiek</span> <span style="color: var(--accent-yellow);" data-i18n="menu_title2">Frituur</span> <span data-i18n="menu_title3">Menu</span></h2>
+        
+        <div class="filter">
+            <button class="filter-btn active" data-filter="all" onclick="filterMenu('all')" data-i18n="filter_all">Alles</button>
+            <button class="filter-btn" data-filter="friet" onclick="filterMenu('friet')" data-i18n="filter_fries">Friet</button>
+            <button class="filter-btn" data-filter="snacks" onclick="filterMenu('snacks')" data-i18n="filter_snacks">Snacks</button>
+            <button class="filter-btn" data-filter="sauzen" onclick="filterMenu('sauzen')" data-i18n="filter_sauces">Sauzen</button>
+        </div>
+
         <div class="menu-grid">
             
-            <div class="menu-card">
+            <div class="menu-card" data-category="friet">
                 <div class="menu-img-container">
-                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUQEhEWFRUWFhUVFhUVFRYVFRYVFxUXFhUVFxUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGislHx8tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALQBGAMBEQACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAFAQIDBAYAB//EAEAQAAEEAAUCBAMFBgQEBwAAAAEAAgMRBAUSITEGQRMiUWFxgZEyQlKhsQcUIzPB0WKy4fBDcoKzFSQlU2OS8f/EABsBAAIDAQEBAAAAAAAAAAAAAAABAgMEBQYH/8QAMREAAgIBBAAFAgUEAgMAAAAAAAECEQMEEiExBRMiQVEyYXGBkaGxI0LB8DPRBhTh/9oADAMBAAIRAxEAPwDy/CzFjg8cg3/onKKkqZOMtrtHoAa3EYfxG7ujF+5YeR8iuNJPHOvk6cWpKyuzCAMJabdVgAbEd/mLtURzb5UWbaB78RfwOy1KJCyriMNGbtgHuNj+XKthmnH3K5YYS9j0vp/LfCiaw1s1ux54H5rzOrl5k5ZH7s0KopRXsZ3q9oEhA5skDgrZom2rZJ8BHpXNQ9hDr9R3HoQfRU58Hl5KSJXaLs2Tv1tkgrS6y9pNfAi1nk47XGXaHuXuG8mEjba5vlOxog178qjH6W17Pv8A7/IryU+V2SZzlfit+yHmiCD9l7fwn0PoVowyy45JxfPs/wACtSjVS6Mdi+hWaH6GPY8gGPxDsHCyWWBweLPsuq/Gp48sfNjUffj9/wAiuWkxuD2PkwWLwjo3Fj2lrmmiDyCvQwnGcVKLtM5zTTplcxqYhvhIEcIkDJWQoAtRRIAtxsSAnaxAEgagQ8BAErUAPCYDwUAcSgBhKAIpHJiKsiYyu9AitImMrPSAryBAEDkDI3JARhIRq+g808OYROPlfYF+/I+f9Fh12LdHcvY16afO1hrEYZ0Ez427ggvZ38h2Lflx9FyJNJqf6/ib11QIzSMh+oMd5zdbkk969VtxStcsrkqKUttolrgDxYKtVMXR6vgcZrYx44dGwgehobLy+a1NxZckY/rrCEYlkpdTCzc+hbf9wun4fJeU4LlpkX8lXKsQdIMZDRzsnqXsdPsshyrNdgs38gaQDXfhcTLB2TcebLbMz3vSAqZRt3QbCU50fQfmrIykukR8pFzCZsTtptD1M4JqXJCWFdgjq7p9uKj1MAbM0eU/jH4Hf0K2+E+KrTtQn9Df6GfPg3q12eVSRFpLSKIJBB2II5BXtk7Vo5osWGc7ZrS74An9EOSXbGk30ObhnWG6TZNAEEWfRLequ+A2vo1mJ6XZ4emMkzsGotJ/mDvpHqD6crjaPxbzpveqjfDN2bR7YJx79zOtYu2YCdgSAmYEAPpAhUDHtQIkBQBxKYDSUARucgCF5TAhcUwIXlAFaRAFd6AIHoAicEDIXhAEIUREsMha4OBoggj4g2ENWqY06dnpeOn8fCx4pn2mAO2+j2rz88W2bxy6f+o7EJboqSBZzIlokbZbuS26IJ5APIBpQxxp7JDfygFJmDHE0wgb7F9/nVroqLRQ3Z6H0lKX4eNx4aCPXYe68zrU1qJJGpfSir15okw8b3AloeQa2NEbX9Ft8PbhOvdojOPszGR4l1BsDCfQAkn4UQujPFBvdkZFSa+k1uQ5LjH057fDbydZF17BcfVSwK9nJcppdhyXKdNl+JY0D27fVYFOL6RJZF8MbhMJh3ixirrvQ/un6t22Sr8gcn7IJ4LCtA1McXDf4LLli5WhSl7Mry5g7VRGkt22PPcFLyltVDUUDM4hhcHYlsTTKKMli7adtYHF3sfiCutp9TqJYli3tJfx+JX5GOMra7B3/ij3jyjSWj7m10Nj6b+inHDz6pP82W8LpEE2IcAyW7cHhzozd23cO342PZaYK4ygn7NWvuVzSl7Gpw2HbX7y7YhpeD3AonZcGM5qaxQfbS/cnkyKMX9jzh7iSXHkkk/EmyvoqVKjz5IwpgTtSEPpAC0mMS0CFtMZxKBDS5ADCUwI3lAERTArylAFaQoGQOQIhcEDI3BAEZagCuFEQ4IA2XQmYjz4V52d5m36/eC5uvxdZF7G/SZP7WMwOCkY+RgbbLNOJFfDlYdROLUZXybYwlygfiMilLjpa0/9QV8dbjUVuZW8Evg3/QsbmYYxPG4ceDex91w9ZkjLU7o9NfwWqDUVZYzXKw7DvY53l5vvyDahDWRWRSjyyTV8FTKvCw40xtH/ADH7R+aq1EsmZ3JhtJcwzvS2yfkq8OkeSVC4QzJNOIJMpLqO1cV8O6lqF5DShwWdIp9WZH4Tv3mPZhpsgGwB+66vQ8fFa9FqPMg8UuWuiClzYW6PzW/4Ljz9krPmx7Z7l7jyRtWGeoMtL26oxT27+7m92/77qPpjKkuGVYp12B8r0VqN6iNNH7JFEusd++ynGMkm/hmiQLxkrYAdMTiWu06fvX6G/wClq/DppZ8mycq/EryzcIb0rCuGwOvTraNRALhdgH091z8mTZJrG+F0TjJqNvsb1lmAhhEDftyDeu0Y5+F8fC11vBNCpz86atR6/H/53+hztXm/tXuYG160549jkATRyboAle9IBoemIXUgDrTA7UgBLQAiAIJEwIHlMCByAGPYgZWegCMlADHFICMlAFUJCHBAybDzOY5r2mi02ClKKkqfuOMnF2gnisQR/HaD4bzuB9x/3gfbuudLAn6H2jpwzut3sEcFjNrBsLBkwJOmjSslmq6WzjS5zTtY5XJ1+mlGpxLYLfwNzzOj5oWmgefU+wT0ml4UmuRTpMzmIzJ8bdVHnawQulDRwlKrKZzaQDxGPke8F18jZdGGDHCDUTPvlu5PRumhTQQvKa7mTTNyNhHhBNE5p3DgWuHseVm0+DI/XjfKZTkkoumed5jgX4LEeGSS3Yxv9R+Fx/EF2pJZoN+/uv8AK+xZjnaN7keatmYATTx+a5Uo09svbp/4ZVOG3ldA7P8AK3AmWN1MNlwAstceXD0B329VdHMttJFuKV8MpuniOkuAc5pvVwSQKAI42UJTnKO1Kv8AotUa9wrh5mMY6YmmgaiSb2q/9Fnx4J5ckYRXLdFGeairZ5vmuPdPK+Z3LjYHo37rR8BS+g4cUcUFCPscOUm3bKgVoh4QA4IAeCgQoKYxbSEOaUAI8pgML0AN1pgMcUARPQBHpQAjgSOEDKcg3QAjG7oAZiY6QBUolAEASEPCAHBABfp7GsY8xzC4ZPK8fhPZ49wqNRjc43HtF+DJsdPplvPunn4d1tssO7Xt4PxWOGZS7N234J8hySd51ufob+Z+Sy6jU4ktqVsuxQmndmtwmTRscHaiTXJF7+q50tWupF1D8Zh9fl2Ndz/ZUvUc+kKBOKyWNhL3VY3s8K+Gpyy9JFQXZFkWbu8dzdP8E8OvvxYHolrNJHyk79QlJuX2NZLmhjoMdufQrnaPE9zk+kWNJrlGWzrEumeZJH7DizQAXTg64iiHCBsPUDIDcclkdgLH1Vr0E831xoi8sV7mswfXjiypYa23c6iCK4oLK9HOLe2Sl+XItke3aKsDmYmRxi0xxkjSHHzAaRdtPAs7JywbEr7/AG/UsjPjktYnJJXxGJkgkoVp4IJdYPpt/RGlyxjnjKK5T5/D3I5alBxfv/JkczwLoJDE9wLgAXadwCRem+/Zerx5FkjuXRxZx2uitqVhAe0oAcEAOIQAloA60wOD0COcSUAIwWgCwMP3RYUVnsJ4FpgPgwDnGvRJuhhBmA3AI5UdwF8dPktsC7/JR3joonp52uq/JPeFE03SzhvptJZAoq5j028tNNr5KSmgoH4fInAbs4T3IRkgmIeEDHBAhwQB6D0fm3iwHDPILmcWLtnp8lxfEcbg966Z0tJPdw+0aGDLmuIcSQ0fd4C89k1SimonQG55mkcGxoD1vlGDTTzO0gVLmTM9HnZkOqMgDjW6629Aug9MsXElz8IakpLgY2RsztEnnbe/Iv3Vc9+H1QdMGlJcliXLCxxDBbeR8Ofqq1qVkjcuyG2jJZr1E7Voisb0XHn5Dsu1p9AlG5/oZJ53dIH6Xv8AM8ud7uJP6rV6IcR4/Aik3yyq1hula3wRS5NNl2Cmme1jWl7qoDkD3Pb6rnycUnRp59z0zKulmxt/inWTR0jYAj3G5/RZnC+yLy/AbiDWigA0D0FJKKiqSIOTfZ49m+J8SeWS71PeQf8ADqOn8qXoMcdsEvsc2TttlO1MiKCgCRj6KAJXS2gBmpMBWlACuCBDxG6tm2gBMOw6t9kMDUQ5bbAAbKpcuSdE+ByAkE1SHMEgjl2UEPNjZRcrAPtyKM0a3CjbAtxYNjRVBAFPMIowLoBIYEdnUQ8pcpbWKxJc4hDdyCjax2C8TmsXKkosjZ5GAryJoulsNG92l6wazLOCuJs00Iy7LXUfT+jzsGyhpNZv4Y8+nrlGZC6RiLeX4x8T2yMNOB+R9j7FQy445IuMumThNwdo9byzGsxELZW8Ebj8LhyF52ejx4ptNHUjmclaExeDY8aXsDh6EWrY+nrgd32Cj05EGFkdtBN1yAfZRyOUpbn2ThJRVFVuVCNuxt17+hHZZ8kMk5fYtUkSYGQxnU76chZc2nnJUkSTQLx2TRySmVkVuJsjtfqAt2HNnjjUJMpeOO60Tt6ZmeC2mNBHLt6+ACnCdSsbqqCGV9CQscHyOMjuaHlbf6q6eplJUuCpJI2mW4SOIaY2Bo70Nz8T3VSZCTsJF2ymVgjqGUsw0zmmiI3Ufciv6qWKKlkivuKbqLPIAV3DAcgDgmA9p3SAmkj2tAEITA4OpAFiKQHZIAphscxooqLTHY3EaZD5Duhcdgarp/L5C3zj4FVTa9gRqcJGGiioDIsTjmMsoAFv6sjFgFS2sAPjOsN+VJY2FgHM+qHG6damsYrM3PmTnG+6soCOKR73AblAg/JlkgivuoblYyLojI2SNL3i9lxfFNZPHJRia9PjTVsEZ8393xVs2Gy26b+tg9RVJ7MnBv8AKQ3Ewb77LzGozT02ejppqcDzvqHLjDMW9juF63R6hZsSkcnLDbKgcFqKzT9D5x4MvhOPkk2+Dux+fCx6zFujuXaNGnnT2v3PRpGrlG4heNkxg6Tkp0SsoSAbgpjLGC24UJDDELyoCCGH7JUQZaxEoYBsST9lrd3H4D09zsrFGypsbgsWXN1OGkguaW3dFri079+E5KnQlyBeuMZpwbxe7yxo+bgT+QKv0ivKvsQzcQPMLXYMIupMDtSAF1IAk8c1SQCMkpMC8zCgjndRsKElwleYDhFgPw0PiEXwhugNhkWTNFOI2VMpkkjS4rMY4WcjYcKC5GY3FdVusgcK1YxWCMTnj5LFqagkKwLiJyCVNIRSfI48WmARy3LTIQD3UW6A0GH6YaDZCrcyVBfB5NEHbcqLkwoPDAt00B7KFgYz9n/8k/Bee8Yf9VG7T/QZPrV14g/Bdzw7/hRlz/Waf9muKtuhcD/yDFUlI2aWVxoh/aTh6LXV3/utfgGRuDiynVrpmGC9GYx7OUmCPUMozZ0uGBDh4jNIfYvygjU6rHaz8lxpwUcjXsdJN7bCM85bs9tf4m2W/Pu35/VV7b6J38lTUCCWkEeoIKKa7JWDpRRKlQWPw0qjKJKwgzFtZu5wA9SQP1UVBvoTkkX8Finv2iYa/wDceC1oH+FvLvyHujYl2VuVhvCwtaCSS5x+047k+23A9hshyshRUyitBsf8Sb/vPUp/V+n8BHoz/wC0eN7sO0tHlY+3VyLBA+VlatDW9lOo+lHnFrqGQ60ALaAFBQAtoAu5VE1zwHHnZJgFc7ibG3yn/wDFCLsbVA/D4gyU0XfClQrNj070qaD3m+9KqeT4GkaTEsZEwgbbKrskeZ9QZk9zyCTXotMI8EWCRLspiGMtAGiyPJWyC3KuU6GlYWhyFg4AUXNjokweRyMd5eLv5Ic0FB1mHJBadj8FXYyXC5eWmzuhsCHMs4ZHsTSErEZLoF38A/Bed8ZdZUb9P9BkOrj/AOYPwXd8O/4UZM/1h79mzqcfiuT4+vSjVo+mF/2mNuIH3Cr8CfrYtUvSebBepMAqACOQZq6CYOO7D5Xt9WlUZsKnHjstx5XF89G36gJjcyUS+HJpMILiQzVs+MvIver2Irc7jZYcUbW1rjv7mmbrlMrRyufOY5YmAGi2Rlt1eTUdLh9re0NJQuL/ACJRdypodisDt5ZJB7ar/wA1qCn8pE9v3KsWFvmSQ+2rT/lATcvsg2/cL5bhI2mwwX6nd31O6qlKTJKKRoGY5kMbpX2Q0DYAlxJIAAA5JJA+ahGDlKkRm6VlHpnOJcVK+XUI4oyWCECyXEA6nu9R6K7NCOKKiu3zZVBuTbDWVm2PP/yzf91ypn3+S/gnH/f1AWYY9jsS7CO3Do/zNmvpStxxlCKyL5FOpPYeb4uHQ9zPwuI+hXYi7VmBqnRHakI60ALaAEtAHB5HBQBewgMmziSk+ARo8jwYYbrb3VUmNGjx/UAjj8v5KtRtkmY7F9RPksknf07K5QSI2Z/GYjUbViQiWCIuF1sgAlBgKG/PwUbHQXySZzTQND3UJIEa6FjRRcQSd7CpZItz5zCxtkhCTAz83Uo120ilPYKxmY9TgbDY0hQsdmVx+ODnarsEG79ValREM9EYctw2r1C8f4zPdnSOlp1UDDdUSXiHey9L4eqwIxZ/rYV6BxOmXSsHjePdis06KXNGq69aHYc77jdcrwKTWWi3Vx9B5gF7I5YqALWWQ65o2fiewfVwUZuotjXZvM00TYvEYd7y0uAdHwakY52kgHvW3wK5zbj6l7cP8DXFKSr37RWiifgxLiHStdCRYYBpIlNU0N4abJuvW6SbWZqKXP8AgavGm74BWFz+Y6DO1miQuaHtsEOG3mFnurZ4I87e0KGaXG73IcyzmWF3mhAFkNJePMB3ocJY8MZrhjnllH2LeOzWaPDEvLWyyO0s0E+VtWXEnuBe/uFHHihLJx0ux5JyUee2XOknyx4h7QZJIXsDzK8OAGkH+Jbu1hw96CNQoygnwmvYhjbUmvYN9FMjjdJAx3iH+a+SqBc5rCAwfhojc778KrU3KpPj2JYqXCNJlnliN/jlP1kcVmm+f0/gtijznGY7/wBT13xK1vyADSuksd6WvsZnKs1kPWGH04l5rYmwrNJK8aIZ1UgHa1FJJEQkB2jdMB7oduQlYCRQuJ2CYGm6XwDXO8226qnKkNI22NZCyOtuOVQrbJdHn+dS2CWnyrREizPMkPCsEXcvy8yOG23dJugPRosiiEI2HH5rO5uydcGWxE7m23T8+VakKwM/Oix22/sVLaKyw7N5XjyuLfgUbUg7IML4spIc6wPzT4QdkeNxAjNIXIA/F48urzccJ0Ioy4lzu6YHrOWtEWEaDt5f6LwGpm82pdfJ14KogTB5NBJcjiCSV0M2vzYqgl0RWGL5CuAyOBjtQq1jzeI5ckdsiUcai7RX6zgHgOIPZaPB8n9WqI6l3BnmIXsjlCgoAJ9OPAxUBPAlZ/mChk+ljj2gv1sXR417gaLXWD87VOFJppls21taDok/esP4sZ0utviNNFpLQQQ5psbjvXYfLE15U9svyNK/qRtATPcPDoeJcP4WnQ1kkbR5gQ3bkA1Z79jSvxSna2yu+0yuajTtUDM0bHIwMdMbh1BzvDO9UPXnhTx7ou0u/uKe2SpvoJAxOLZ/M8xubFHGRTXPJG+wJd6mvwqpbl6Or5bJy2v1fHBpsJDLMY5ZwY2COVj43GqkPla+NlWdtRs77qhuME4x5drn7fclTly/9YZy7BMjGljPDZTWuef50ga0NFkfZFAe/wAFVPI5d8/wSjCuhc2zZrG6YxdenYBRUdz5LEqPLsE8yYpp7ulB+rrXZn6cT+yOdHmf5mi/aHWuIjlweflqAH6KjRKolmodyMiCtpnL+T5Y/EPDGD4n0VOXKsatkoxcj1Pp7oWCMB0jQ93+Lf8AJYo5p5H8IscEjQTdLYR4owMPyAWiMX7SK3XwY3qDofwrfhuOdB3HyUHqHCVTJqFq0YyCaVr3fdcNi07Fak4yVlfImPzV5FOcU1FACRiydjup0IJ5HhtTyCNz6qMnwNGww3gw+Uhv+qpdskqQNzjPnRuofZ9LUowsT4BUeesOzuT3U9oWBcyla9xLVNCY3AyEFDETHH6Dt3PZKhlDGYjWdR5TQipSYDXBAHpPWGPEcGkHeqXivCcHmZtzOnnltiedYbNJWcONei9Xk0uOfaMMcsoh/LepnffK5efwuP8Aaaoan5Ic96gMo0A7K/Q+Hxwvd7lWfPuVIBBdYyihAEkbyCCOQbHxG4Q0Bt+u4hNHFjWbiVgJr8QFOHxWTE9sqf4F0uY/uAel84OHl3+w7Z4/qp6jD5kfugw5Nj+xtsdhwR5T5XCwCA5jgd/sn+lLmRbRuaTM1jsAPNcTDqNup72An1LRe+y0xyP5/ZFTgvj+S/lEQHDY49ybaNbgTyW6qAPyKqyS/Fk4x/I0+Xuay3NtzvxvNn+zR7Clnk2yaiiOfFOe8MuyTwP6+iajwFpEebfw4pSQLDLsepB2U8auUUvki36WzE9GYB82JYGjgj6ldPUP07fkw4uPV8Fz9omNY/GOZGbZC1sII7ll6z/9iR8lZjioxpFW5ydsy7nKwD1T9neCayIOrc7rh6zJczZjjUTcfvSz+cyWwnw8l91fhlb5ZXNUSPPYqc3zTEkeb/tIyWh+8R7EfaruFbpMu2Wx9CyRtWeb4gnkm11UUEMd3sgRp8sm0b6e3PuoS5JIIuiEzQ4gbc7qF0HYGx+GLvKOOxU0xMFYzC6FJMCnqTETOBDbOyAKbimA0oA7UgBhckAb6wzHxJdDdwFyfC9P5WK32zVqZ3KkU25FKY/ErarWz/3MW/ZZX5E6sHNiJ4C0OSK1FvovQ5TIQXVQVL1ONOrLVpptXRUIo0tCKHwdaAFCANp0RmDJWOy6c02Q6oXncMl9PgVnyw53fqWQkD8V0vI3EOgcQwjcA9x6tPcJxy8cg4XzE1+WYUCEQPktw+y7uPZYM6qW9L8TXidrawJmethIdR7f7PwUoU+USbaKOGxxHDfzJ7XxSk8YlM0kMT3NrxNyB5W7fWjf5rPwvYnyEcswJ1izQG9e/wCijKfHAURdWML4zDHu55DQOSb5Klp3U037CyL0NEL3x5ThTRBxcjS1jeTGDs6R3ofQLoY05vczBklxtR5o95JsmydyfdaiBHI5AHqnRGYAwgX2XB1cGps3Y3cTUCZYywc6R4otTQF+PEkjdW7uCvaCOtCDhn36FW4n60JrhnhheV30Yi1hI+979kAE2tc0aq2URkZzoj2KNoWOizUVv8kUFjcZib3KaQAeeYXYTEOnxeoVSAsqkpgNJSAQlADCgDY5D0u4nxZued1w9TruNmM3Y8PO6RoMzxscbPDsb7LmYtNklk3mtzjVMp4fAYcM17Xyp5NVqHLakWwhBcmdzrPdyyPjhdTR6J/Vk7M2p1a+mJ3TfTj8QdTh5f1V2s18MHpT5MmHBvdsN9RdLxsj1N2IWbSeISnOmX5tPHbaMbgsI6R4jaNyV2nJJWc6jZeBBgo7fRefqSs9ub4LKUezsH1jDiR4GNYWtH8rEN3fH7O7kIeJroFIhzXpnExkYmCbxY7Ba9r7afz2KSlFra0ST5tBZ2PikjAlIY+t2vBbv6ixRCwvHKL46NinFoCuZEH2NPyIVtyoVI1WX5hFpDW0PZos/QLLKEmydpFmbMPDBc7TEPxS8/KMeY/OlOOByK5ZUjPZrn74meLDG4F+wnloSH/lb9xq14cUW6vooySlVsxM87nuL3uLnHkk2StySSpGYYmBVxDkAGelc7MTtJO1rHqcG9WXYp1wel4HN2uANrjzxtGtOw7hMW0qroC2/EsA5TsKMN13nwLDGDzsuho8TctzKssqVGDhwAc0G9z9F17MlBrAZAXNsOr+yi50FGkw+Ws8EtO9Dgqpy5JJcGCzbBBjqCvTsi0URARumIuut7duEhg2QVsmIjQByAGkoAQoAagD0vPc8Y1lMIvgALzun0rvk6Up0YXORMSHuul18GzpGbLvXJQGMkqtZpXeTC7oq82dVZoulcgMp1v49FzfEdesEdsey/Bgc3uZ6GJo8PHtQoLyW3JqMn3OjSijzvqXqF8ry1p2Xr9BoViinLs52fO5cI0fSGWtggdiZeSL37NWrJJyltRSkoq2YrOswM8pefs35R7LTGO1UVN2UwFIC5gcymhvwpHMB2IB8rh7tOxUXFPsdk2X4yXWGCd0Yce27R/08KE4xSuiUG26s0r4sZEf57Hj3iZf1pY/Nxy9v3NXlSXuWsNiZ5BpdiHNB58Om/pX6KEpqPSJLFfbDeVZNAzz6db/AMchL3fnws8805cXwWRxxiB+r6c0td2BPzWrRL3KNU+kYK10jGc4oAqTIAqEkGwgAxlefvjoHhZ8mCMiyORo1WC6zaBusUtC/YvWdHYvrWxTVKGh55FLP8Gax80rzrcDRXQhBRVIzSk32SQQOr7W3opWKjSZJmL2DSW+U7FQlGxp0afBY+IbuNGu6qaZJUY3qdjZJgIjd2b7K6HXIpA+bLZaoNv3ClaEVocQY/I5qBWNx8zXCxSENg60xHFADSgBCUAIgBsWKdqDnG91W4KqRYpu7ZtsJimSsDXDY7Li5IzxStHSi4zjTM9nGW+DID90ldLT5/Nh9zDlxeXP7G2yfMY2RAggCl5nV6fJPM0zqRcVC0ZTqXPjK7S07LuaDQRwxt9nOz53J0gdkeF8SZrTxYv4LpTdRM0VbNd13mQbGzDsNX9oD0HZV4I+7JZXzRiAtBWKCgBbQAoPdAG0yLHunjLXCywc+y5ufFsdo3Ysu5UxrJdDvmoNWiy6NNgMT5LWaS5LEZ/qCQy+I1oPlbuV0NKtsV9zHqOZNGLC3GURyAIJAgCu9iAI9CAFDUASxbG0AGX462Btb/klQ7L2VYZ2kveBp5AP6pNgibBZy1j9GnbsUnGws7NcxjsFu/ruhIdAuXNjq1NH5KQUyxh+pSD5m9uyW0OUUcXjRI7VVKSI2VXFADCgBEAIUAIUAIgCGkAEcrxpadJ4KzZ8KlyX4cu10aGdhlj0nfbYrnQaxTtGya3xozEskjLjsrqKMJ+owuco+krgK0qNF0YB4/y/uqs30lmLsr9TSl2If7bfmp416SM/qYLBUyItoAW0ALaADPTGa+BLbvsu2cqsuPfEnjltYezRjQdTXAtduCD+RWLa0bFJMsZVMdh7qqcbZNSoK53j8NhcLIweaeUH6kV9AtWGLdfYx5Zcv7nl5K2lI1ADXIAicEAMIQAlIAewIAmBQBcfmbizR7VfslQWVoymyUVbCLRHp35WeUnZ0seKKXIryzTsFDc7NLxRceCjPh7F1SsUjLLCmURbSrU7MGTHtZLakViEoARACIAS0AIgBJm04j3KjF2kN8MapCC+U5x4Yp24WLPpd7tGnFn2qmVMyxYkdqApX4cflxoqyzUnaKquKwt01iNE7ffZV5FcSUHTJeqoC2cns7cfNGN3EJqpAe1YRFCAFQAtoAW0ASxzkVuaHa1GUbGnRsujMQx8zdTqaATXvSxZYtGuMk0Vf2izMOJAYQQG9vc/6LTgXpM0/qMpauIHWgBpKAGlADSEAJSAHtCAHIAjeUwHxP2UJF2EkDiqjanRNA5Rki/HP2CBxDSNBChTLd0emCcZD6K2DMWeKaK8Z2V5zWOQAloAS0AIgBEAOxb7e4juVDGqikOXbI1MRyAOCAHIAdHIWkOHY2k0BtZMKMbhw5v8xoVMXslTLJepWjGzROY4tcKI2IKvKkxoKBikoAS0ALaAFBQASweGkDDKLA+hUHV0SV0UpJCTZJJ9SpkRiAEtAHIARACIA5ADggDiUAQyFMQyJ6i0WY5Uyy11hVG1co5jy02nSYKTiyaSbVuo1RPc5OzpX+VCXIpy4KkavRzpdjkCEQAiAEQAloAayr3SYLsPYXJopG6mzC64KwZNXODpxNkdPCS4kQHLIw0kyiwrFqZN1tIvBFLsFOG+y1pmVnJgcgAnkGcvw8gcOO4UJw3DjKjaZlgYMwaJIiGSgf7BCqjNw4l0OUL5iYfMcqlgcWyMI9+Wn5q9NPohfyU0xnIAfFE5xpoJPsgRp8oyBrB4uIIAG+n+6qlk9kTUfkq59nTX/wAOIU0bfFEIPtjlL2QCtWkDrQB1oAS0AdaAOQByAFtACEoAglQIr6qKBk8b1FovhMmEijRapHGRKh7xdzypKJTPJYimUCWgBS1ADUAIUANQAwoEcx5HBScU+ySk0LqPqikJscEwFQByAOQBZy/HSRuBY4hRlFPsadG2y/NZJm1Jpd8Qqap8E++yR2S4d+5iF+236IWSQeWhjensOP8Ah/Ukp+ZIFjR0wbCD4bGj5JW32FJGPzXM5ZHU523oNgrYxSINsotUxDgUAOQAloA5AHIA5AHIA5ACFAiKRAys9AhoKALMLylRNSZaYfYIobkxsjymQbGIEKgDi5AxqBHFAxpQI//Z" alt="Puntzak Friet">
+                    <img src="https://depatatgeneratie.nl/wp-content/uploads/2020/06/Puntzak-friet.jpg" alt="Puntzak Friet">
                 </div>
                 <div class="menu-content">
-                    <h3>Puntzak Friet</h3>
-                    <p>Onze kenmerkende dik gesneden Bintjes, perfect krokant van buiten en zacht van binnen. Geserveerd in een klassieke puntzak.</p>
-                    <div class="price">€3.50 / €4.50</div>
+                    <h3 data-i18n="item_fries_title">Puntzak Friet</h3>
+                    <p data-i18n="item_fries_desc">Onze kenmerkende dik gesneden Bintjes, perfect krokant van buiten en zacht van binnen.</p>
+                    <div class="price">€3.50</div>
                 </div>
             </div>
 
-            <!-- <div class="menu-card">
+            <div class="menu-card" data-category="friet">
                 <div class="menu-img-container">
-                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="De Mitraillette">
+                    <img src="https://ohmyfoodness.nl/wp-content/uploads/2023/09/recept-voor-flammkuchen.jpg" alt="De Mitraillette">
                 </div>
                 <div class="menu-content">
-                    <h3>De Mitraillette</h3>
-                    <p>Een half stokbrood ruim belegd met vlees naar keuze, bedolven onder onze gouden frieten en overgoten met heerlijke saus.</p>
+                    <h3 data-i18n="item_mitraillette_title">De Mitraillette</h3>
+                    <p data-i18n="item_mitraillette_desc">Een half stokbrood ruim belegd met vlees, bedolven onder gouden frieten en saus.</p>
                     <div class="price">€7.00</div>
                 </div>
-            </div> -->
+            </div>
 
-            <div class="menu-card">
+            <div class="menu-card" data-category="snacks">
                 <div class="menu-img-container">
-                    <img src="https://images.hln.be/YTA0OTgyMTMyYjNiZjBmMjg2YTQvZGlvLzIxNzc5MDA5NS9maXQtd2lkdGgvODAw/frituursnacks" alt="Klassieke Snacks">
+                    <img src="https://www.denotenshop.be/wp/wp-content/uploads/sites/3/2026/02/Kroketten-liggend-open.jpg" alt="Kaaskroketten">
                 </div>
                 <div class="menu-content">
-                    <h3>Klassieke Snacks</h3>
-                    <p>Frikandel, Viandel, een Luikse Boulet of een ambachtelijke kaaskroket. De perfecte bijgerechten voor je friet.</p>
+                    <h3 data-i18n="item_croquette_title"> Kroketten</h3>
+                    <p data-i18n="item_croquette_desc">Huisgemaakte kaaskroketten of garnalenkroketten met een perfecte krokante korst.</p>
+                    <div class="price">€3.20</div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="snacks">
+                <div class="menu-img-container">
+                    <img src="https://vanoersfoodservice.nl/assets/vanoers/uploads/banners/_1200x600_crop_center-center_none/1Z9A3756-Van-Oers-snacks-groot-1-min.jpg" alt="Frikandel">
+                </div>
+                <div class="menu-content">
+                    <h3 data-i18n="item_snack_title">Klassieke Snacks</h3>
+                    <p data-i18n="item_snack_desc">Frikandel, Viandel, of een heerlijke Luikse Boulet. De perfecte bijgerechten.</p>
                     <div class="price">Vanaf €2.20</div>
                 </div>
             </div>
 
-            <div class="menu-card">
+            <div class="menu-card" data-category="sauzen">
                 <div class="menu-img-container">
-                    <img src="data:image/jpeg;base64,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" alt="Belgische Sauzen">
+                    <img src="https://www.barbecue.nl/media/ves/blog/Depositphotos_162132846_S.jpg" alt="Belgische Sauzen">
                 </div>
                 <div class="menu-content">
-                    <h3>Sauzen</h3>
-                    <p>Mayonaise, Andalouse, Samouraï, Dallas of Joppiesaus. Vraag je frietjes "met saus erop" of lekker apart in een potje!</p>
-                    <div class="price">€0.90 p/st</div>
+                    <h3 data-i18n="item_sauce_title">Sauzen & Dips</h3>
+                    <p data-i18n="item_sauce_desc">Mayonaise, Andalouse, Samouraï, Dallas of Joppiesaus. Vraag ze op de friet of apart!</p>
+                    <div class="price">€0.90</div>
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2 class="section-title"><span data-i18n="gallery_title1">Sfeer</span> <span style="color: var(--accent-yellow);" data-i18n="gallery_title2">Beelden</span></h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://radioimages.npox.nl/RAD1/image/952d3efd-f127-4ece-938e-330eb73d1543/1304%20Jan%20Patat%202.png" alt="Shop exterior"></div>
+            <div class="gallery-item"><img src="https://static.wixstatic.com/media/b92922_fa2ab645189a4822bad3b969dad843d9~mv2.jpg/v1/fill/w_2500,h_1666,al_c/b92922_fa2ab645189a4822bad3b969dad843d9~mv2.jpg" alt="Frying"></div>
+            <div class="gallery-item"><img src="https://tiel.foodmaster.nl/_ipx/q_85&fit_inside&f_jpeg&s_1440x834/https://cms.foodmaster.nl/assets/content/vestigingen/foodmaster-nl/wie_is_foodmaster.jpg" alt="Snacks"></div>
+            <div class="gallery-item"><img src="https://favorflav.com/images/Berehap-snackbar.jpg" alt="Fries cone"></div>
         </div>
     </section>
 
     <section class="info-section" id="visit">
         <div class="info-box">
-            <h3>Openingstijden</h3>
+            <h3 data-i18n="hours_title">Openingstijden</h3>
             <ul>
-                <li><span>Maandag</span> <span>Gesloten</span></li>
-                <li><span>Dinsdag - Donderdag</span> <span>11:30 - 22:00</span></li>
-                <li><span>Vrijdag - Zaterdag</span> <span>11:30 - 23:30</span></li>
-                <li><span>Zondag</span> <span>16:00 - 22:00</span></li>
+                <li><span data-i18n="day_mon">Maandag</span> <span style="color: var(--text-muted)" data-i18n="closed">Gesloten</span></li>
+                <li><span data-i18n="day_tue">Dinsdag - Donderdag</span> <span>11:30 - 22:00</span></li>
+                <li><span data-i18n="day_fri">Vrijdag - Zaterdag</span> <span>11:30 - 23:30</span></li>
+                <li><span data-i18n="day_sun">Zondag</span> <span>16:00 - 22:00</span></li>
             </ul>
         </div>
 
-        <div class="info-box">
-            <h3>Vind Onze Frituur</h3>
-            <p style="margin-bottom: 1rem; text-align: left;">
-                <strong>Place Saint-Lambert 42</strong><br>
-                4000 Luik, België
-            </p>
-            <p style="margin-bottom: 1rem; text-align: left;"><strong>Telefoon:</strong> +32 4 123 45 67</p>
-            <p style="text-align: left;"><strong>E-mail:</strong> miam@belgischgoud.be</p>
+        <div class="info-box contact-details">
+            <h3 data-i18n="contact_title">Vind Onze Frituur</h3>
+            <p><strong>📍 <span data-i18n="address">Adres</span>:</strong> <br>Place Saint-Lambert 42<br>4000 Luik, België</p>
+            <p><strong>📞 <span data-i18n="phone">Telefoon</span>:</strong> <br><a href="tel:+3241234567" style="color: var(--text-main); text-decoration: none;">+32 4 123 45 67</a></p>
+            <p><strong>✉️ <span data-i18n="email">E-mail</span>:</strong> <br><a href="mailto:miam@belgischgoud.be" style="color: var(--text-main); text-decoration: none;">miam@belgischgoud.be</a></p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Frituur 't Belgisch Goud. Met trots gebakken in Luik.</p>
+        <h2 style="font-family: 'Oswald', sans-serif; color: var(--text-main); margin-bottom: 1rem;">'t Belgisch Goud</h2>
+        <p>&copy; 2026 Frituur 't Belgisch Goud. <span data-i18n="footer">Met trots gebakken in Luik.</span></p>
     </footer>
 
     <script>
-        const toggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
+        // --- FILTER LOGIC ---
+        const men_card = document.querySelectorAll(".menu-card");
+        const filterBtns = document.querySelectorAll(".filter-btn");
 
-        // Controleer of de gebruiker eerder voor de lichte modus koos
-        if (localStorage.getItem('frituur-theme') === 'light') {
-            body.classList.add('light-mode');
-            toggleBtn.textContent = '🌙 Donker';
+        function filterMenu(selectedcard) {
+            // Update Active Button styling
+            filterBtns.forEach(btn => {
+                if(btn.getAttribute('data-filter') === selectedcard) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Filter the cards
+            men_card.forEach(card => {
+                const category = card.getAttribute("data-category");
+                if(category === selectedcard || selectedcard === "all"){
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         }
 
-        // Luister naar klikken op de knop
-        toggleBtn.addEventListener('click', () => {
+        // --- THEME TOGGLE LOGIC ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('frituur-theme') === 'light') {
+            body.classList.add('light-mode');
+            themeBtn.textContent = '🌙';
+        }
+
+        themeBtn.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-            
             if (body.classList.contains('light-mode')) {
                 localStorage.setItem('frituur-theme', 'light');
-                toggleBtn.textContent = '🌙 Donker';
+                themeBtn.textContent = '🌙';
             } else {
                 localStorage.setItem('frituur-theme', 'dark');
-                toggleBtn.textContent = '☀️ Licht';
+                themeBtn.textContent = '☀️';
             }
+        });
+
+        // --- LANGUAGE TRANSLATION LOGIC ---
+        const langBtn = document.getElementById('lang-toggle');
+        const langSpan = langBtn.querySelector('span');
+        
+        const translations = {
+            nl: {
+                nav_home: "Home", nav_about: "Over Ons", nav_menu: "Menu", nav_visit: "Bezoek Ons", nav_order: "Bestel Nu",
+                hero_title1: "De Perfecte", hero_title2: "Kraak",
+                hero_desc: "Authentieke Belgische frieten, dubbel gebakken in ossenwit tot gouden perfectie. Vers geserveerd in een traditionele puntzak.",
+                hero_btn: "Bekijk Menu",
+                about_title: "De Echte Belgische Traditie",
+                about_p1: "Sinds 1998 bakken wij onze frieten volgens de authentieke Belgische traditie. Geen diepvries, maar vers gesneden Bintjes die dagelijks worden geleverd door lokale boeren.",
+                about_p2: "Het geheim van onze gouden kleur en onweerstaanbare smaak? Wij bakken uitsluitend in 100% geraffineerd ossenwit (blanc de bœuf). Kom langs en proef het verschil!",
+                menu_title1: "Klassiek", menu_title2: "Frituur", menu_title3: "Menu",
+                filter_all: "Alles", filter_fries: "Friet", filter_snacks: "Snacks", filter_sauces: "Sauzen",
+                item_fries_title: "Puntzak Friet", item_fries_desc: "Onze kenmerkende dik gesneden Bintjes, perfect krokant van buiten en zacht van binnen.",
+                item_mitraillette_title: "De Mitraillette", item_mitraillette_desc: "Een half stokbrood ruim belegd met vlees, bedolven onder gouden frieten en saus.",
+                item_croquette_title: "Ambachtelijke Kroketten", item_croquette_desc: "Huisgemaakte kaaskroketten of garnalenkroketten met een perfecte krokante korst.",
+                item_snack_title: "Klassieke Snacks", item_snack_desc: "Frikandel, Viandel, of een heerlijke Luikse Boulet. De perfecte bijgerechten.",
+                item_sauce_title: "Sauzen & Dips", item_sauce_desc: "Mayonaise, Andalouse, Samouraï, Dallas of Joppiesaus. Vraag ze op de friet of apart!",
+                gallery_title1: "Sfeer", gallery_title2: "Beelden",
+                hours_title: "Openingstijden", day_mon: "Maandag", day_tue: "Dinsdag - Donderdag", day_fri: "Vrijdag - Zaterdag", day_sun: "Zondag", closed: "Gesloten",
+                contact_title: "Vind Onze Frituur", address: "Adres", phone: "Telefoon", email: "E-mail", footer: "Met trots gebakken in Luik."
+            },
+            en: {
+                nav_home: "Home", nav_about: "About Us", nav_menu: "Menu", nav_visit: "Visit Us", nav_order: "Order Now",
+                hero_title1: "The Perfect", hero_title2: "Crunch",
+                hero_desc: "Authentic Belgian fries, double-fried in beef tallow to golden perfection. Served fresh in a traditional paper cone.",
+                hero_btn: "See Menu",
+                about_title: "The Real Belgian Tradition",
+                about_p1: "Since 1998, we have been frying according to authentic Belgian traditions. No frozen potatoes, just freshly cut Bintjes delivered daily by local farmers.",
+                about_p2: "The secret to our golden color and irresistible taste? We fry exclusively in 100% refined beef tallow (blanc de bœuf). Come by and taste the difference!",
+                menu_title1: "Classic", menu_title2: "Fritkot", menu_title3: "Menu",
+                filter_all: "All", filter_fries: "Fries", filter_snacks: "Snacks", filter_sauces: "Sauces",
+                item_fries_title: "Fries Cone", item_fries_desc: "Our signature thick-cut Bintje potatoes, perfectly crispy on the outside and fluffy inside.",
+                item_mitraillette_title: "The Mitraillette", item_mitraillette_desc: "A half-baguette loaded with meat, completely buried in our golden fries and covered in sauce.",
+                item_croquette_title: "Artisanal Croquettes", item_croquette_desc: "Homemade cheese croquettes or shrimp croquettes with a perfectly crispy crust.",
+                item_snack_title: "Classic Snacks", item_snack_desc: "Frikandel, Viandel, or a delicious Liège Meatball. The perfect sidekicks.",
+                item_sauce_title: "Sauces & Dips", item_sauce_desc: "Mayonnaise, Andalouse, Samouraï, Dallas or Joppiesaus. Ask for them on the fries or on the side!",
+                gallery_title1: "Our", gallery_title2: "Atmosphere",
+                hours_title: "Opening Hours", day_mon: "Monday", day_tue: "Tuesday - Thursday", day_fri: "Friday - Saturday", day_sun: "Sunday", closed: "Closed",
+                contact_title: "Find Our Friterie", address: "Address", phone: "Phone", email: "Email", footer: "Proudly fried in Liège."
+            }
+        };
+
+        // Default to Dutch
+        let currentLang = localStorage.getItem('frituur-lang') || 'nl';
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update button text to show the OTHER language option
+            if(lang === 'nl') {
+                langSpan.textContent = 'EN';
+            } else {
+                langSpan.textContent = 'NL';
+            }
+        }
+
+        setLanguage(currentLang);
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'nl' ? 'en' : 'nl';
+            localStorage.setItem('frituur-lang', currentLang);
+            setLanguage(currentLang);
         });
     </script>
 </body>
