@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Nails | Nancy Doms - Premium Nagelstudio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Styles */
+        :root {
+            /* Default Dark Mode Colors - Luxury Nail Salon Inspired */
+            --primary-bg: #0f0f0f;
+            --secondary-bg: #1a1a1a;
+            --text-main: #fdfdfd;
+            --text-muted: #aaaaaa;
+            --accent-color: #d4a373; /* Rose Gold / Champagne */
+            --footer-bg: #080808;
+            --border-color: #333;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(20, 20, 20, 0.85);
+        }
+
+        /* Light Mode Colors - Clean & Aesthetic */
+        body.light-mode {
+            --primary-bg: #fdfaf8;
+            --secondary-bg: #ffffff;
+            --text-main: #2d2d2d;
+            --text-muted: #666666;
+            --accent-color: #b07d4d; 
+            --footer-bg: #f1edea;
+            --border-color: #e5e0dc;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, .logo, .filter-btn, .price {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .logo span { color: var(--accent-color); }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-color); }
+
+        .actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(15, 15, 15, 0.8)), 
+                        url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 0 20px;
+            color: #ffffff;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        section { padding: 6rem 5%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent-color);
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        /* About Grid */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text { flex: 1; }
+        .about-text h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--accent-color); }
+        .about-text p { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+        .about-img {
+            flex: 1;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-img img { width: 100%; display: block; border-radius: 4px; }
+
+        /* Menu / Services */
+        .menu { background-color: var(--secondary-bg); }
+
+        .filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--text-main);
+            padding: 0.5rem 1.5rem;
+            border-radius: 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background-color: var(--primary-bg);
+            box-shadow: var(--card-shadow);
+            transition: 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover { transform: translateY(-5px); }
+
+        .card-img { height: 200px; width: 100%; object-fit: cover; }
+        .card-body { padding: 2rem; text-align: center; flex-grow: 1; }
+        .card-body h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .card-body p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .price { font-size: 1.5rem; color: var(--accent-color); margin-top: auto; }
+
+        /* Info Boxes */
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: var(--secondary-bg);
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            background-color: var(--primary-bg);
+            padding: 3rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .info-box h3 { color: var(--accent-color); margin-bottom: 1.5rem; text-align: center; }
+        .info-box ul { list-style: none; }
+        .info-box li { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding: 0.5rem 0; }
+
+        footer { text-align: center; padding: 4rem; background-color: var(--footer-bg); color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 3rem; }
+            .about { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Perfect <span>Nails</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">Over Nancy</a></li>
+                <li><a href="#services" data-i18n="nav_services">Nagels</a></li>
+                <li><a href="#visit" data-i18n="nav_visit">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <button id="lang-toggle" class="icon-btn">🌐 <span>EN</span></button>
+            <button id="theme-toggle" class="icon-btn">☀️</button>
+            <a href="tel:0476351352" class="btn" data-i18n="nav_call">Bel Nancy</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1 data-i18n="hero_h1">Strak. Sterk. Stijlvol.</h1>
+        <p data-i18n="hero_p">Kwaliteit nagels in het hartje van Antwerpen & Kontich. Al meer dan 20 jaar het vaste adres voor perfecte verzorging.</p>
+        <a href="#services" class="btn" data-i18n="hero_btn">Bekijk onze stijlen</a>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2 data-i18n="about_h2">Vakmanschap met Ervaring</h2>
+            <p data-i18n="about_p1">Nancy Doms is geen onbekende in de nagelwereld. Met meer dan twee decennia ervaring weten we precies wat jouw nagels nodig hebben. Of het nu gaat om een natuurlijke look of strakke kunstnagels.</p>
+            <p data-i18n="about_p2">Onze studio's in Antwerpen en Kontich zijn een plek waar je even kunt ontspannen terwijl je handen de beste zorg krijgen. Geen haastwerk, maar precisie.</p>
+        </div>
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nancy working">
+        </div>
+    </section>
+
+    <section class="menu" id="services">
+        <h2 class="section-title" data-i18n="menu_h2">Onze Specialiteiten</h2>
+        
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1604902396830-aca29e19b067?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Gel">
+                <div class="card-body">
+                    <h3 data-i18n="srv1_h3">Gel- of Acrylnagels</h3>
+                    <p data-i18n="srv1_p">De klassieker voor wie houdt van lengte en kracht. Perfect afgewerkt in elke gewenste kleur.</p>
+                    <div class="price">Vanaf €45</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Shellac">
+                <div class="card-body">
+                    <h3 data-i18n="srv2_h3">Shellac / Gellak</h3>
+                    <p data-i18n="srv2_p">Ideaal voor je natuurlijke nagels. Wekenlang een prachtige glans zonder beschadiging.</p>
+                    <div class="price">€30</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="card-img" alt="Manicure">
+                <div class="card-body">
+                    <h3 data-i18n="srv3_h3">Luxe Manicure</h3>
+                    <p data-i18n="srv3_p">Verzorging van nagelriemen, vormgeving en een ontspannende handmassage.</p>
+                    <div class="price">€25</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section" id="visit">
+        <div class="info-box">
+            <h3 data-i18n="hours_h3">Wanneer zijn we open?</h3>
+            <ul>
+                <li><span data-i18n="mon">Maandag</span> <span data-i18n="closed">Gesloten</span></li>
+                <li><span>Dinsdag - Vrijdag</span> <span>09:00 - 18:00</span></li>
+                <li><span>Zaterdag</span> <span>08:00 - 17:00</span></li>
+                <li><span data-i18n="sun">Zondag</span> <span data-i18n="closed">Gesloten</span></li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3 data-i18n="visit_h3">Kom langs in de Studio</h3>
+            <p><strong>📍 Antwerpen:</strong> <br>Quellinstraat 54, 2018 Antwerpen</p>
+            <p style="margin-top: 10px;"><strong>📍 Kontich:</strong> <br>Ieperstraat 8, 2550 Kontich</p>
+            <p style="margin-top: 20px;"><strong>📞 Telefoon:</strong> <br>0476 35 13 52</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Perfect Nails by Nancy Doms. <span data-i18n="foot">Al 20 jaar topkwaliteit in Antwerpen.</span></p>
+    </footer>
+
+    <script>
+        // --- THEME LOGIC ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        if (localStorage.getItem('nails-theme') === 'light') { body.classList.add('light-mode'); themeBtn.textContent = '🌙'; }
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            localStorage.setItem('nails-theme', isLight ? 'light' : 'dark');
+            themeBtn.textContent = isLight ? '🌙' : '☀️';
+        });
+
+        // --- TRANSLATION LOGIC ---
+        const langBtn = document.getElementById('lang-toggle');
+        const langSpan = langBtn.querySelector('span');
+        const translations = {
+            nl: {
+                nav_home: "Home", nav_about: "Over Nancy", nav_services: "Nagels", nav_visit: "Contact", nav_call: "Bel Nancy",
+                hero_h1: "Strak. Sterk. Stijlvol.", hero_p: "Kwaliteit nagels in het hartje van Antwerpen & Kontich. Al meer dan 20 jaar het vaste adres voor perfecte verzorging.", hero_btn: "Bekijk onze stijlen",
+                about_h2: "Vakmanschap met Ervaring", about_p1: "Nancy Doms is geen onbekende in de nagelwereld. Met meer dan twee decennia ervaring weten we precies wat jouw nagels nodig hebben.", about_p2: "Onze studio's in Antwerpen en Kontich zijn een plek waar je even kunt ontspannen. Geen haastwerk, maar precisie.",
+                menu_h2: "Onze Specialiteiten", srv1_h3: "Gel- of Acrylnagels", srv1_p: "De klassieker voor wie houdt van lengte en kracht. Perfect afgewerkt.",
+                srv2_h3: "Shellac / Gellak", srv2_p: "Ideaal voor je natuurlijke nagels. Wekenlang glans zonder beschadiging.",
+                srv3_h3: "Luxe Manicure", srv3_p: "Verzorging van nagelriemen, vormgeving en massage.",
+                hours_h3: "Openingsuren", mon: "Maandag", sun: "Zondag", closed: "Gesloten", visit_h3: "Onze Locaties", foot: "Al 20 jaar topkwaliteit."
+            },
+            en: {
+                nav_home: "Home", nav_about: "About Nancy", nav_services: "Services", nav_visit: "Contact", nav_call: "Call Nancy",
+                hero_h1: "Clean. Strong. Stylish.", hero_p: "High-end nail care in Antwerp & Kontich. Over 20 years of experience in making your hands look perfect.", hero_btn: "View our styles",
+                about_h2: "Expertise You Can Trust", about_p1: "Nancy Doms is a well-known name in the nail industry. With over two decades of experience, we know exactly what your nails need.", about_p2: "Our studios in Antwerp and Kontich are spaces where you can relax. No rush, just precision craft.",
+                menu_h2: "Our Specialties", srv1_h3: "Gel or Acrylic Nails", srv1_p: "The classic choice for length and strength. Perfectly finished to your style.",
+                srv2_h3: "Shellac / Gel Polish", srv2_p: "Perfect for natural nails. High-gloss shine for weeks without damage.",
+                srv3_h3: "Luxury Manicure", srv3_p: "Cuticle care, shaping, and a relaxing hand massage.",
+                hours_h3: "Opening Hours", mon: "Monday", sun: "Sunday", closed: "Closed", visit_h3: "Visit our Studios", foot: "20 years of excellence."
+            }
+        };
+
+        let currentLang = localStorage.getItem('nails-lang') || 'nl';
+        function updateLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.textContent = translations[lang][key];
+            });
+            langSpan.textContent = lang === 'nl' ? 'EN' : 'NL';
+        }
+        updateLang(currentLang);
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'nl' ? 'en' : 'nl';
+            localStorage.setItem('nails-lang', currentLang);
+            updateLang(currentLang);
+        });
+    </script>
+</body>
+</html>
