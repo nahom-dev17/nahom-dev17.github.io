@@ -3,431 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sultan Grill Huis | Kebab & Falafel</title>
+    <title>Diyar Grill & Snack | Bestel via WhatsApp</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Reenie+Beanie&display=swap" rel="stylesheet">
 
     <style>
         /* CSS Styles */
         :root {
-            --primary-bg: #111111;
-            --secondary-bg: #1a1a1a;
+            --primary-bg: #0d0d0d;
+            --secondary-bg: #161616;
             --text-main: #fdfdfd;
             --text-muted: #aaaaaa;
             --accent-primary: #f26419; 
             --accent-secondary: #f6aa1c; 
             --footer-bg: #080808;
-            --border-color: #333;
+            --border-color: #2a2a2a;
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --glass-bg: rgba(26, 26, 26, 0.85);
+            --glass-bg: rgba(18, 18, 18, 0.9);
         }
 
         body.light-mode {
-            --primary-bg: #f8f9fa;
+            --primary-bg: #fcfaf7;
             --secondary-bg: #ffffff;
             --text-main: #1a1a1a;
             --text-muted: #555555;
             --accent-primary: #d64900; 
             --accent-secondary: #e08e00;
-            --footer-bg: #e9ecef;
-            --border-color: #dddddd;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --glass-bg: rgba(255, 255, 255, 0.85);
+            --footer-bg: #f0ebe5;
+            --border-color: #e0d9d0;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.9);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--primary-bg); color: var(--text-main); line-height: 1.6; transition: 0.3s; padding-bottom: 80px; } 
+        h1, h2, h3, .logo, .filter-btn, .price, .cart-total { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        h1, h2, h3, .logo, .filter-btn, .price {
-            font-family: 'Oswald', sans-serif;
-        }
-
-        header {
-            background-color: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1.2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--accent-primary);
-            transition: all 0.3s ease;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
+        /* Header */
+        header { background-color: var(--glass-bg); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent-primary); }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--text-main); }
         .logo span { color: var(--accent-primary); }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
+        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        nav a { color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
         nav a:hover { color: var(--accent-primary); }
+        .actions { display: flex; gap: 1rem; align-items: center; }
+        .icon-btn { background: transparent; border: none; color: var(--text-main); cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; gap: 5px; }
 
-        .actions {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
+        .btn { background-color: var(--accent-primary); color: #fff; padding: 0.6rem 1.4rem; text-decoration: none; font-weight: 600; border-radius: 2px; transition: 0.3s; display: inline-block; cursor: pointer; border: none; }
+        .btn:hover { background-color: var(--accent-secondary); transform: translateY(-2px); }
 
-        .icon-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-main);
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            transition: transform 0.3s, color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        /* Hero */
+        .hero { height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(17, 17, 17, 0.8)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; padding: 0 20px; color: #ffffff; }
+        .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 650px; font-weight: 300; }
 
-        .icon-btn:hover {
-            transform: scale(1.1);
-            color: var(--accent-primary);
-        }
-
-        .btn {
-            background-color: var(--accent-primary);
-            color: #fff;
-            padding: 0.8rem 1.8rem;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            transition: background-color 0.3s, transform 0.3s;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-secondary);
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(17, 17, 17, 0.9)), 
-                        url('https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
-            padding: 0 20px;
-            color: #ffffff;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.1;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .hero h1 span { color: var(--accent-primary); }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            max-width: 650px;
-            font-weight: 300;
-            color: #e0e0e0;
-        }
-
+        /* Sections General */
         section { padding: 6rem 5%; }
+        .section-title { text-align: center; font-size: 3rem; margin-bottom: 3rem; color: var(--text-main); }
 
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--accent-secondary);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 3rem;
-        }
-
-        .about {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        /* About Section */
+        .about { display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto; }
         .about-text { flex: 1; }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-primary);
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .about-img {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-
+        .about-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--accent-primary); }
+        .about-text p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .about-img { flex: 1; border-radius: 8px; overflow: hidden; box-shadow: var(--card-shadow); }
+        .about-img img { width: 100%; height: auto; display: block; transition: transform 0.5s; }
         .about-img:hover img { transform: scale(1.05); }
 
+        /* Menu */
         .menu { background-color: var(--secondary-bg); }
+        .filter { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .filter-btn { background: transparent; border: 2px solid var(--accent-primary); color: var(--text-main); padding: 0.5rem 1.8rem; font-size: 1.1rem; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .filter-btn.active, .filter-btn:hover { background-color: var(--accent-primary); color: #fff; transform: translateY(-2px); }
 
-        .filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 2px solid var(--accent-primary);
-            color: var(--text-main);
-            padding: 0.5rem 1.8rem;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 1px;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--accent-primary);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .menu-card {
-            background-color: var(--primary-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        }
-
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
+        .menu-card { background-color: var(--primary-bg); border-radius: 12px; overflow: hidden; text-align: center; box-shadow: var(--card-shadow); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; border: 1px solid var(--border-color); }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); border-color: var(--accent-primary); }
         body.light-mode .menu-card:hover { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); }
-
-        .menu-img-container {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            border-bottom: 4px solid var(--accent-primary);
-        }
-
-        .menu-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
+        
+        .menu-img-container { width: 100%; height: 220px; overflow: hidden; border-bottom: 4px solid var(--accent-primary); }
+        .menu-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .menu-card:hover .menu-img-container img { transform: scale(1.1); }
+        
+        .menu-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .menu-card h3 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--text-main); }
+        .menu-card p { font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-muted); }
+        
+        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+        .price { color: var(--accent-primary); font-size: 1.8rem; font-weight: 700; }
+        .add-btn { background-color: var(--secondary-bg); color: var(--text-main); border: 2px solid var(--border-color); padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 1rem; }
+        .add-btn:hover { background-color: var(--accent-primary); color: white; border-color: var(--accent-primary); }
 
-        .menu-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .menu-card p {
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
-        }
-
-        .price {
-            font-size: 1.8rem;
-            color: var(--accent-primary);
-            font-weight: 700;
-            margin-top: auto;
-        }
-
+        /* Gallery */
         .gallery { background-color: var(--primary-bg); }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            height: 300px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; max-width: 1200px; margin: 0 auto; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 8px; height: 300px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .gallery-item:hover img { transform: scale(1.1); }
 
-        .info-section {
-            display: flex;
-            flex-wrap: wrap;
-            background-color: var(--secondary-bg);
-            gap: 3rem;
-            justify-content: center;
-            max-width: 100%;
-        }
-
-        .info-box {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            background-color: var(--primary-bg);
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .info-box h3 {
-            color: var(--accent-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-            text-align: center;
-        }
-
+        /* Info Section */
+        .info-section { display: flex; flex-wrap: wrap; background-color: var(--secondary-bg); gap: 3rem; justify-content: center; max-width: 100%; }
+        .info-box { flex: 1; min-width: 300px; max-width: 500px; background-color: var(--primary-bg); padding: 3rem; border-radius: 8px; box-shadow: var(--card-shadow); border: 1px solid var(--border-color); }
+        .info-box h3 { color: var(--accent-secondary); margin-bottom: 2rem; font-size: 1.8rem; text-align: center; }
         .info-box ul { list-style: none; }
+        .info-box li { margin-bottom: 1rem; display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.5rem; font-size: 1.1rem; }
+        .contact-details p { margin-bottom: 1.5rem; font-size: 1.1rem; }
 
-        .info-box li {
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
+        /* WINKELMANDJE (CART) STYLES */
+        #cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--accent-primary); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 998; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; box-shadow: 0 -5px 20px rgba(0,0,0,0.3); }
+        #cart-bar.visible { transform: translateY(0); }
+        .cart-info { display: flex; align-items: center; gap: 15px; }
+        .cart-count { background: white; color: var(--accent-primary); font-weight: bold; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .cart-total { font-size: 1.8rem; font-weight: bold; }
 
-        .contact-details p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        /* CHECKOUT MODAL STYLES */
+        #checkout-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 1001; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background-color: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 12px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: var(--card-shadow); }
+        .close-btn { position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: var(--text-muted); font-size: 2rem; cursor: pointer; }
+        .close-btn:hover { color: var(--accent-primary); }
+        
+        .cart-items-list { margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: var(--secondary-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .item-controls { display: flex; align-items: center; gap: 12px; }
+        .item-controls button { background: var(--primary-bg); border: 1px solid var(--border-color); color: var(--text-main); width: 32px; height: 32px; border-radius: 4px; cursor: pointer; font-size: 1.2rem; font-weight: bold; }
+        .item-controls button:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+        
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 0.95rem; color: var(--text-muted); font-weight: 600; }
+        .form-group input { width: 100%; padding: 14px; background: var(--secondary-bg); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 6px; outline: none; font-size: 1rem; }
+        .form-group input:focus { border-color: var(--accent-primary); }
 
-        footer {
-            text-align: center;
-            padding: 3rem;
-            background-color: var(--footer-bg);
-            color: var(--text-muted);
-        }
+        footer { text-align: center; padding: 3rem; background: var(--footer-bg); color: var(--text-muted); font-size: 0.9rem; }
 
-        @media (max-width: 900px) {
-            .about { flex-direction: column; }
-            .hero h1 { font-size: 3.5rem; }
-        }
-
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .actions { gap: 1rem; }
-            .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
-            .hero h1 { font-size: 2.8rem; }
-            .icon-btn span { display: none; }
-        }
+        @media (max-width: 900px) { .about { flex-direction: column; } .hero h1 { font-size: 3.5rem; } }
+        @media (max-width: 768px) { nav ul { display: none; } .hero h1 { font-size: 2.8rem; } }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Grill <span>Huis</span></div>
+        <div class="logo">Rhodos <span>pizza</span></div>
         <nav>
             <ul>
                 <li><a href="#home" data-i18n="nav_home">Home</a></li>
@@ -437,26 +155,23 @@
             </ul>
         </nav>
         <div class="actions">
-            <button id="lang-toggle" class="icon-btn" title="Wissel Taal">🌐 <span>EN</span></button>
-            <button id="theme-toggle" class="icon-btn" title="Donker/Licht">☀️</button>
-            <a href="#menu" class="btn" data-i18n="nav_order">Afhalen</a>
+            <button id="lang-toggle" class="icon-btn">🌐 <span>EN</span></button>
+            <button id="theme-toggle" class="icon-btn">☀️</button>
+            <a href="https://www.facebook.com/p/Rodoos-Pizza-61555061671188/" target="_blank" class="btn" data-i18n="nav_fb">Facebook</a>
         </div>
     </header>
 
     <section class="hero" id="home">
-        <h1>
-            <span data-i18n="hero_title1">Echt. Lekker.</span> <br>
-            <span style="color: var(--accent-primary);" data-i18n="hero_title2">Vers.</span>
-        </h1>
-        <p data-i18n="hero_desc">De beste durum en schotels uit de streek. Snel afgehaald of warm thuisbezorgd.</p>
-        <a href="#menu" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem; margin-top: 1rem;" data-i18n="hero_btn">Bekijk ons Menu</a>
+        <h1 data-i18n="hero_h1">Echt. Lekker. Eten.</h1>
+        <p data-i18n="hero_p">Geen poespas, gewoon een goeie durum of schotel. Elke dag vers bereid. Bestel nu direct via WhatsApp.</p>
+        <a href="#menu" class="btn" style="padding: 1rem 2.5rem; font-size: 1.1rem; margin-top: 1rem;" data-i18n="hero_btn">Bekijk de kaart</a>
     </section>
 
     <section class="about" id="about">
         <div class="about-text">
             <h2 data-i18n="about_title">Gewoon Goed Eten</h2>
             <p data-i18n="about_p1">Bij ons weet je wat je krijgt: goedgevulde borden, vers vlees van het spit en knapperige groenten. We bereiden alles elke dag vers, van onze huisgemaakte sauzen tot de falafel.</p>
-            <p data-i18n="about_p2">Heb je grote honger na een lange dag of gewoon zin in een snelle hap? Spring even binnen of bestel meteen. We zorgen dat het snel voor je klaarstaat.</p>
+            <p data-i18n="about_p2">Heb je grote honger na een lange dag of gewoon zin in een snelle hap? Spring even binnen of bestel meteen via WhatsApp. We zorgen dat het snel voor je klaarstaat.</p>
         </div>
         <div class="about-img">
             <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Grill">
@@ -464,47 +179,55 @@
     </section>
 
     <section class="menu" id="menu">
-        <h2 class="section-title"><span data-i18n="menu_title1">Ons</span> <span style="color: var(--accent-primary);" data-i18n="menu_title2">Kebab</span> <span data-i18n="menu_title3">Menu</span></h2>
-        
+        <h2 class="section-title" data-i18n="menu_h2">De Kaart</h2>
+
         <div class="filter">
-            <button class="filter-btn active" data-filter="all" onclick="filterMenu('all')" data-i18n="filter_all">Alles</button>
-            <button class="filter-btn" data-filter="kebab" onclick="filterMenu('kebab')" data-i18n="filter_kebab">Schotels</button>
-            <button class="filter-btn" data-filter="wraps" onclick="filterMenu('wraps')" data-i18n="filter_wraps">Durum & Broodjes</button>
-            <button class="filter-btn" data-filter="veggie" onclick="filterMenu('veggie')" data-i18n="filter_veggie">Veggie</button>
+            <button class="filter-btn active" onclick="filterMenu('all')" data-i18n="f_all">Alles</button>
+            <button class="filter-btn" onclick="filterMenu('schotels')" data-i18n="f_plates">Schotels</button>
+            <button class="filter-btn" onclick="filterMenu('broodjes')" data-i18n="f_wraps">Durum & Broodjes</button>
+            <button class="filter-btn" onclick="filterMenu('veggie')" data-i18n="f_veggie">Veggie</button>
         </div>
 
         <div class="menu-grid">
-            
-            <div class="menu-card" data-category="kebab">
-                <div class="menu-img-container">
-                    <img src="https://images.unsplash.com/photo-1561651823-34feb02250e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kebab Schotel">
-                </div>
-                <div class="menu-content">
-                    <h3 data-i18n="item_plate_title">Kebab Schotel</h3>
-                    <p data-i18n="item_plate_desc">Een flink bord vol vlees, kraakverse frietjes, een fris slaatje en natuurlijk je favoriete saus.</p>
-                    <div class="price">€13.50</div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="wraps">
+            <div class="menu-card" data-category="broodjes">
                 <div class="menu-img-container">
                     <img src="https://images.deliveryhero.io/image/fd-tr/LH/lx5b-listing.jpg" alt="Durum">
                 </div>
                 <div class="menu-content">
-                    <h3 data-i18n="item_durum_title">Dürüm Döner</h3>
-                    <p data-i18n="item_durum_desc">Lekker makkelijk uit het vuistje. Een warme wrap strak opgerold met vlees, groenten en veel saus.</p>
-                    <div class="price">€7.50</div>
+                    <h3 data-i18n="i1_h">Dürüm Speciaal</h3>
+                    <p data-i18n="i1_p">Warm broodje, mals vlees en mijn eigen looksaus. Lekker uit het vuistje.</p>
+                    <div class="card-footer">
+                        <div class="price">€7.50</div>
+                        <button class="add-btn" onclick="addToCart('Dürüm Speciaal', 7.50)" data-i18n="btn_add">+ Bestel</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="kebab">
+            <div class="menu-card" data-category="schotels">
                 <div class="menu-img-container">
                     <img src="https://marleyspoon.com/media/recipes/62276/main_photos/large/veganes_susskartoffel_hahnchen_gratin-79e1b34832261e88732ceaf0ce0e5ac9.jpeg" alt="Kapsalon">
                 </div>
                 <div class="menu-content">
-                    <h3 data-i18n="item_kapsalon_title">De Kapsalon</h3>
-                    <p data-i18n="item_kapsalon_desc">De ultieme guilty pleasure. Frietjes onderop, daarop vlees, gesmolten kaas en een beetje sla om het af te leren.</p>
-                    <div class="price">€10.00</div>
+                    <h3 data-i18n="i2_h">De Kapsalon Groot</h3>
+                    <p data-i18n="i2_p">De ultieme guilty pleasure. Goudgele friet, vlees en een dikke laag kaas.</p>
+                    <div class="card-footer">
+                        <div class="price">€10.00</div>
+                        <button class="add-btn" onclick="addToCart('Kapsalon Groot', 10.00)" data-i18n="btn_add">+ Bestel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="schotels">
+                <div class="menu-img-container">
+                    <img src="https://images.unsplash.com/photo-1561651823-34feb02250e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Schotel">
+                </div>
+                <div class="menu-content">
+                    <h3 data-i18n="i3_h">Mix Grill Schotel</h3>
+                    <p data-i18n="i3_p">Voor de echte honger. Verschillende soorten vlees, frietjes en verse salade.</p>
+                    <div class="card-footer">
+                        <div class="price">€15.00</div>
+                        <button class="add-btn" onclick="addToCart('Mix Grill Schotel', 15.00)" data-i18n="btn_add">+ Bestel</button>
+                    </div>
                 </div>
             </div>
 
@@ -513,12 +236,14 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj3Uio5XBuNN5nc0134G7i4Ftp1jLglE0aFg&s" alt="Falafel">
                 </div>
                 <div class="menu-content">
-                    <h3 data-i18n="item_falafel_title">Falafel Schotel</h3>
-                    <p data-i18n="item_falafel_desc">Vegetarisch maar minstens even lekker. Krokant vanbuiten, zacht vanbinnen, geserveerd met een flinke klodder hummus.</p>
-                    <div class="price">€12.50</div>
+                    <h3 data-i18n="i4_h">Falafel Wrap (Veggie)</h3>
+                    <p data-i18n="i4_p">Krokant van buiten, zacht van binnen. Met een flinke klodder hummus.</p>
+                    <div class="card-footer">
+                        <div class="price">€7.00</div>
+                        <button class="add-btn" onclick="addToCart('Falafel Wrap', 7.00)" data-i18n="btn_add">+ Bestel</button>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -534,7 +259,7 @@
 
     <section class="info-section" id="visit">
         <div class="info-box">
-            <h3 data-i18n="hours_title">Openingsuren</h3>
+            <h3 data-i18n="h_h">Openingsuren</h3>
             <ul>
                 <li><span data-i18n="day_mon">Maandag</span> <span style="color: var(--text-muted)" data-i18n="closed">Gesloten</span></li>
                 <li><span data-i18n="day_tue">Dinsdag - Donderdag</span> <span>16:00 - 23:00</span></li>
@@ -542,132 +267,243 @@
                 <li><span data-i18n="day_sun">Zondag</span> <span>16:00 - 23:00</span></li>
             </ul>
         </div>
-
         <div class="info-box contact-details">
-            <h3 data-i18n="contact_title">Waar vind je ons?</h3>
-            <p><strong>📍 <span data-i18n="address">Adres</span>:</strong> <br>Statielei 12<br>2640 Mortsel</p>
-            <p><strong>📞 <span data-i18n="phone">Bellen</span>:</strong> <br><a href="tel:+3231234567" style="color: var(--text-main); text-decoration: none;">03 123 45 67</a></p>
-            <p><strong>✉️ <span data-i18n="email">Mailen</span>:</strong> <br><a href="mailto:hallo@grillhuis.be" style="color: var(--text-main); text-decoration: none;">hallo@grillhuis.be</a></p>
+            <h3 data-i18n="v_h">Waar vind je ons?</h3>
+            <p><strong>📍 <span data-i18n="lbl_address_text">Adres:</span></strong> <br>Statielei 12<br>2640 Mortsel</p>
+            <p><strong>📞 <span data-i18n="lbl_phone_text">Bellen:</span></strong> <br><a href="tel:+3231234567" style="color: var(--text-main); text-decoration: none;">03 123 45 67</a></p>
+            <p><strong>✉️ <span data-i18n="lbl_email_text">Mailen:</span></strong> <br><a href="mailto:hallo@grillhuis.be" style="color: var(--text-main); text-decoration: none;">hallo@grillhuis.be</a></p>
         </div>
     </section>
 
     <footer>
-        <h2 style="font-family: 'Oswald', sans-serif; color: var(--text-main); margin-bottom: 1rem;">Grill Huis</h2>
-        <p>&copy; 2026 Grill Huis Mortsel. <span data-i18n="footer">Alle rechten voorbehouden.</span></p>
+        <p>&copy; 2026 Diyar Grill & Snack. <span data-i18n="footer">Altijd welkom in Mortsel.</span></p>
     </footer>
 
-    <script>
-        // --- FILTER LOGIC ---
-        const men_card = document.querySelectorAll(".menu-card");
-        const filterBtns = document.querySelectorAll(".filter-btn");
+    <div id="cart-bar" onclick="openCheckout()">
+        <div class="cart-info">
+            <div class="cart-count" id="cart-count">0</div>
+            <span style="font-weight: 600; font-size: 1.2rem;" data-i18n="cart_view">Bekijk Bestelling</span>
+        </div>
+        <div class="cart-total" id="cart-total">€ 0.00</div>
+    </div>
 
-        function filterMenu(selectedcard) {
-            filterBtns.forEach(btn => {
-                if(btn.getAttribute('data-filter') === selectedcard) {
+    <div id="checkout-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeCheckout()">&times;</button>
+            <h2 style="font-family: 'Oswald'; color: var(--accent-primary); margin-bottom: 1.5rem; font-size: 2rem;" data-i18n="modal_title">Jouw Bestelling</h2>
+            
+            <div class="cart-items-list" id="modal-cart-items">
+                </div>
+            
+            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.4rem; margin-bottom: 2rem; color: var(--text-main);">
+                <span data-i18n="modal_total">Totaal:</span>
+                <span id="modal-total-price">€ 0.00</span>
+            </div>
+
+            <div class="form-group">
+                <label data-i18n="lbl_name">Naam *</label>
+                <input type="text" id="cust-name" required placeholder="Je naam">
+            </div>
+            <div class="form-group">
+                <label data-i18n="lbl_address">Adres (Straat + Huisnummer) *</label>
+                <input type="text" id="cust-address" required placeholder="Jouw adres">
+            </div>
+            <div class="form-group">
+                <label data-i18n="lbl_phone">Telefoonnummer</label>
+                <input type="tel" id="cust-phone" placeholder="04...">
+            </div>
+
+            <button class="btn" style="width: 100%; text-align: center; margin-top: 1.5rem; font-size: 1.2rem; background-color: #25D366; color: white; padding: 1rem;" onclick="sendWhatsAppOrder()">
+                <span data-i18n="btn_wa">Bestel via WhatsApp</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // === WHATSAPP CONFIGURATIE ===
+        const WHATSAPP_NUMBER = "32486616678"; // Vervang dit door het echte nummer (zonder + of 00)
+
+        // === FILTER LOGICA ===
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.menu-card');
+            const btns = document.querySelectorAll('.filter-btn');
+            
+            btns.forEach(btn => {
+                if(btn.textContent.toLowerCase().includes(category.replace('all','alles')) || (category === 'all' && btn.getAttribute('data-i18n') === 'f_all')) {
                     btn.classList.add('active');
                 } else {
                     btn.classList.remove('active');
                 }
             });
 
-            men_card.forEach(card => {
-                const category = card.getAttribute("data-category");
-                if(category === selectedcard || selectedcard === "all"){
-                    card.style.display = "flex";
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
                 } else {
-                    card.style.display = "none";
+                    card.style.display = 'none';
                 }
             });
         }
 
-        // --- THEME TOGGLE LOGIC ---
+        // === THEME LOGICA ===
         const themeBtn = document.getElementById('theme-toggle');
         const body = document.body;
-
-        if (localStorage.getItem('grill-theme') === 'light') {
-            body.classList.add('light-mode');
-            themeBtn.textContent = '🌙';
-        }
-
+        if (localStorage.getItem('diyar-theme') === 'light') { body.classList.add('light-mode'); themeBtn.textContent = '🌙'; }
         themeBtn.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('grill-theme', 'light');
-                themeBtn.textContent = '🌙';
-            } else {
-                localStorage.setItem('grill-theme', 'dark');
-                themeBtn.textContent = '☀️';
-            }
+            const isLight = body.classList.contains('light-mode');
+            localStorage.setItem('diyar-theme', isLight ? 'light' : 'dark');
+            themeBtn.textContent = isLight ? '🌙' : '☀️';
         });
 
-        // --- HUMANIZED LANGUAGE TRANSLATION LOGIC ---
+        // === VERTALINGEN LOGICA ===
         const langBtn = document.getElementById('lang-toggle');
         const langSpan = langBtn.querySelector('span');
-        
         const translations = {
             nl: {
-                nav_home: "Home", nav_about: "Over Ons", nav_menu: "Menu", nav_visit: "Praktisch", nav_order: "Afhalen",
-                hero_title1: "Echt. Lekker.", hero_title2: "Vers.",
-                hero_desc: "De beste durum en schotels uit de streek. Snel afgehaald of warm thuisbezorgd.",
-                hero_btn: "Bekijk ons Menu",
-                about_title: "Gewoon Goed Eten",
-                about_p1: "Bij ons weet je wat je krijgt: goedgevulde borden, vers vlees van het spit en knapperige groenten. We bereiden alles elke dag vers, van onze huisgemaakte sauzen tot de falafel.",
-                about_p2: "Heb je grote honger na een lange dag of gewoon zin in een snelle hap? Spring even binnen of bestel meteen. We zorgen dat het snel voor je klaarstaat.",
-                menu_title1: "Ons", menu_title2: "Kebab", menu_title3: "Menu",
-                filter_all: "Alles", filter_kebab: "Schotels", filter_wraps: "Durum & Broodjes", filter_veggie: "Veggie",
-                item_plate_title: "Kebab Schotel", item_plate_desc: "Een flink bord vol vlees, kraakverse frietjes, een fris slaatje en natuurlijk je favoriete saus.",
-                item_durum_title: "Dürüm Döner", item_durum_desc: "Lekker makkelijk uit het vuistje. Een warme wrap strak opgerold met vlees, groenten en veel saus.",
-                item_kapsalon_title: "De Kapsalon", item_kapsalon_desc: "De ultieme guilty pleasure. Frietjes onderop, daarop vlees, gesmolten kaas en een beetje sla om het af te leren.",
-                item_falafel_title: "Falafel Schotel", item_falafel_desc: "Vegetarisch maar minstens even lekker. Krokant vanbuiten, zacht vanbinnen, geserveerd met een flinke klodder hummus.",
+                nav_home: "Home", nav_about: "Over Ons", nav_menu: "Menu", nav_visit: "Contact", nav_fb: "Facebook",
+                hero_h1: "Echt. Lekker. Eten.", hero_p: "Geen poespas, gewoon een goeie durum of schotel. Elke dag vers bereid. Bestel nu direct via WhatsApp.", hero_btn: "Bekijk de kaart",
+                about_title: "Gewoon Goed Eten", about_p1: "Bij ons weet je wat je krijgt: goedgevulde borden, vers vlees van het spit en knapperige groenten. We bereiden alles elke dag vers, van onze huisgemaakte sauzen tot de falafel.", about_p2: "Heb je grote honger na een lange dag of gewoon zin in een snelle hap? Spring even binnen of bestel meteen. We zorgen dat het snel voor je klaarstaat.",
+                menu_h2: "De Kaart", f_all: "Alles", f_plates: "Schotels", f_wraps: "Durum & Broodjes", f_veggie: "Veggie",
+                badge: "Mijn Favoriet", i1_h: "Dürüm Speciaal", i1_p: "Warm broodje, mals vlees en mijn eigen looksaus. Lekker uit het vuistje.", i2_h: "De Kapsalon Groot", i2_p: "De ultieme guilty pleasure. Goudgele friet, vlees en een dikke laag kaas.", i3_h: "Mix Grill Schotel", i3_p: "Voor de echte honger. Verschillende soorten vlees, frietjes en verse salade.", i4_h: "Falafel Wrap (Veggie)", i4_p: "Krokant van buiten, zacht van binnen. Met een flinke klodder hummus.",
                 gallery_title1: "Onze", gallery_title2: "Gerechten",
-                hours_title: "Openingsuren", day_mon: "Maandag", day_tue: "Dinsdag - Donderdag", day_fri: "Vrijdag - Zaterdag", day_sun: "Zondag", closed: "Gesloten",
-                contact_title: "Waar vind je ons?", address: "Adres", phone: "Bellen", email: "Mailen", footer: "Alle rechten voorbehouden."
+                btn_add: "+ Bestel", cart_view: "Bekijk Bestelling", modal_title: "Jouw Bestelling", modal_total: "Totaal:", lbl_name: "Naam *", lbl_address: "Adres (Straat + Nr) *", lbl_phone: "Telefoonnummer", btn_wa: "Bestel via WhatsApp",
+                h_h: "Openingsuren", day_mon: "Maandag", day_tue: "Dinsdag - Donderdag", day_fri: "Vrijdag - Zaterdag", day_sun: "Zondag", closed: "Gesloten",
+                v_h: "Waar vind je ons?", lbl_address_text: "Adres:", lbl_phone_text: "Bellen:", lbl_email_text: "Mailen:", footer: "Altijd welkom in Mortsel."
             },
             en: {
-                nav_home: "Home", nav_about: "About", nav_menu: "Menu", nav_visit: "Location", nav_order: "Takeaway",
-                hero_title1: "Real. Tasty.", hero_title2: "Fresh.",
-                hero_desc: "The best durum and platters in town. Quick takeaway or served piping hot.",
-                hero_btn: "Check our Menu",
-                about_title: "Just Good Food",
-                about_p1: "With us, you know exactly what you'll get: generous plates, fresh meat from the spit, and crunchy vegetables. We prepare everything fresh daily, from our sauces to our falafel.",
-                about_p2: "Hungry after a long day or just craving a quick bite? Drop by or order right away. We'll make sure it's ready for you in no time.",
-                menu_title1: "Our", menu_title2: "Kebab", menu_title3: "Menu",
-                filter_all: "All", filter_kebab: "Platters", filter_wraps: "Durum & Bread", filter_veggie: "Veggie",
-                item_plate_title: "Kebab Platter", item_plate_desc: "A big plate full of meat, crispy fries, a fresh side salad, and of course your favorite sauce.",
-                item_durum_title: "Dürüm Döner", item_durum_desc: "Easy to eat on the go. A warm wrap rolled tight with meat, veggies, and plenty of sauce.",
-                item_kapsalon_title: "The Kapsalon", item_kapsalon_desc: "The ultimate guilty pleasure. Fries on the bottom, meat, melted cheese, and a bit of salad on top.",
-                item_falafel_title: "Falafel Platter", item_falafel_desc: "Vegetarian but just as tasty. Crispy on the outside, soft on the inside, served with a big scoop of hummus.",
+                nav_home: "Home", nav_about: "About", nav_menu: "Menu", nav_visit: "Contact", nav_fb: "Facebook",
+                hero_h1: "Real. Good. Food.", hero_p: "No fuss, just a solid wrap or platter. Grilled fresh every day. Order now via WhatsApp.", hero_btn: "View Menu",
+                about_title: "Just Good Food", about_p1: "With us, you know exactly what you'll get: generous plates, fresh meat from the spit, and crunchy vegetables. We prepare everything fresh daily, from our sauces to our falafel.", about_p2: "Hungry after a long day or just craving a quick bite? Drop by or order right away. We'll make sure it's ready for you in no time.",
+                menu_h2: "The Menu", f_all: "All", f_plates: "Platters", f_wraps: "Wraps & Bread", f_veggie: "Veggie",
+                badge: "Owner's Pick", i1_h: "Special Dürüm", i1_p: "Warm bread, tender meat and signature garlic sauce. Perfect to go.", i2_h: "Kapsalon Large", i2_p: "The ultimate guilty pleasure. Golden fries, meat and a thick layer of cheese.", i3_h: "Mix Grill Platter", i3_p: "For big appetites. Various meats, fries and a fresh salad.", i4_h: "Falafel Wrap (Veggie)", i4_p: "Crispy outside, soft inside. Served with a big scoop of hummus.",
                 gallery_title1: "Our", gallery_title2: "Food",
-                hours_title: "Opening Hours", day_mon: "Monday", day_tue: "Tuesday - Thursday", day_fri: "Friday - Saturday", day_sun: "Sunday", closed: "Closed",
-                contact_title: "Where to find us?", address: "Address", phone: "Call us", email: "Email us", footer: "All rights reserved."
+                btn_add: "+ Add", cart_view: "View Order", modal_title: "Your Order", modal_total: "Total:", lbl_name: "Name *", lbl_address: "Address (Street + No.) *", lbl_phone: "Phone number", btn_wa: "Order via WhatsApp",
+                h_h: "Opening Hours", day_mon: "Monday", day_tue: "Tuesday - Thursday", day_fri: "Friday - Saturday", day_sun: "Sunday", closed: "Closed",
+                v_h: "Where to find us?", lbl_address_text: "Address:", lbl_phone_text: "Call us:", lbl_email_text: "Email us:", footer: "Always welcome in Mortsel."
             }
         };
 
-        let currentLang = localStorage.getItem('grill-lang') || 'nl';
+        let curLang = localStorage.getItem('diyar-lang') || 'nl';
+        function updateLang(l) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const k = el.getAttribute('data-i18n');
+                if(translations[l][k]) el.textContent = translations[l][k];
+            });
+            langSpan.textContent = l === 'nl' ? 'EN' : 'NL';
+        }
+        updateLang(curLang);
+        langBtn.addEventListener('click', () => {
+            curLang = curLang === 'nl' ? 'en' : 'nl';
+            localStorage.setItem('diyar-lang', curLang);
+            updateLang(curLang);
+        });
 
-        function setLanguage(lang) {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+        // === WINKELMANDJE LOGICA ===
+        let cart = [];
+
+        function addToCart(name, price) {
+            let item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty++;
+            } else {
+                cart.push({ name: name, price: price, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        function changeQty(name, amount) {
+            let item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty += amount;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.name !== name);
                 }
+            }
+            updateCartUI();
+            if (cart.length === 0) closeCheckout();
+        }
+
+        function updateCartUI() {
+            const cartBar = document.getElementById('cart-bar');
+            let totalCount = 0;
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                totalCount += item.qty;
+                totalPrice += (item.qty * item.price);
             });
 
-            if(lang === 'nl') {
-                langSpan.textContent = 'EN';
+            document.getElementById('cart-count').innerText = totalCount;
+            document.getElementById('cart-total').innerText = '€ ' + totalPrice.toFixed(2);
+            document.getElementById('modal-total-price').innerText = '€ ' + totalPrice.toFixed(2);
+
+            // Toon of verberg de balk
+            if (totalCount > 0) {
+                cartBar.classList.add('visible');
             } else {
-                langSpan.textContent = 'NL';
+                cartBar.classList.remove('visible');
+            }
+
+            // Update Modal Lijst
+            const modalList = document.getElementById('modal-cart-items');
+            modalList.innerHTML = '';
+            cart.forEach(item => {
+                modalList.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <strong style="color: var(--text-main); font-size: 1.1rem;">${item.name}</strong><br>
+                            <span style="font-size:0.9rem; color:var(--text-muted);">€${item.price.toFixed(2)} p.st</span>
+                        </div>
+                        <div class="item-controls">
+                            <button onclick="changeQty('${item.name}', -1)">-</button>
+                            <span style="font-weight:bold; color: var(--text-main); width: 20px; text-align: center;">${item.qty}</span>
+                            <button onclick="changeQty('${item.name}', 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openCheckout() {
+            if(cart.length > 0) {
+                document.getElementById('checkout-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden'; 
             }
         }
 
-        setLanguage(currentLang);
+        function closeCheckout() {
+            document.getElementById('checkout-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'nl' ? 'en' : 'nl';
-            localStorage.setItem('grill-lang', currentLang);
-            setLanguage(currentLang);
-        });
+        function sendWhatsAppOrder() {
+            const name = document.getElementById('cust-name').value;
+            const address = document.getElementById('cust-address').value;
+            const phone = document.getElementById('cust-phone').value;
+
+            if (!name || !address) {
+                alert(curLang === 'nl' ? "Vul aub je naam en adres in." : "Please enter your name and address.");
+                return;
+            }
+
+            let text = `*Nieuwe Bestelling via Website*%0A%0A`;
+            
+            cart.forEach(item => {
+                text += `- ${item.qty}x ${item.name} (€${(item.price * item.qty).toFixed(2)})%0A`;
+            });
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            
+            text += `%0A*Totaal: € ${totalPrice.toFixed(2)}*%0A%0A`;
+            text += `*Gegevens:*%0A`;
+            text += `Naam: ${name}%0A`;
+            text += `Adres: ${address}%0A`;
+            if (phone) text += `Tel: ${phone}`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>
