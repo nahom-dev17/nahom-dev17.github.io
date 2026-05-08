@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beenhouwerij Ayoub | Kwaliteitsvlees & Gevogelte</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-bg: #0f0f0f;
+            --secondary-bg: #1a1a1a;
+            --text-main: #fdfdfd;
+            --text-muted: #aaaaaa;
+            --accent-primary: #a81c1c;
+            /* Slagerij Rood */
+            --accent-secondary: #d12a2a;
+            --footer-bg: #080808;
+            --border-color: #333333;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(18, 18, 18, 0.95);
+        }
+
+        body.light-mode {
+            --primary-bg: #f9f9f9;
+            --secondary-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --accent-primary: #8a1313;
+            --accent-secondary: #b01a1a;
+            --footer-bg: #eee;
+            --border-color: #ddd;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: 0.3s;
+            padding-bottom: 80px;
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo,
+        .filter-btn,
+        .price,
+        .cart-total {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--glass-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-primary);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-primary);
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            background-color: var(--accent-primary);
+            color: #fff;
+            padding: 0.6rem 1.4rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.slagerijengin.be/media/images/gallery/7/big/17.jpg') center/cover;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            color: #eee;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--text-main);
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .about-img img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Menu Grid */
+        .menu {
+            background-color: var(--secondary-bg);
+        }
+
+        .filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            color: var(--text-main);
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--accent-primary);
+            color: #fff;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background-color: var(--primary-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        .menu-img-container {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price {
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+        }
+
+        /* Info Boxes */
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            background-color: var(--secondary-bg);
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background: var(--primary-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-box h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Cart Bar */
+        #cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--accent-primary);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 998;
+            transform: translateY(100%);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        #cart-bar.visible {
+            transform: translateY(0);
+        }
+
+        .cart-count {
+            background: white;
+            color: var(--accent-primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Modal */
+        #checkout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--primary-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Beenhouwerij <span>Ayoub</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Over Ons</a></li>
+                <li><a href="#menu">Ons Vlees</a></li>
+                <li><a href="#visit">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <button id="lang-toggle" class="icon-btn">🌐 <span>EN</span></button>
+            <button id="theme-toggle" class="icon-btn">☀️</button>
+            <a href="https://www.facebook.com/p/Beenhouwerij-Ayoub-61554569919188/" target="_blank"
+                class="btn">Facebook</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Ambachtelijk & Vers</h1>
+        <p>Uw specialist in Dendermonde voor het beste rundvlees, lamsvlees en vers gevogelte. Dagelijks met passie voor
+            u geselecteerd.</p>
+        <a href="#menu" class="btn" style="padding: 1rem 2rem;">Bestel Online</a>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2>Kwaliteit voorop</h2>
+            <p>Bij Beenhouwerij Ayoub draait alles om versheid. Wij werken enkel met de beste leveranciers om u
+                topkwaliteit vlees te garanderen, van onze malse biefstukken tot onze huisgemaakte specialiteiten.</p>
+            <p>Onze winkel in Dendermonde staat bekend om de persoonlijke service en het uitgebreide assortiment aan
+                halal vleesproducten.</p>
+        </div>
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1551028150-64b9f398f678?auto=format&fit=crop&w=800&q=80"
+                alt="Butcher">
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        <h2 class="section-title">Ons Assortiment</h2>
+
+        <div class="filter">
+            <button class="filter-btn active" onclick="filterMenu('all')">Alles</button>
+            <button class="filter-btn" onclick="filterMenu('rund')">Rundvlees</button>
+            <button class="filter-btn" onclick="filterMenu('gevogelte')">Gevogelte</button>
+            <button class="filter-btn" onclick="filterMenu('lams')">Lamsvlees</button>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card" data-category="rund">
+                <div class="menu-img-container">
+                    <img src="https://themeatlovers.nl/cdn/shop/files/a12851cbb17be16b0cd4b5091f5e5be1d3a66709_LR_lamszadelkoteletten_1.jpg?v=1776677670"
+                        alt="Entrecote">
+                </div>
+                <div class="menu-content">
+                    <h3>Geselecteerde Entrecote</h3>
+                    <p>Mals en sappig rundvlees, perfect om te grillen.</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+                        <div class="price">€22.00<small>/kg</small></div>
+                        <button class="btn" onclick="addToCart('Entrecote (1kg)', 22.00)">+ Bestel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="gevogelte">
+                <div class="menu-img-container">
+                    <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=600&q=80"
+                        alt="Kipfilet">
+                </div>
+                <div class="menu-content">
+                    <h3>Verse Kipfilet</h3>
+                    <p>Malse, magere kipfilet. Dagelijks vers aangeleverd.</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+                        <div class="price">€9.50<small>/kg</small></div>
+                        <button class="btn" onclick="addToCart('Kipfilet (1kg)', 9.50)">+ Bestel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="lams">
+                <div class="menu-img-container">
+                    <img src="https://www.couvert.be/src/Frontend/Files/MediaLibrary/07/28-28-11zon.jpg"
+                        alt="Lamskotelet">
+                </div>
+                <div class="menu-content">
+                    <h3>Lamskoteletten</h3>
+                    <p>Heerlijke gemarineerde of natuur lamskoteletten.</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+                        <div class="price">€24.50<small>/kg</small></div>
+                        <button class="btn" onclick="addToCart('Lamskoteletten (1kg)', 24.50)">+ Bestel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="rund">
+                <div class="menu-img-container">
+                    <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=600&q=80"
+                        alt="Gehakt">
+                </div>
+                <div class="menu-content">
+                    <h3>Rundergehakt</h3>
+                    <p>100% puur rundvlees, elke ochtend vers gedraaid.</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+                        <div class="price">€11.00<small>/kg</small></div>
+                        <button class="btn" onclick="addToCart('Rundergehakt (1kg)', 11.00)">+ Bestel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section" id="visit">
+        <div class="info-box">
+            <h3>Openingsuren</h3>
+            <ul>
+                <li><span>Maandag</span> <span>09:00 - 18:30</span></li>
+                <li><span>Dinsdag</span> <span>09:00 - 18:30</span></li>
+                <li><span>Woensdag</span> <span>09:00 - 18:30</span></li>
+                <li><span>Donderdag</span> <span>09:00 - 18:30</span></li>
+                <li><span>Vrijdag</span> <span>09:00 - 18:30</span></li>
+                <li><span>Zaterdag</span> <span>09:00 - 18:30</span></li>
+                <li><span>Zondag</span> <span style="color: var(--accent-primary)">Gesloten</span></li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Contactgegevens</h3>
+            <p><strong>📍 Adres:</strong><br>Brusselsesteenweg 135<br>9200 Dendermonde</p><br>
+            <p><strong>📞 Telefoon:</strong><br><a href="tel:+3252212121"
+                    style="color: var(--text-main); text-decoration: none;">052 21 21 21</a></p><br>
+            <p><strong>📱 Instagram:</strong><br><a href="https://www.instagram.com/Beenhouwerij_Ayoub"
+                    style="color: var(--accent-primary); text-decoration: none;">@Beenhouwerij_Ayoub</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Beenhouwerij Ayoub Dendermonde. Uw vakslager.</p>
+    </footer>
+
+    <div id="cart-bar" onclick="openCheckout()">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <div class="cart-count" id="cart-count">0</div>
+            <span>Bekijk uw mandje</span>
+        </div>
+        <div class="cart-total" id="cart-total">€ 0.00</div>
+    </div>
+
+    <div id="checkout-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeCheckout()">&times;</button>
+            <h2 style="color: var(--accent-primary); margin-bottom: 1rem;">Uw Bestelling</h2>
+            <div id="modal-cart-items" style="margin-bottom:1.5rem;"></div>
+            <div
+                style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.2rem; margin-bottom:1.5rem;">
+                <span>Totaal:</span>
+                <span id="modal-total-price">€ 0.00</span>
+            </div>
+            <div class="form-group">
+                <label>Naam *</label>
+                <input type="text" id="cust-name" placeholder="Uw volledige naam">
+            </div>
+            <div class="form-group">
+                <label>Telefoonnummer *</label>
+                <input type="tel" id="cust-phone" placeholder="0488...">
+            </div>
+            <button class="btn" style="width:100%; padding:1rem; background:#25D366;"
+                onclick="sendWhatsAppOrder()">Bestelling Versturen (WhatsApp)</button>
+        </div>
+    </div>
+
+    <script>
+        const WHATSAPP_NUMBER = "32488000000"; // Pas aan naar het juiste nummer
+
+        let cart = [];
+
+        function filterMenu(cat) {
+            document.querySelectorAll('.menu-card').forEach(card => {
+                card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'flex' : 'none';
+            });
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(cat) || (cat === 'all' && btn.innerText === 'Alles'));
+            });
+        }
+
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.onclick = () => {
+            document.body.classList.toggle('light-mode');
+            themeBtn.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+        };
+
+        function addToCart(name, price) {
+            let item = cart.find(i => i.name === name);
+            if (item) item.qty++; else cart.push({ name, price, qty: 1 });
+            updateUI();
+        }
+
+        function updateUI() {
+            let total = 0, count = 0;
+            const list = document.getElementById('modal-cart-items');
+            list.innerHTML = '';
+            cart.forEach(item => {
+                count += item.qty;
+                total += item.price * item.qty;
+                list.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:10px; background:var(--secondary-bg); padding:10px; border-radius:4px;">
+                    <span>${item.qty}x ${item.name}</span>
+                    <span>€${(item.price * item.qty).toFixed(2)}</span>
+                </div>`;
+            });
+            document.getElementById('cart-count').innerText = count;
+            document.getElementById('cart-total').innerText = '€ ' + total.toFixed(2);
+            document.getElementById('modal-total-price').innerText = '€ ' + total.toFixed(2);
+            document.getElementById('cart-bar').classList.toggle('visible', count > 0);
+        }
+
+        function openCheckout() { document.getElementById('checkout-modal').style.display = 'flex'; }
+        function closeCheckout() { document.getElementById('checkout-modal').style.display = 'none'; }
+
+        function sendWhatsAppOrder() {
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            if (!name || !phone) return alert("Vul uw gegevens in.");
+
+            let text = `*Nieuwe Bestelling Beenhouwerij Ayoub*%0A%0A`;
+            cart.forEach(i => text += `- ${i.qty}x ${i.name}%0A`);
+            text += `%0A*Totaal: ${document.getElementById('modal-total-price').innerText}*%0A%0A`;
+            text += `Naam: ${name}%0AEmail: ${phone}`;
+
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+
+</html>
