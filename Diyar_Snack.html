@@ -1,706 +1,476 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diyar Snack | Kebab & Falafel</title>
+    <title>Frituur Nationale | Online Bestellen</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins voor een moderne, ronde uitstraling -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#dc2626',
+                            amber: '#f59e0b',
+                            dark: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* CSS Styles */
-        :root {
-            /* Diyar Snack Inspired Palette */
-            --primary-bg: #0f0f0f;
-            --secondary-bg: #1a1414; /* Deep brownish black */
-            --text-main: #fdfdfd;
-            --text-muted: #cccccc;
-            --accent-primary: #c41212; /* Rich Red */
-            --accent-secondary: #ffb400; /* Golden Yellow */
-            --footer-bg: #0a0a0a;
-            --border-color: #442222;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            --glass-bg: rgba(15, 15, 15, 0.9);
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
         }
-
-        body.light-mode {
-            /* Light mode adjustments for a warmer feel */
-            --primary-bg: #fffcf9;
-            --secondary-bg: #f5ece4;
-            --text-main: #2d1a1a;
-            --text-muted: #665555;
-            --accent-primary: #a30000; 
-            --accent-secondary: #d48800;
-            --footer-bg: #eee4dc;
-            --border-color: #d8c3c3;
-            --card-shadow: 0 10px 30px rgba(163, 0, 0, 0.1);
-            --glass-bg: rgba(255, 255, 255, 0.85);
+        .hero-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 2px, transparent 2px);
+            background-size: 32px 32px;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        h1, h2, h3, .logo, .filter-btn, .price {
-            font-family: 'Oswald', sans-serif;
-        }
-
-        header {
-            background-color: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1.2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--accent-primary);
-            transition: all 0.3s ease;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .logo span { color: var(--accent-primary); }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover { color: var(--accent-primary); }
-
-        .actions {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .icon-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-main);
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            transition: transform 0.3s, color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .icon-btn:hover {
-            transform: scale(1.1);
-            color: var(--accent-primary);
-        }
-
-        .btn {
-            background-color: var(--accent-primary);
-            color: #fff;
-            padding: 0.8rem 1.8rem;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            transition: background-color 0.3s, transform 0.3s;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-secondary);
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-                        url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
-            padding: 0 20px;
-            color: #ffffff;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.1;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .hero h1 span { color: var(--accent-primary); }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            max-width: 650px;
-            font-weight: 300;
-            color: #e0e0e0;
-        }
-
-        section { padding: 6rem 5%; }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--accent-secondary);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 3rem;
-        }
-
-        .about {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-text { flex: 1; }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-primary);
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .about-img {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-
-        .about-img:hover img { transform: scale(1.05); }
-
-        .menu { background-color: var(--secondary-bg); }
-
-        .filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 2px solid var(--accent-primary);
-            color: var(--text-main);
-            padding: 0.5rem 1.8rem;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 1px;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--accent-primary);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .menu-card {
-            background-color: var(--primary-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        body.light-mode .menu-card:hover { box-shadow: 0 15px 40px rgba(163, 0, 0, 0.2); }
-
-        .menu-img-container {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            border-bottom: 4px solid var(--accent-primary);
-        }
-
-        .menu-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .menu-card:hover .menu-img-container img { transform: scale(1.1); }
-
-        .menu-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .menu-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .menu-card p {
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
-        }
-
-        .price {
-            font-size: 1.8rem;
-            color: var(--accent-primary);
-            font-weight: 700;
-            margin-top: auto;
-        }
-
-        .gallery { background-color: var(--primary-bg); }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            height: 300px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover img { transform: scale(1.1); }
-
-        .info-section {
-            display: flex;
-            flex-wrap: wrap;
-            background-color: var(--secondary-bg);
-            gap: 3rem;
-            justify-content: center;
-            max-width: 100%;
-        }
-
-        .info-box {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            background-color: var(--primary-bg);
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .info-box h3 {
-            color: var(--accent-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-            text-align: center;
-        }
-
-        .info-box ul { list-style: none; }
-
-        .info-box li {
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-details p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem;
-            background-color: var(--footer-bg);
-            color: var(--text-muted);
-        }
-
-        /* Facebook Floating Button */
-        .fb-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #1877F2;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            z-index: 9999;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            font-size: 24px;
-            font-weight: bold;
-            font-family: Arial, sans-serif;
-            transition: transform 0.3s;
-        }
-        
-        .fb-float:hover { 
-            transform: scale(1.1); 
-        }
-
-        @media (max-width: 900px) {
-            .about { flex-direction: column; }
-            .hero h1 { font-size: 3.5rem; }
-        }
-
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .actions { gap: 1rem; }
-            .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
-            .hero h1 { font-size: 2.8rem; }
-            .icon-btn span { display: none; }
+        .image-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-brand-amber selection:text-white">
 
-    <header>
-        <div class="logo">Diyar <span>Snack</span></div>
-        <nav>
-            <ul>
-                <li><a href="#home" data-i18n="nav_home">Home</a></li>
-                <li><a href="#about" data-i18n="nav_about">Over Ons</a></li>
-                <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
-                <li><a href="#visit" data-i18n="nav_visit">Praktisch</a></li>
-            </ul>
-        </nav>
-        <div class="actions">
-            <button id="lang-toggle" class="icon-btn" title="Wissel Taal">🌐 <span>EN</span></button>
-            <button id="theme-toggle" class="icon-btn" title="Donker/Licht">☀️</button>
-            <a href="#menu" class="btn" data-i18n="nav_order">Afhalen</a>
+    <!-- Navigatie & Contact Info -->
+    <nav class="glass-effect shadow-sm border-b border-slate-200 sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer">
+                <div class="w-10 h-10 bg-brand-amber rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/30 transform rotate-3">
+                    <i class="fa-solid fa-french-fries text-white text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-extrabold text-brand-dark tracking-tight">Frituur <span class="text-brand-red">Nationale</span></h1>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#bestellen" class="hover:text-brand-red transition-colors">Menu</a>
+                <a href="#reviews" class="hover:text-brand-red transition-colors">Reviews</a>
+                <a href="#contact" class="hover:text-brand-red transition-colors">Contact</a>
+            </div>
+            
+            <!-- Winkelmandje Knop -->
+            <button onclick="toggleCart()" class="relative bg-brand-dark hover:bg-black text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-xl shadow-slate-900/20 flex items-center group">
+                <i class="fa-solid fa-cart-shopping mr-2 group-hover:scale-110 transition-transform"></i> Mandje
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-brand-red text-white text-xs font-bold px-2.5 py-1 rounded-full border-2 border-white shadow-sm">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Sectie (Modern Split Layout) -->
+    <header class="hero-pattern relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="text-center lg:text-left z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 font-bold text-sm mb-6 shadow-sm border border-amber-200">
+                    <i class="fa-solid fa-star text-brand-amber"></i> 4.5/5 op basis van 370+ reviews
+                </div>
+                <h2 class="text-5xl lg:text-6xl font-extrabold mb-6 text-slate-900 leading-tight">
+                    Dé smaak van Antwerpen, <br/><span class="text-brand-amber">nu ook online.</span>
+                </h2>
+                <p class="text-lg text-slate-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    Snel, makkelijk en altijd krokant. Bestel online en spring de wachtrij voorbij, of kom gezellig langs in de Nationalestraat.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#bestellen" class="bg-brand-red hover:bg-red-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all shadow-xl shadow-red-600/30 flex items-center justify-center transform hover:-translate-y-1">
+                        Start met Bestellen <i class="fa-solid fa-arrow-right ml-3"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image/Visual Content -->
+            <div class="relative z-10 hidden lg:block">
+                <div class="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-900/20 aspect-[4/3] transform hover:scale-[1.02] transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Frituur Nationale Frieten" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 image-overlay opacity-60"></div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-xl flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500 font-medium">Nu geopend</p>
+                            <p class="font-bold text-slate-900">Tot 21:45 uur</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative element -->
+                <div class="absolute -z-10 top-10 -right-10 w-64 h-64 bg-brand-amber rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+            </div>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <h1>
-            <span data-i18n="hero_title1">Echt. Lekker.</span> <br>
-            <span style="color: var(--accent-primary);" data-i18n="hero_title2">Vers.</span>
-        </h1>
-        <p data-i18n="hero_desc">De beste durum en schotels uit de streek. Snel afgehaald of warm thuisbezorgd.</p>
-        <a href="#menu" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem; margin-top: 1rem;" data-i18n="hero_btn">Bekijk ons Menu</a>
-    </section>
-
-    <section class="about" id="about">
-        <div class="about-text">
-            <h2 data-i18n="about_title">Gewoon Goed Eten</h2>
-            <p data-i18n="about_p1">Bij ons weet je wat je krijgt: goedgevulde borden, vers vlees van het spit en knapperige groenten. We bereiden alles elke dag vers, van onze huisgemaakte sauzen tot de falafel.</p>
-            <p data-i18n="about_p2">Heb je grote honger na een lange dag of gewoon zin in een snelle hap? Spring even binnen of bestel meteen. We zorgen dat het snel voor je klaarstaat.</p>
+    <!-- Informatie balk -->
+    <div class="bg-brand-dark text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-sm font-medium">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-brand-amber"><i class="fa-solid fa-location-dot"></i></div>
+                <span>Nationalestraat 116, 2000 Antwerpen</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-brand-amber"><i class="fa-solid fa-phone"></i></div>
+                <span>0483 13 50 07</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-brand-amber"><i class="fa-solid fa-check"></i></div>
+                <span>Dine-in • Pickup • Terras</span>
+            </div>
         </div>
-        <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Grill">
-        </div>
-    </section>
+    </div>
 
-    <section class="menu" id="menu">
-        <h2 class="section-title"><span data-i18n="menu_title1">Diyar</span> <span style="color: var(--accent-primary);" data-i18n="menu_title2">Snack</span> <span data-i18n="menu_title3">Menu</span></h2>
-        
-        <div class="filter">
-            <button class="filter-btn active" data-filter="all" onclick="filterMenu('all')" data-i18n="filter_all">Alles</button>
-            <button class="filter-btn" data-filter="kebab" onclick="filterMenu('kebab')" data-i18n="filter_kebab">Schotels</button>
-            <button class="filter-btn" data-filter="wraps" onclick="filterMenu('wraps')" data-i18n="filter_wraps">Durum & Broodjes</button>
-            <button class="filter-btn" data-filter="veggie" onclick="filterMenu('veggie')" data-i18n="filter_veggie">Veggie</button>
+    <!-- Bestelsysteem (Menu) -->
+    <main id="bestellen" class="max-w-7xl mx-auto px-4 py-20">
+        <div class="text-center mb-16">
+            <h3 class="text-4xl font-extrabold text-slate-900 mb-4">Ontdek Ons Menu</h3>
+            <p class="text-slate-500 text-lg">Kies je favorieten en voeg ze eenvoudig toe aan je mandje</p>
+            <div class="w-24 h-1.5 bg-brand-amber mx-auto mt-6 rounded-full"></div>
         </div>
 
-        <div class="menu-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Product Kaart 1 -->
+            <div class="bg-white rounded-3xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group flex flex-col">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Frietjes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-slate-800 shadow">Populair</div>
+                </div>
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl text-slate-900 mb-1">Puntzak Friet (Klein)</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Vers gesneden Belgische goudgele frietjes.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-2xl text-slate-900">€3,00</span>
+                        <button onclick="addToCart('Puntzak Friet (Klein)', 3.00)" class="w-12 h-12 bg-brand-amber text-white hover:bg-amber-600 rounded-2xl flex items-center justify-center font-bold transition-colors shadow-md shadow-amber-500/30">
+                            <i class="fa-solid fa-plus text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Kaart 2 -->
+            <div class="bg-white rounded-3xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group flex flex-col">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bicky Burger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl text-slate-900 mb-1">Bicky Burger</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">De enige echte originele Bicky met 3 sauzen en krokante uitjes.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-2xl text-slate-900">€4,50</span>
+                        <button onclick="addToCart('Bicky Burger', 4.50)" class="w-12 h-12 bg-brand-amber text-white hover:bg-amber-600 rounded-2xl flex items-center justify-center font-bold transition-colors shadow-md shadow-amber-500/30">
+                            <i class="fa-solid fa-plus text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Kaart 3 -->
+            <div class="bg-white rounded-3xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group flex flex-col">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Snacks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl text-slate-900 mb-1">Curryworst Special</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Frikandel ingesneden met mayonaise, ketchup en verse ajuin.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-2xl text-slate-900">€3,50</span>
+                        <button onclick="addToCart('Curryworst Special', 3.50)" class="w-12 h-12 bg-brand-amber text-white hover:bg-amber-600 rounded-2xl flex items-center justify-center font-bold transition-colors shadow-md shadow-amber-500/30">
+                            <i class="fa-solid fa-plus text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
             
-            <div class="menu-card" data-category="kebab">
-                <div class="menu-img-container">
-                    <img src="https://images.unsplash.com/photo-1561651823-34feb02250e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kebab Schotel">
+            <!-- Product Kaart 4 -->
+            <div class="bg-white rounded-3xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group flex flex-col">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t1.6435-9/106911394_1741604339328547_3658049771314464656_n.jpg?stp=c0.234.640.640a_dst-jpg_tt6&cstp=mx640x640&ctp=s206x206&_nc_cat=105&ccb=1-7&_nc_sid=50ad20&_nc_ohc=SxGmfZNTJKcQ7kNvwHM_TPI&_nc_oc=Ado32e7JgNKrtzZI-ipYN0l698guui2i8mwjV-wb3Z0_ZbOsfRmyt-Qe_f6MYHzzzTR5SMEYoC4YrhC1v2CT6kMB&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=saNbFgB3Mk4N6RKkkkM0oQ&_nc_ss=7b289&oh=00_AQJP4Y_5-I8nXL6rQqXNGEAujnRFM3KK7_GfdiGxSi23sA&oe=6ADAF206" alt="Kapsalon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-xs font-bold text-slate-800 shadow">Populair</div>
                 </div>
-                <div class="menu-content">
-                    <h3 data-i18n="item_plate_title">Kebab Schotel</h3>
-                    <p data-i18n="item_plate_desc">Een flink bord vol vlees, kraakverse frietjes, een fris slaatje en natuurlijk je favoriete saus.</p>
-                    <div class="price">€13.50</div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="wraps">
-                <div class="menu-img-container">
-                    <img src="https://images.deliveryhero.io/image/fd-tr/LH/lx5b-listing.jpg" alt="Durum">
-                </div>
-                <div class="menu-content">
-                    <h3 data-i18n="item_durum_title">Dürüm Döner</h3>
-                    <p data-i18n="item_durum_desc">Lekker makkelijk uit het vuistje. Een warme wrap strak opgerold met vlees, groenten en veel saus.</p>
-                    <div class="price">€7.50</div>
+                <div class="p-6 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h4 class="font-bold text-xl text-slate-900 mb-1">Kapsalon</h4>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed">Frietjes overgoten met heerlijk vlees, gesmolten kaas, frisse salade en saus.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-2xl text-slate-900">€8,50</span>
+                        <button onclick="addToCart('Kapsalon', 8.50)" class="w-12 h-12 bg-brand-amber text-white hover:bg-amber-600 rounded-2xl flex items-center justify-center font-bold transition-colors shadow-md shadow-amber-500/30">
+                            <i class="fa-solid fa-plus text-xl"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="kebab">
-                <div class="menu-img-container">
-                    <img src="https://marleyspoon.com/media/recipes/62276/main_photos/large/veganes_susskartoffel_hahnchen_gratin-79e1b34832261e88732ceaf0ce0e5ac9.jpeg" alt="Kapsalon">
-                </div>
-                <div class="menu-content">
-                    <h3 data-i18n="item_kapsalon_title">De Kapsalon</h3>
-                    <p data-i18n="item_kapsalon_desc">De ultieme guilty pleasure. Frietjes onderop, daarop vlees, gesmolten kaas en een beetje sla om het af te leren.</p>
-                    <div class="price">€10.00</div>
+
+        </div>
+    </main>
+
+    <!-- Reviews Sectie -->
+    <section id="reviews" class="bg-white py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <!-- Wat klanten zeggen -->
+            <div>
+                <h3 class="text-4xl font-extrabold text-slate-900 mb-2">Ervaringen</h3>
+                <p class="text-slate-500 mb-10 text-lg">Lees wat onze klanten in Antwerpen vinden.</p>
+                
+                <div id="reviews-container" class="space-y-6">
+                    <!-- Geïmporteerde Facebook Review -->
+                    <div class="bg-slate-50 p-6 rounded-3xl shadow-sm border border-slate-100 relative">
+                        <div class="absolute -left-3 top-6 w-6 h-6 bg-brand-amber rounded-full flex items-center justify-center text-white text-xs shadow-md">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold text-lg mr-4">DW</div>
+                            <div>
+                                <div class="font-bold text-lg text-slate-900">Daphné Wens</div>
+                                <div class="text-brand-amber text-sm flex gap-1 mt-1">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-700 italic leading-relaxed">"Super lekker gegeten en heel mooi vlotte bediening. Dankuwel"</p>
+                        <span class="text-xs text-slate-400 mt-4 block font-medium">Geverifieerde aankoop • 21 September</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="veggie">
-                <div class="menu-img-container">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj3Uio5XBuNN5nc0134G7i4Ftp1jLglE0aFg&s" alt="Falafel">
-                </div>
-                <div class="menu-content">
-                    <h3 data-i18n="item_falafel_title">Falafel Schotel</h3>
-                    <p data-i18n="item_falafel_desc">Vegetarisch maar minstens even lekker. Krokant vanbuiten, zacht vanbinnen, geserveerd met een flinke klodder hummus.</p>
-                    <div class="price">€12.50</div>
-                </div>
+            <!-- Laat een review achter formulier -->
+            <div class="bg-slate-900 p-8 md:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-brand-red rounded-full filter blur-3xl opacity-20"></div>
+                <h3 class="text-3xl font-extrabold text-white mb-2 relative z-10">Laat je mening achter</h3>
+                <p class="text-slate-400 mb-8 relative z-10">Jouw feedback helpt ons groeien!</p>
+                
+                <form id="review-form" onsubmit="submitReview(event)" class="relative z-10">
+                    <div class="mb-5">
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Naam</label>
+                        <input type="text" id="rev-name" class="w-full bg-slate-800 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-brand-amber focus:ring-1 focus:ring-brand-amber transition-colors" required placeholder="Jouw naam">
+                    </div>
+                    <div class="mb-5">
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Beoordeling</label>
+                        <select id="rev-rating" class="w-full bg-slate-800 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-brand-amber focus:ring-1 focus:ring-brand-amber transition-colors appearance-none">
+                            <option value="5">⭐⭐⭐⭐⭐ Uitstekend (5/5)</option>
+                            <option value="4">⭐⭐⭐⭐ Zeer goed (4/5)</option>
+                            <option value="3">⭐⭐⭐ Gemiddeld (3/5)</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold text-slate-300 mb-2">Jouw ervaring</label>
+                        <textarea id="rev-text" class="w-full bg-slate-800 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-brand-amber focus:ring-1 focus:ring-brand-amber transition-colors resize-none" rows="3" required placeholder="Wat vond je van het eten?"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-amber hover:bg-amber-400 text-slate-900 font-extrabold text-lg py-4 rounded-2xl transition-transform transform hover:-translate-y-1 shadow-xl shadow-amber-500/20">
+                        Review Plaatsen
+                    </button>
+                </form>
             </div>
-
         </div>
     </section>
 
-    <section class="gallery" id="gallery">
-        <h2 class="section-title"><span data-i18n="gallery_title1">Onze</span> <span style="color: var(--accent-primary);" data-i18n="gallery_title2">Gerechten</span></h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kebab"></div>
-            <div class="gallery-item"><img src="https://www.shutterstock.com/image-photo/turkish-doner-kebab-chicken-meat-600nw-1323666095.jpg" alt="Durum"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Broodjes"></div>
-            <div class="gallery-item"><img src="https://media.istockphoto.com/id/2180905716/nl/foto/service-worker-preparing-gyros-pita.jpg?s=612x612&w=0&k=20&c=XEEhpp9wbypUiNWx63i2iQcmriC-Gxck6edI8BhX034=" alt="Vlees"></div>
+    <!-- Footer -->
+    <footer id="contact" class="bg-black text-slate-400 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <i class="fa-solid fa-french-fries text-brand-amber text-2xl"></i>
+                    <h4 class="text-2xl font-bold text-white tracking-wide">Frituur Nationale</h4>
+                </div>
+                <div class="space-y-3">
+                    <p class="flex items-start gap-3 hover:text-white transition-colors"><i class="fa-solid fa-location-dot mt-1 text-brand-amber"></i> Nationalestraat 116,<br/>2000 Antwerpen</p>
+                    <p class="flex items-center gap-3 hover:text-white transition-colors"><i class="fa-solid fa-phone text-brand-amber"></i> 0483 13 50 07</p>
+                    <p class="flex items-center gap-3 hover:text-white transition-colors"><i class="fa-solid fa-envelope text-brand-amber"></i> frituurnationale@gmail.com</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-white mb-6 uppercase tracking-wider">Bedrijfsgegevens</h4>
+                <p class="mb-2">Dynamic Fast BVBA</p>
+                <p>BTW: BE 0654935090</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold text-white mb-6 uppercase tracking-wider">Onze Diensten</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-500 text-sm"></i> Dine-in (Binnen eten)</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-500 text-sm"></i> In-store pickup (Afhalen)</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-500 text-sm"></i> Outdoor seating (Terras)</li>
+                </ul>
+            </div>
         </div>
-    </section>
-
-    <section class="info-section" id="visit">
-        <div class="info-box">
-            <h3 data-i18n="hours_title">Openingsuren</h3>
-            <ul>
-                <li><span data-i18n="day_mon">Maandag</span> <span style="color: var(--text-muted)" data-i18n="closed">Gesloten</span></li>
-                <li><span data-i18n="day_tue">Dinsdag - Donderdag</span> <span>16:00 - 23:00</span></li>
-                <li><span data-i18n="day_fri">Vrijdag - Zaterdag</span> <span>16:00 - 01:00</span></li>
-                <li><span data-i18n="day_sun">Zondag</span> <span>16:00 - 23:00</span></li>
-            </ul>
-        </div>
-
-        <div class="info-box contact-details">
-            <h3 data-i18n="contact_title">Waar vind je ons?</h3>
-            <p><strong>📍 <span data-i18n="address">Adres</span>:</strong> <br>Statielei 12<br>2640 Mortsel</p>
-            <p><strong>📞 <span data-i18n="phone">Bellen</span>:</strong> <br><a href="tel:+3231234567" style="color: var(--text-main); text-decoration: none;">03 123 45 67</a></p>
-            <p><strong>✉️ <span data-i18n="email">Mailen</span>:</strong> <br><a href="mailto:hallo@grillhuis.be" style="color: var(--text-main); text-decoration: none;">hallo@grillhuis.be</a></p>
-        </div>
-    </section>
-
-    <footer>
-        <h2 style="font-family: 'Oswald', sans-serif; color: var(--accent-secondary); margin-bottom: 0.5rem;">Diyar Snack</h2>
-        <div style="margin-bottom: 1.5rem;">
-            <a href="https://www.facebook.com/DiyarSnack/" target="_blank" style="color: var(--text-main); text-decoration: none; font-size: 1.2rem; font-weight: bold;">Facebook Pagina</a>
-        </div>
-        <p>&copy; 2026 Diyar Snack Mortsel. <span data-i18n="footer">Alle rechten voorbehouden.</span></p>
     </footer>
 
-    <a href="https://www.facebook.com/DiyarSnack/" class="fb-float" target="_blank" title="Volg ons op Facebook">f</a>
+    <!-- Winkelmandje Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50 flex flex-col rounded-l-3xl">
+        <div class="p-6 bg-slate-900 text-white flex justify-between items-center rounded-tl-3xl">
+            <h2 class="text-2xl font-bold flex items-center gap-2"><i class="fa-solid fa-bag-shopping text-brand-amber"></i> Bestelling</h2>
+            <button onclick="toggleCart()" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        
+        <div id="cart-items" class="flex-1 p-6 overflow-y-auto space-y-4 bg-slate-50">
+            <div id="empty-cart-msg" class="text-center mt-20">
+                <div class="w-20 h-20 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400 text-3xl">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <p class="text-slate-500 font-medium">Je mandje is nog leeg.</p>
+                <p class="text-sm text-slate-400 mt-1">Voeg wat lekkers toe uit het menu!</p>
+            </div>
+        </div>
+        
+        <div class="p-6 border-t border-slate-200 bg-white rounded-bl-3xl">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-slate-500 font-medium">Totaal bedrag</span>
+                <span id="cart-total" class="font-extrabold text-3xl text-slate-900">€0,00</span>
+            </div>
+            <button class="w-full bg-brand-red hover:bg-red-700 text-white font-bold text-lg py-4 rounded-2xl transition-transform transform hover:-translate-y-1 shadow-xl shadow-red-600/30" onclick="alert('Dit is een demo! In het echt wordt de klant nu doorgestuurd naar de veilige betaalpagina (Bancontact/Payconiq).')">
+                Veilig Afrekenen
+            </button>
+        </div>
+    </div>
+
+    <!-- Achtergrond overlay voor winkelmandje -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden transition-opacity"></div>
 
     <script>
-        // --- FILTER LOGIC ---
-        const men_card = document.querySelectorAll(".menu-card");
-        const filterBtns = document.querySelectorAll(".filter-btn");
+        // --- WINKELMAND LOGICA ---
+        let cart = [];
 
-        function filterMenu(selectedcard) {
-            filterBtns.forEach(btn => {
-                if(btn.getAttribute('data-filter') === selectedcard) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-
-            men_card.forEach(card => {
-                const category = card.getAttribute("data-category");
-                if(category === selectedcard || selectedcard === "all"){
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            
+            const sidebar = document.getElementById('cart-sidebar');
+            if(sidebar.classList.contains('translate-x-full')) {
+                toggleCart();
+            }
         }
 
-        // --- THEME TOGGLE LOGIC ---
-        const themeBtn = document.getElementById('theme-toggle');
-        const body = document.body;
+        function updateCartUI() {
+            const count = document.getElementById('cart-count');
+            const itemsContainer = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const emptyMsg = document.getElementById('empty-cart-msg');
 
-        if (localStorage.getItem('grill-theme') === 'light') {
-            body.classList.add('light-mode');
-            themeBtn.textContent = '🌙';
+            count.innerText = cart.length;
+            
+            // Pulse animatie op counter als er iets wordt toegevoegd
+            count.classList.add('animate-ping');
+            setTimeout(() => count.classList.remove('animate-ping'), 300);
+
+            if (cart.length === 0) {
+                emptyMsg.style.display = 'block';
+                // Clear everything except the empty message
+                Array.from(itemsContainer.children).forEach(child => {
+                    if(child.id !== 'empty-cart-msg') child.remove();
+                });
+                totalEl.innerText = '€0,00';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            // Clear current items to re-render
+            Array.from(itemsContainer.children).forEach(child => {
+                if(child.id !== 'empty-cart-msg') child.remove();
+            });
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-100';
+                div.innerHTML = `
+                    <div class="flex-1">
+                        <span class="font-bold text-slate-800 block">${item.name}</span>
+                        <span class="text-sm font-semibold text-brand-amber">€${item.price.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="w-8 h-8 bg-slate-100 hover:bg-red-100 text-slate-400 hover:text-red-500 rounded-full flex items-center justify-center transition-colors ml-4">
+                        <i class="fa-solid fa-trash-can text-sm"></i>
+                    </button>
+                `;
+                itemsContainer.appendChild(div);
+            });
+
+            totalEl.innerText = `€${total.toFixed(2).replace('.', ',')}`;
         }
 
-        themeBtn.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('grill-theme', 'light');
-                themeBtn.textContent = '🌙';
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if (sidebar.classList.contains('translate-x-full')) {
+                sidebar.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
             } else {
-                localStorage.setItem('grill-theme', 'dark');
-                themeBtn.textContent = '☀️';
-            }
-        });
-
-        // --- HUMANIZED LANGUAGE TRANSLATION LOGIC ---
-        const langBtn = document.getElementById('lang-toggle');
-        const langSpan = langBtn.querySelector('span');
-        
-        const translations = {
-            nl: {
-                nav_home: "Home", nav_about: "Over Ons", nav_menu: "Menu", nav_visit: "Praktisch", nav_order: "Afhalen",
-                hero_title1: "Echt. Lekker.", hero_title2: "Vers.",
-                hero_desc: "De beste durum en schotels uit de streek. Snel afgehaald of warm thuisbezorgd.",
-                hero_btn: "Bekijk ons Menu",
-                about_title: "Gewoon Goed Eten",
-                about_p1: "Bij ons weet je wat je krijgt: goedgevulde borden, vers vlees van het spit en knapperige groenten. We bereiden alles elke dag vers, van onze huisgemaakte sauzen tot de falafel.",
-                about_p2: "Heb je grote honger na een lange dag of gewoon zin in een snelle hap? Spring even binnen of bestel meteen. We zorgen dat het snel voor je klaarstaat.",
-                menu_title1: "Diyar", menu_title2: "Snack", menu_title3: "Menu",
-                filter_all: "Alles", filter_kebab: "Schotels", filter_wraps: "Durum & Broodjes", filter_veggie: "Veggie",
-                item_plate_title: "Kebab Schotel", item_plate_desc: "Een flink bord vol vlees, kraakverse frietjes, een fris slaatje en natuurlijk je favoriete saus.",
-                item_durum_title: "Dürüm Döner", item_durum_desc: "Lekker makkelijk uit het vuistje. Een warme wrap strak opgerold met vlees, groenten en veel saus.",
-                item_kapsalon_title: "De Kapsalon", item_kapsalon_desc: "De ultieme guilty pleasure. Frietjes onderop, daarop vlees, gesmolten kaas en een beetje sla om het af te leren.",
-                item_falafel_title: "Falafel Schotel", item_falafel_desc: "Vegetarisch maar minstens even lekker. Krokant vanbuiten, zacht vanbinnen, geserveerd met een flinke klodder hummus.",
-                gallery_title1: "Onze", gallery_title2: "Gerechten",
-                hours_title: "Openingsuren", day_mon: "Maandag", day_tue: "Dinsdag - Donderdag", day_fri: "Vrijdag - Zaterdag", day_sun: "Zondag", closed: "Gesloten",
-                contact_title: "Waar vind je ons?", address: "Adres", phone: "Bellen", email: "Mailen", footer: "Alle rechten voorbehouden."
-            },
-            en: {
-                nav_home: "Home", nav_about: "About", nav_menu: "Menu", nav_visit: "Location", nav_order: "Takeaway",
-                hero_title1: "Real. Tasty.", hero_title2: "Fresh.",
-                hero_desc: "The best durum and platters in town. Quick takeaway or served piping hot.",
-                hero_btn: "Check our Menu",
-                about_title: "Just Good Food",
-                about_p1: "With us, you know exactly what you'll get: generous plates, fresh meat from the spit, and crunchy vegetables. We prepare everything fresh daily, from our sauces to our falafel.",
-                about_p2: "Hungry after a long day or just craving a quick bite? Drop by or order right away. We'll make sure it's ready for you in no time.",
-                menu_title1: "Diyar", menu_title2: "Snack", menu_title3: "Menu",
-                filter_all: "All", filter_kebab: "Platters", filter_wraps: "Durum & Bread", filter_veggie: "Veggie",
-                item_plate_title: "Kebab Platter", item_plate_desc: "A big plate full of meat, crispy fries, a fresh side salad, and of course your favorite sauce.",
-                item_durum_title: "Dürüm Döner", item_durum_desc: "Easy to eat on the go. A warm wrap rolled tight with meat, veggies, and plenty of sauce.",
-                item_kapsalon_title: "The Kapsalon", item_kapsalon_desc: "The ultimate guilty pleasure. Fries on the bottom, meat, melted cheese, and a bit of salad on top.",
-                item_falafel_title: "Falafel Platter", item_falafel_desc: "Vegetarian but just as tasty. Crispy on the outside, soft on the inside, served with a big scoop of hummus.",
-                gallery_title1: "Our", gallery_title2: "Food",
-                hours_title: "Opening Hours", day_mon: "Monday", day_tue: "Tuesday - Thursday", day_fri: "Friday - Saturday", day_sun: "Sunday", closed: "Closed",
-                contact_title: "Where to find us?", address: "Address", phone: "Call us", email: "Email us", footer: "All rights reserved."
-            }
-        };
-
-        let currentLang = localStorage.getItem('grill-lang') || 'nl';
-
-        function setLanguage(lang) {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-
-            if(lang === 'nl') {
-                langSpan.textContent = 'EN';
-            } else {
-                langSpan.textContent = 'NL';
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
             }
         }
 
-        setLanguage(currentLang);
-
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'nl' ? 'en' : 'nl';
-            localStorage.setItem('grill-lang', currentLang);
-            setLanguage(currentLang);
-        });
+        // --- REVIEW LOGICA ---
+        function submitReview(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('rev-name').value;
+            const text = document.getElementById('rev-text').value;
+            
+            // Creëer nieuw review element
+            const reviewContainer = document.getElementById('reviews-container');
+            const newReview = document.createElement('div');
+            newReview.className = 'bg-slate-50 p-6 rounded-3xl shadow-sm border border-brand-amber/30 relative mt-6 animate-pulse';
+            
+            // Genereer sterren
+            newReview.innerHTML = `
+                <div class="absolute -left-3 top-6 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs shadow-md">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="flex items-center mb-3">
+                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 font-bold text-lg mr-4">${name.substring(0,2).toUpperCase()}</div>
+                    <div>
+                        <div class="font-bold text-lg text-slate-900">${name}</div>
+                        <div class="text-brand-amber text-sm flex gap-1 mt-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-slate-700 italic leading-relaxed">"${text}"</p>
+                <span class="text-xs text-green-600 mt-4 block font-bold">Zojuist geplaatst via Website</span>
+            `;
+            
+            reviewContainer.prepend(newReview);
+            event.target.reset();
+            
+            setTimeout(() => {
+                newReview.classList.remove('animate-pulse');
+                alert('Bedankt! Je review is met succes geplaatst en direct zichtbaar op de website.');
+            }, 500);
+        }
     </script>
 </body>
 </html>
