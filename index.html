@@ -1,13 +1,385 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nahom Henok | Developer Portfolio</title>
+    <title>Nahom Henok | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variabelen - Geïnspireerd op een moderne, strakke stijl met een subtiele Thomas More oranje accentkleur */
+        :root {
+            --bg-color: #0f1115;
+            --bg-light: #181a20;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent: #FF7900; /* Thomas More Oranje */
+            --accent-hover: #e66d00;
+            --border: #272a33;
+            --transition: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .bg-light {
+            background-color: var(--bg-light);
+        }
+
+        /* --- Typografie --- */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+        
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Knoppen --- */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* --- Navigatie --- */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navContainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Sectie --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        /* --- Over Mij --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .lead-text {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .skills-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* --- Projecten --- */
+        .align-center {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .projects-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .projects-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* --- Diensten --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            padding: 3rem 2rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .service-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-desc {
+            color: var(--text-muted);
+        }
+
+        /* --- Contact --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-desc {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .email-link {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            background-color: var(--bg-light);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Responsief --- */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .nav-links {
+                display: none; /* In een echt project zou je hier een hamburger menu maken */
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -17,9 +389,9 @@
                 <h3>NH.</h3>
             </div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><a href="#about">Over Mij</a></li>
+                <li><a href="#projects">Projecten</a></li>
+                <li><a href="#services">Diensten</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -28,11 +400,11 @@
     <main>
         <section class="hero section" id="hero">
             <div class="container">
-                <span class="eyebrow">Independent Developer</span>
-                <h1 class="hero-title">I build modern, high-performance websites for forward-thinking brands</h1>
+                <span class="eyebrow">Student Applicatieontwikkeling @ Thomas More</span>
+                <h1 class="hero-title">Ik bouw moderne, performante webapplicaties met oog voor detail.</h1>
 
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">Start a project</a>
+                    <a href="#contact" class="btn btn-primary">Start een project</a>
                 </div>
             </div>
         </section>
@@ -40,19 +412,20 @@
         <section id="about" class="about section bg-light">
             <div class="container about-grid">
                 <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
+                    <h2 class="section-title">Over Mij</h2>
                 </div>
                 <div class="about-content">
                     <p class="lead-text">
-                        I am a senior front-end developer and UI designer focused on crafting clean, user-centric digital experiences. With a background in design and engineering, I bridge the gap between aesthetics and performance.
+                        Ik ben Nahom Henok, een gedreven student Elektronica-ICT met specialisatie Applicatieontwikkeling aan de Thomas More hogeschool. Ik focus me op het bouwen van strakke, gebruiksvriendelijke digitale oplossingen en sla de brug tussen sterk design en betrouwbare back-end code.
                     </p>
                     <div class="skills">
-                        <span class="eyebrow">Core Expertise</span>
+                        <span class="eyebrow">Kerncompetenties</span>
                         <ul class="skills-list">
-                            <li>HTML5 / semantic markup</li>
-                            <li>CSS3 / modern layouts</li>
+                            <li>HTML5 / Semantische markup</li>
+                            <li>CSS3 / Moderne lay-outs</li>
                             <li>JavaScript (ES6+)</li>
-                            <li>PHP & Modern CMS</li>
+                            <li>PHP & Moderne CMS</li>
+                            <li>C# & .NET (Thomas More)</li>
                             <li>MySQL / Database Design</li>
                         </ul>
                     </div>
@@ -63,55 +436,53 @@
         <section id="projects" class="projects section">
             <div class="container">
                 <div class="section-header align-center">
-                    <h2 class="section-title">Selected Works</h2>
+                    <h2 class="section-title">Geselecteerde Projecten</h2>
                 </div>
                 
                 <div class="projects-grid">
-
                     <article class="projects-card">
                         <div class="project-image">
                             <img src="images/ICON.png" alt="Solo Leveling Gamified Productivity App Icon">
                         </div>
-                        <div class="projectInfo">
+                        <div class="project-info">
                             <h3 class="project-title">Gamified Productivity App</h3>
-                            <p class="project-desc">A full-stack web application built with HTML, CSS, JavaScript, PHP, and MySQL that turns real-life goals into an RPG-style progression system with task tracking, ranking tiers, and performance analytics.</p>
-                            <a href="https://sys-rpg.gamer.gd" class="btn btn-outline">View Live Site</a>
+                            <p class="project-desc">Een full-stack webapplicatie gebouwd met HTML, CSS, JavaScript, PHP en MySQL die alledaagse doelen omzet in een RPG-progressiesysteem met taakregistratie en prestatiestatistieken.</p>
+                            <a href="https://sys-rpg.gamer.gd" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
 
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images/barbershop-logo-barber-shop-logo-template-vector.jpg" alt="Fintech SaaS Dashboard Interface">
+                            <img src="images/barbershop-logo-barber-shop-logo-template-vector.jpg" alt="Barbershop Interface">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Example Barber Shop</h3>
-                            <p class="project-desc">A sleek, modern landing page for a classic barbershop. Features a custom dark/light mode toggle, clear pricing for services, and prominent call-to-actions for easy appointment booking.</p>
-                            <a href="barber.html" class="btn btn-outline">View Live Site</a>
+                            <h3 class="project-title">Kapperszaak Concept</h3>
+                            <p class="project-desc">Een strakke, moderne landingspagina voor een kapperszaak. Bevat een dark/light mode toggle, duidelijke prijsoverzichten en prominente knoppen voor het maken van afspraken.</p>
+                            <a href="barber.html" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
                     
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images/download.jpg" alt="E-Commerce Storefront UI">
+                            <img src="images/download.jpg" alt="Frituur E-Commerce UI">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Example Fry Shop</h3>
-                            <p class="project-desc">An authentic Belgian friterie website showcasing a traditional local menu. Built with a responsive layout, a theme toggle, and an appetizing design to drive local foot traffic and orders.</p>
-                            <a href="fry_shop.html" class="btn btn-outline">View Live Site</a>
+                            <h3 class="project-title">Digitale Frituur</h3>
+                            <p class="project-desc">Een website voor een authentieke Belgische frituur met een traditioneel lokaal menu. Gebouwd met een responsieve lay-out en een thema-toggle om bestellingen te stimuleren.</p>
+                            <a href="fry_shop.html" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
 
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images/kebab.jpg" alt="Premium Grill and Kebab Shop Interface">
+                            <img src="images/kebab.jpg" alt="Grill en Kebab Shop Interface">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Example Grill Shop</h3>
-                            <p class="project-desc">A conversion-focused website tailored for a local grill and kebab shop. Features dynamic menu filtering, instant bilingual support (NL/EN), a dark/light mode toggle, and a layout optimized for takeaway orders.</p>
-                            <a href="kebab.html" class="btn btn-outline">View Live Site</a>
+                            <h3 class="project-title">Grill & Kebab Shop</h3>
+                            <p class="project-desc">Een conversiegerichte website op maat voor een lokale grillzaak. Met dynamische menufiltering, tweetalige ondersteuning (NL/EN) en een lay-out geoptimaliseerd voor afhaalbestellingen.</p>
+                            <a href="kebab.html" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
-                        </div>
                 </div>
             </div>
         </section>
@@ -119,26 +490,26 @@
         <section id="services" class="services section bg-light">
             <div class="container">
                 <div class="section-header align-center">
-                    <h2 class="section-title">Services</h2>
+                    <h2 class="section-title">Mijn Diensten</h2>
                 </div>
 
                 <div class="services-grid">
                     <div class="service-item">
                         <span class="service-number">01</span>
-                        <h3 class="service-title">Website Design</h3>
-                        <p class="service-desc">Transforming outdated platforms into modern, accessible, and high-converting digital assets</p>
+                        <h3 class="service-title">Webdesign & Ontwikkeling</h3>
+                        <p class="service-desc">Ik ontwerp en bouw moderne, toegankelijke en goed presterende websites vanaf nul, volledig op maat van jouw visie.</p>
                     </div>
 
                      <div class="service-item">
                         <span class="service-number">02</span>
                         <h3 class="service-title">Website Redesign</h3>
-                        <p class="service-desc">Transforming outdated platforms into modern, accessible, and high-converting digital assets.</p>
+                        <p class="service-desc">Transformatie van verouderde platformen naar moderne, gebruiksvriendelijke en conversiegerichte digitale toepassingen.</p>
                     </div>
                     
                     <div class="service-item">
                         <span class="service-number">03</span>
-                        <h3 class="service-title">Hosting & Maintenance</h3>
-                        <p class="service-desc">Ongoing technical support, performance optimization, and secure hosting for peace of mind.</p>
+                        <h3 class="service-title">Applicatieontwikkeling</h3>
+                        <p class="service-desc">Ontwikkeling van op maat gemaakte webapplicaties en databasedesign, met de focus op efficiëntie en schaalbaarheid.</p>
                     </div>
                 </div>
             </div>
@@ -148,8 +519,8 @@
             <div class="container contact-grid">
 
                 <div class="contact-info">
-                    <h2 class="section-title">Let's build something great.</h2>
-                    <p class="contact-desc">Currently accepting new projects. Send me a message and I'll get back to you within 24 hours.</p>
+                    <h2 class="section-title">Klaar om samen te werken?</h2>
+                    <p class="contact-desc">Ik sta altijd open voor nieuwe projecten, freelance opdrachten of interessante stageplaatsen. Stuur me een bericht en ik neem binnen de 24 uur contact op.</p>
                     <a href="mailto:nahomhenok843@gmail.com" class="email-link">nahomhenok843@gmail.com</a>
                 </div>
 
@@ -159,23 +530,23 @@
                     <input type="hidden" name="access_key" value="1bc552b6-d842-4383-98e7-1da5ef92e78d">
 
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">Naam</label>
                         <input type="text" id="name" name="name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email">E-mailadres</label>
                         <input type="email" id="email" name="email" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                        <label for="message">Bericht</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Vertel me meer over je project..." required></textarea>
                     </div>
                     
-                    <button type="submit" id="submitButton" class="btn btn-primary btn-block">Send Inquiry</button>
+                    <button type="submit" id="submitButton" class="btn btn-primary btn-block">Verstuur Bericht</button>
 
-                    <p id="formResult" style="display: none; text-align: center; margin-top: 1rem; color: #666666;"></p>
+                    <p id="formResult" style="display: none; text-align: center; margin-top: 1rem; color: var(--text-muted);"></p>
                 </form>
                 </div>
             </div>
@@ -184,7 +555,7 @@
 
     <footer class="footer">
         <div class="container footer-container">
-            <p>&copy; 2026 Nahom Henok. All rights reserved.</p>
+            <p>&copy; 2026 Nahom Henok. Alle rechten voorbehouden.</p>
             <div class="social-links">
                 <a href="https://www.instagram.com/nahom_dev" target="_blank" rel="noopener noreferrer">Instagram</a>
                 <a href="https://github.com/nahom-dev17" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -200,7 +571,7 @@
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            button.innerText = 'Sending...';
+            button.innerText = 'Bezig met verzenden...';
             
             try {
                 const response = await fetch(form.action, {
@@ -209,16 +580,19 @@
                 });
                 
                 if (response.ok) {
-                    result.innerText = 'Thank you! Your message has been sent.';
+                    result.innerText = 'Bedankt! Je bericht is succesvol verzonden.';
+                    result.style.color = 'var(--accent)';
                     form.reset(); 
                 } else {
-                    result.innerText = 'Oops! Something went wrong.';
+                    result.innerText = 'Oeps! Er ging iets mis.';
+                    result.style.color = '#ef4444';
                 }
             } catch (error) {
-                result.innerText = 'Network error. Please try again.';
+                result.innerText = 'Netwerkfout. Probeer het later opnieuw.';
+                result.style.color = '#ef4444';
             } finally {
                 result.style.display = 'block';
-                button.innerText = 'Send Inquiry';
+                button.innerText = 'Verstuur Bericht';
             }
         });
     </script>
