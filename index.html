@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nahom Henok | Portfolio</title>
+    <title>Nahom Henok | Webdesign voor Lokale Zaken</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -169,7 +169,18 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 2rem;
-            max-width: 800px;
+            max-width: 900px;
+        }
+
+        .promo-text {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(255, 121, 0, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 121, 0, 0.2);
         }
 
         /* --- Over Mij --- */
@@ -284,6 +295,37 @@
             color: var(--text-muted);
         }
 
+        /* --- Prijzen --- */
+        .pricing-card {
+            max-width: 450px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 121, 0, 0.05);
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            line-height: 2.2;
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
         /* --- Contact --- */
         .contact-grid {
             display: grid;
@@ -376,7 +418,7 @@
                 gap: 2rem;
             }
             .nav-links {
-                display: none; /* In een echt project zou je hier een hamburger menu maken */
+                display: none; 
             }
         }
     </style>
@@ -392,6 +434,7 @@
                 <li><a href="#about">Over Mij</a></li>
                 <li><a href="#projects">Projecten</a></li>
                 <li><a href="#services">Diensten</a></li>
+                <li><a href="#pricing">Prijzen</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -400,11 +443,13 @@
     <main>
         <section class="hero section" id="hero">
             <div class="container">
-                <span class="eyebrow">Student Applicatieontwikkeling @ Thomas More</span>
-                <h1 class="hero-title">Ik bouw moderne, performante webapplicaties met oog voor detail.</h1>
+                <span class="eyebrow">Freelance Webdeveloper</span>
+                <h1 class="hero-title">Websites voor lokale restaurants en winkels die zorgen voor meer bestellingen.</h1>
 
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-primary">Start een project</a>
+                    <br>
+                    <span class="promo-text">🎁 Actie: De eerste 3 klanten krijgen korting in ruil voor een testimonial!</span>
                 </div>
             </div>
         </section>
@@ -416,17 +461,17 @@
                 </div>
                 <div class="about-content">
                     <p class="lead-text">
-                        Ik ben Nahom Henok, een gedreven student Elektronica-ICT met specialisatie Applicatieontwikkeling aan de Thomas More hogeschool. Ik focus me op het bouwen van strakke, gebruiksvriendelijke digitale oplossingen en sla de brug tussen sterk design en betrouwbare back-end code.
+                        Ik ben Nahom Henok, een gedreven IT-student aan Thomas More met een passie voor applicatieontwikkeling. Ik help lokale handelaars groeien door snelle, converterende websites te bouwen met de nieuwste technologieën. Sterk design gecombineerd met betrouwbare code.
                     </p>
                     <div class="skills">
                         <span class="eyebrow">Kerncompetenties</span>
                         <ul class="skills-list">
-                            <li>HTML5 / Semantische markup</li>
-                            <li>CSS3 / Moderne lay-outs</li>
+                            <li>HTML5 / CSS3</li>
                             <li>JavaScript (ES6+)</li>
-                            <li>PHP & Moderne CMS</li>
-                            <li>C# & .NET (Thomas More)</li>
-                            <li>MySQL / Database Design</li>
+                            <li>PHP & Database Design</li>
+                            <li>C# & .NET</li>
+                            <li>Responsief Webdesign</li>
+                            <li>Conversie Optimalisatie</li>
                         </ul>
                     </div>
                 </div>
@@ -436,17 +481,18 @@
         <section id="projects" class="projects section">
             <div class="container">
                 <div class="section-header align-center">
-                    <h2 class="section-title">Geselecteerde Projecten</h2>
+                    <h2 class="section-title">Mijn Werk</h2>
+                    <p class="lead-text" style="text-align: center;">Ontworpen om klanten te overtuigen.</p>
                 </div>
                 
                 <div class="projects-grid">
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images/ICON.png" alt="Nagelstudio Webshop en Boekingssysteem">
+                            <img src="images/images.jpg" alt="Nagelstudio Webshop en Boekingssysteem">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Nagelstudio Boekingsplatform</h3>
-                            <p class="project-desc">Een moderne, mobiel-geoptimaliseerde webapplicatie voor een nagelstudio met een geïntegreerd afspraken- en bestelsysteem, strakke UI en lokale opslag.</p>
+                            <h3 class="project-title">Boekingsplatform Beauty</h3>
+                            <p class="project-desc">Een moderne, mobiel-geoptimaliseerde webapplicatie met een geïntegreerd afspraken- en bestelsysteem. Zorgt voor minder telefoontjes en meer online boekingen.</p>
                             <a href="https://nahom-dev17.github.io/Nagelstudio.html" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
@@ -456,8 +502,8 @@
                             <img src="images/barbershop-logo-barber-shop-logo-template-vector.jpg" alt="Barbershop Interface">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Kapperszaak Concept</h3>
-                            <p class="project-desc">Een strakke, moderne landingspagina voor een kapperszaak. Bevat een dark/light mode toggle, duidelijke prijsoverzichten en prominente knoppen voor het maken van afspraken.</p>
+                            <h3 class="project-title">Kapperszaak Website</h3>
+                            <p class="project-desc">Een strakke landingspagina voor een kapperszaak. Bevat een dark/light mode, duidelijke prijsoverzichten en prominente knoppen om direct een stoel te reserveren.</p>
                             <a href="barber.html" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
@@ -468,7 +514,7 @@
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Digitale Frituur</h3>
-                            <p class="project-desc">Een website voor een authentieke Belgische frituur met een traditioneel lokaal menu. Gebouwd met een responsieve lay-out en een thema-toggle om bestellingen te stimuleren.</p>
+                            <p class="project-desc">Een website voor een lokale frituur. Gebouwd met een responsieve lay-out en ontworpen om de eetlust op te wekken en online afhaalbestellingen te stimuleren.</p>
                             <a href="fry_shop.html" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
@@ -479,7 +525,7 @@
                         </div>
                         <div class="project-info">
                             <h3 class="project-title">Grill & Kebab Shop</h3>
-                            <p class="project-desc">Een conversiegerichte website op maat voor een lokale grillzaak. Met dynamische menufiltering, tweetalige ondersteuning (NL/EN) en een lay-out geoptimaliseerd voor afhaalbestellingen.</p>
+                            <p class="project-desc">Een conversiegerichte website op maat voor een grillzaak. Met dynamische menufiltering en een lay-out volledig geoptimaliseerd voor snelle afhaalbestellingen.</p>
                             <a href="kebab.html" class="btn btn-outline">Bekijk Live Site</a>
                         </div>
                     </article>
@@ -496,31 +542,65 @@
                 <div class="services-grid">
                     <div class="service-item">
                         <span class="service-number">01</span>
-                        <h3 class="service-title">Webdesign & Ontwikkeling</h3>
-                        <p class="service-desc">Ik ontwerp en bouw moderne, toegankelijke en goed presterende websites vanaf nul, volledig op maat van jouw visie.</p>
+                        <h3 class="service-title">Nieuwe Website</h3>
+                        <p class="service-desc">Ik ontwerp en bouw een moderne, supersnelle website vanaf nul, volledig afgestemd op jouw zaak om meer lokale klanten aan te trekken.</p>
                     </div>
 
                      <div class="service-item">
                         <span class="service-number">02</span>
                         <h3 class="service-title">Website Redesign</h3>
-                        <p class="service-desc">Transformatie van verouderde platformen naar moderne, gebruiksvriendelijke en conversiegerichte digitale toepassingen.</p>
+                        <p class="service-desc">Heeft je huidige website een opfrisbeurt nodig? Ik transformeer je verouderde site naar een modern platform dat werkt op elke smartphone.</p>
                     </div>
                     
                     <div class="service-item">
                         <span class="service-number">03</span>
-                        <h3 class="service-title">Applicatieontwikkeling</h3>
-                        <p class="service-desc">Ontwikkeling van op maat gemaakte webapplicaties en databasedesign, met de focus op efficiëntie en schaalbaarheid.</p>
+                        <h3 class="service-title">Onderhoud & Hosting</h3>
+                        <p class="service-desc">Geen technische zorgen meer. Ik beheer je hosting, zorg voor beveiligingsupdates en pas zaken aan wanneer je menu of prijzen wijzigen.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact section">
+        <!-- NIEUWE PRIJZEN SECTIE -->
+        <section id="pricing" class="pricing section">
+            <div class="container">
+                <div class="section-header align-center">
+                    <h2 class="section-title">Transparante Prijzen</h2>
+                    <p class="lead-text" style="text-align: center;">Geen verborgen kosten. Een professionele website voor een eerlijke prijs.</p>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text-main);">Het Compleet Pakket</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Alles wat je lokale zaak nodig heeft online.</p>
+                    
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent); line-height: 1;">€199</div>
+                    <div style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem;">eenmalige opstartkosten</div>
+                    
+                    <div style="font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-main);">+ €29 <span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/ maand</span></div>
+                    
+                    <ul class="pricing-features">
+                        <li>Op maat gemaakt design</li>
+                        <li>Perfect leesbaar op smartphones</li>
+                        <li>Snelle laadtijden (beter voor Google)</li>
+                        <li>Hosting & SSL certificaat inbegrepen</li>
+                        <li>Maandelijks technisch onderhoud</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn btn-primary btn-block" style="padding: 1rem; font-size: 1.1rem;">Kies dit pakket</a>
+                    
+                    <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--accent); font-weight: 600;">
+                        🎁 Actie: De eerste 3 klanten krijgen korting in ruil voor een testimonial!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section bg-light">
             <div class="container contact-grid">
 
                 <div class="contact-info">
-                    <h2 class="section-title">Klaar om samen te werken?</h2>
-                    <p class="contact-desc">Ik sta altijd open voor nieuwe projecten, freelance opdrachten of interessante stageplaatsen. Stuur me een bericht en ik neem binnen de 24 uur contact op.</p>
+                    <h2 class="section-title">Klaar voor meer online bestellingen?</h2>
+                    <p class="contact-desc">Vul het formulier in of stuur me direct een e-mail. Ik neem binnen 24 uur contact met je op om te bespreken hoe we jouw zaak kunnen laten groeien.</p>
                     <a href="mailto:nahomhenok843@gmail.com" class="email-link">nahomhenok843@gmail.com</a>
                 </div>
 
@@ -530,7 +610,7 @@
                     <input type="hidden" name="access_key" value="1bc552b6-d842-4383-98e7-1da5ef92e78d">
 
                     <div class="form-group">
-                        <label for="name">Naam</label>
+                        <label for="name">Naam / Naam van de zaak</label>
                         <input type="text" id="name" name="name" required>
                     </div>
 
@@ -540,11 +620,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Bericht</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Vertel me meer over je project..." required></textarea>
+                        <label for="message">Wat kan ik voor je bouwen?</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Vertel me meer over je wensen..." required></textarea>
                     </div>
                     
-                    <button type="submit" id="submitButton" class="btn btn-primary btn-block">Verstuur Bericht</button>
+                    <button type="submit" id="submitButton" class="btn btn-primary btn-block">Vraag vrijblijvend aan</button>
 
                     <p id="formResult" style="display: none; text-align: center; margin-top: 1rem; color: var(--text-muted);"></p>
                 </form>
@@ -592,7 +672,7 @@
                 result.style.color = '#ef4444';
             } finally {
                 result.style.display = 'block';
-                button.innerText = 'Verstuur Bericht';
+                button.innerText = 'Vraag vrijblijvend aan';
             }
         });
     </script>
