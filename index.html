@@ -8,15 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variabelen - Geïnspireerd op een moderne, strakke stijl met een subtiele Thomas More oranje accentkleur */
+        /* CSS Variabelen */
         :root {
             --bg-color: #0f1115;
             --bg-light: #181a20;
             --text-main: #f4f4f5;
             --text-muted: #a1a1aa;
-            --accent: #FF7900; /* Thomas More Oranje */
+            --accent: #FF7900; 
             --accent-hover: #e66d00;
             --border: #272a33;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #1da851;
             --transition: 0.3s ease;
         }
 
@@ -80,10 +82,13 @@
 
         /* --- Knoppen --- */
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             padding: 0.8rem 2rem;
             border-radius: 6px;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             cursor: pointer;
             border: none;
@@ -97,6 +102,15 @@
 
         .btn-primary:hover {
             background-color: var(--accent-hover);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
         }
 
         .btn-outline {
@@ -172,9 +186,21 @@
             max-width: 900px;
         }
 
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .promo-text {
             display: inline-block;
-            margin-top: 1.5rem;
             font-weight: 600;
             color: var(--accent);
             background: rgba(255, 121, 0, 0.1);
@@ -186,9 +212,17 @@
         /* --- Over Mij --- */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.5fr;
             gap: 4rem;
             align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
         }
 
         .lead-text {
@@ -336,15 +370,15 @@
         .contact-desc {
             font-size: 1.2rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .email-link {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--accent);
-            display: inline-block;
+        .direct-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             margin-bottom: 2rem;
+            align-items: flex-start;
         }
 
         .form-group {
@@ -413,7 +447,14 @@
             .hero-title {
                 font-size: 2.5rem;
             }
-            .about-grid, .contact-grid {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -432,7 +473,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#about">Over Mij</a></li>
-                <li><a href="#projects">Projecten</a></li>
+                <li><a href="#projects">Werk</a></li>
                 <li><a href="#services">Diensten</a></li>
                 <li><a href="#pricing">Prijzen</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -447,21 +488,30 @@
                 <h1 class="hero-title">Websites voor lokale restaurants en winkels die zorgen voor meer bestellingen.</h1>
 
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">Start een project</a>
-                    <br>
-                    <span class="promo-text">🎁 Actie: De eerste 3 klanten krijgen korting in ruil voor een testimonial!</span>
+                    <div class="action-buttons">
+                        <!-- VERVANG HIERONDER '32412345678' DOOR JOUW EIGEN GSM NUMMER -->
+                        <a href="https://wa.me/32465831461" class="btn btn-whatsapp" target="_blank">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            Stuur een WhatsApp
+                        </a>
+                        <a href="#contact" class="btn btn-outline">Of stuur een mailtje</a>
+                    </div>
+                    <span class="promo-text">🎁 Actie: Eerste 3 klanten: €99 in plaats van €199, in ruil voor een testimonial!</span>
                 </div>
             </div>
         </section>
 
         <section id="about" class="about section bg-light">
             <div class="container about-grid">
-                <div class="section-header">
-                    <h2 class="section-title">Over Mij</h2>
+                <div class="about-image">
+                    <img src="images/profile.jpg" alt="Nahom Henok - Webdesigner">
                 </div>
                 <div class="about-content">
+                    <div class="section-header">
+                        <h2 class="section-title">Webdesign voor lokale zaken in jouw regio</h2>
+                    </div>
                     <p class="lead-text">
-                        Ik ben Nahom Henok, een gedreven IT-student aan Thomas More met een passie voor applicatieontwikkeling. Ik help lokale handelaars groeien door snelle, converterende websites te bouwen met de nieuwste technologieën. Sterk design gecombineerd met betrouwbare code.
+                        Ik ben Nahom Henok, een gedreven IT-student aan Thomas More met een passie voor applicatieontwikkeling. Als webdesigner uit de streek help ik lokale handelaars groeien door snelle, converterende websites te bouwen zonder de torenhoge kosten van grote bureaus. Persoonlijk contact, sterk design en betrouwbare code.
                     </p>
                     <div class="skills">
                         <span class="eyebrow">Kerncompetenties</span>
@@ -488,45 +538,45 @@
                 <div class="projects-grid">
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images.jpg">
+                            <img src="images/images.jpg" alt="Demo Nagelstudio Webshop en Boekingssysteem">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Boekingsplatform Beauty</h3>
-                            <p class="project-desc">Een moderne, mobiel-geoptimaliseerde webapplicatie met een geïntegreerd afspraken- en bestelsysteem. Zorgt voor minder telefoontjes en meer online boekingen.</p>
-                            <a href="https://nahom-dev17.github.io/Nagelstudio.html" class="btn btn-outline">Bekijk Live Site</a>
+                            <h3 class="project-title">Demo: Boekingsplatform Beauty</h3>
+                            <p class="project-desc">Een moderne, mobiel-geoptimaliseerde webapplicatie met een geïntegreerd afspraken- en bestelsysteem. Ontworpen om het aantal telefoontjes te verminderen en online boekingen te stroomlijnen.</p>
+                            <a href="https://nahom-dev17.github.io/Nagelstudio.html" class="btn btn-outline" target="_blank">Bekijk Demo Site</a>
                         </div>
                     </article>
 
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images/barbershop-logo-barber-shop-logo-template-vector.jpg" alt="Barbershop Interface">
+                            <img src="images/barbershop-logo-barber-shop-logo-template-vector.jpg" alt="Voorbeeld Barbershop Interface">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Kapperszaak Website</h3>
-                            <p class="project-desc">Een strakke landingspagina voor een kapperszaak. Bevat een dark/light mode, duidelijke prijsoverzichten en prominente knoppen om direct een stoel te reserveren.</p>
-                            <a href="barber.html" class="btn btn-outline">Bekijk Live Site</a>
+                            <h3 class="project-title">Voorbeeld: Kapperszaak</h3>
+                            <p class="project-desc">Een strakke landingspagina voor een kapperszaak. Bevat een dark/light mode, duidelijke prijsoverzichten en prominente knoppen ontworpen om reserveringen aan te moedigen.</p>
+                            <a href="barber.html" class="btn btn-outline" target="_blank">Bekijk Voorbeeld Site</a>
                         </div>
                     </article>
                     
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images/download.jpg" alt="Frituur E-Commerce UI">
+                            <img src="images/download.jpg" alt="Demo Frituur UI">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Digitale Frituur</h3>
-                            <p class="project-desc">Een website voor een lokale frituur. Gebouwd met een responsieve lay-out en ontworpen om de eetlust op te wekken en online afhaalbestellingen te stimuleren.</p>
-                            <a href="fry_shop.html" class="btn btn-outline">Bekijk Live Site</a>
+                            <h3 class="project-title">Demo: Digitale Frituur</h3>
+                            <p class="project-desc">Een voorbeeldwebsite voor een lokale frituur. Gebouwd met een responsieve lay-out en speciaal vormgegeven om de eetlust op te wekken en online afhaalbestellingen te faciliteren.</p>
+                            <a href="fry_shop.html" class="btn btn-outline" target="_blank">Bekijk Demo Site</a>
                         </div>
                     </article>
 
                     <article class="projects-card">
                         <div class="project-image">
-                            <img src="images/kebab.jpg" alt="Grill en Kebab Shop Interface">
+                            <img src="images/kebab.jpg" alt="Voorbeeld Grill en Kebab Shop">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Grill & Kebab Shop</h3>
-                            <p class="project-desc">Een conversiegerichte website op maat voor een grillzaak. Met dynamische menufiltering en een lay-out volledig geoptimaliseerd voor snelle afhaalbestellingen.</p>
-                            <a href="kebab.html" class="btn btn-outline">Bekijk Live Site</a>
+                            <h3 class="project-title">Voorbeeld: Grill & Kebab Shop</h3>
+                            <p class="project-desc">Een conversiegerichte template op maat voor een grillzaak. Met dynamische menufiltering en een lay-out volledig geoptimaliseerd voor een vlotte bestelervaring.</p>
+                            <a href="kebab.html" class="btn btn-outline" target="_blank">Bekijk Voorbeeld Site</a>
                         </div>
                     </article>
                 </div>
@@ -549,47 +599,46 @@
                      <div class="service-item">
                         <span class="service-number">02</span>
                         <h3 class="service-title">Website Redesign</h3>
-                        <p class="service-desc">Heeft je huidige website een opfrisbeurt nodig? Ik transformeer je verouderde site naar een modern platform dat werkt op elke smartphone.</p>
+                        <p class="service-desc">Heeft je huidige website een opfrisbeurt nodig? Ik transformeer je verouderde site naar een modern platform dat vlot werkt op elke smartphone.</p>
                     </div>
                     
                     <div class="service-item">
                         <span class="service-number">03</span>
-                        <h3 class="service-title">Onderhoud & Hosting</h3>
-                        <p class="service-desc">Geen technische zorgen meer. Ik beheer je hosting, zorg voor beveiligingsupdates en pas zaken aan wanneer je menu of prijzen wijzigen.</p>
+                        <h3 class="service-title">Technisch Ondersteuning</h3>
+                        <p class="service-desc">Ook na de oplevering sta ik voor je klaar. Hulp nodig bij aanpassingen van je menu of openingstijden? Ik help je vlot verder.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- NIEUWE PRIJZEN SECTIE -->
+        <!-- AANGEPASTE PRIJZEN SECTIE -->
         <section id="pricing" class="pricing section">
             <div class="container">
                 <div class="section-header align-center">
                     <h2 class="section-title">Transparante Prijzen</h2>
-                    <p class="lead-text" style="text-align: center;">Geen verborgen kosten. Een professionele website voor een eerlijke prijs.</p>
+                    <p class="lead-text" style="text-align: center;">Geen verborgen kosten. Een professionele website voor een eerlijke, eenmalige prijs.</p>
                 </div>
 
                 <div class="pricing-card">
                     <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--text-main);">Het Compleet Pakket</h3>
                     <p style="color: var(--text-muted); margin-bottom: 2rem;">Alles wat je lokale zaak nodig heeft online.</p>
                     
-                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent); line-height: 1;">€199</div>
-                    <div style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem;">eenmalige opstartkosten</div>
-                    
-                    <div style="font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-main);">+ €29 <span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/ maand</span></div>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 1rem;">€199</div>
+                    <div style="font-size: 1rem; color: var(--text-main); font-weight: 500; margin-bottom: 2rem;">Eénmalige prijs, geen verborgen abonnementen</div>
                     
                     <ul class="pricing-features">
                         <li>Op maat gemaakt design</li>
                         <li>Perfect leesbaar op smartphones</li>
                         <li>Snelle laadtijden (beter voor Google)</li>
-                        <li>Hosting & SSL certificaat inbegrepen</li>
-                        <li>Maandelijks technisch onderhoud</li>
+                        <li>Volledig in jouw eigendom</li>
+                        <li>Hulp bij het online plaatsen</li>
                     </ul>
                     
-                    <a href="#contact" class="btn btn-primary btn-block" style="padding: 1rem; font-size: 1.1rem;">Kies dit pakket</a>
+                    <!-- VERVANG HIERONDER '32412345678' DOOR JOUW EIGEN GSM NUMMER -->
+                    <a href="https://wa.me/32465831461" target="_blank" class="btn btn-whatsapp btn-block" style="padding: 1rem; font-size: 1.1rem;">Stuur me een bericht</a>
                     
                     <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--accent); font-weight: 600;">
-                        🎁 Actie: De eerste 3 klanten krijgen korting in ruil voor een testimonial!
+                        🎁 Actie: Eerste 3 klanten: €99 in plaats van €199, in ruil voor een testimonial!
                     </p>
                 </div>
             </div>
@@ -600,8 +649,23 @@
 
                 <div class="contact-info">
                     <h2 class="section-title">Klaar voor meer online bestellingen?</h2>
-                    <p class="contact-desc">Vul het formulier in of stuur me direct een e-mail. Ik neem binnen 24 uur contact met je op om te bespreken hoe we jouw zaak kunnen laten groeien.</p>
-                    <a href="mailto:nahomhenok843@gmail.com" class="email-link">nahomhenok843@gmail.com</a>
+                    <p class="contact-desc">Geen zin om te mailen of formulieren in te vullen? Bel of app me direct. Ik reageer altijd snel.</p>
+                    
+                    <div class="direct-contact">
+                        <!-- VERVANG HIERONDER '32412345678' DOOR JOUW EIGEN GSM NUMMER -->
+                        <a href="https://wa.me/32465831461" target="_blank" class="btn btn-whatsapp">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            Stuur een WhatsApp bericht
+                        </a>
+                        
+                        <!-- VERVANG HIERONDER '32412345678' DOOR JOUW EIGEN GSM NUMMER -->
+                        <a href="tel:+32465831461" class="btn btn-outline">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            Bel mij direct
+                        </a>
+                    </div>
+                    
+                    <p class="contact-desc" style="font-size: 0.95rem; margin-top: 2rem;">Liever mailen? Gebruik het formulier of mail naar <a href="mailto:nahomhenok843@gmail.com" style="color: var(--accent); font-weight: 500;">nahomhenok843@gmail.com</a>.</p>
                 </div>
 
                 <div class="contact-form-wrapper">
