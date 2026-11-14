@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbershop Lier | Best Barber in Town — Berlarij 47, Lier</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel for Luxury Headers & Inter for Clean Readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        dark: {
+                            950: '#070707',
+                            900: '#0d0d0d',
+                            800: '#161616',
+                            700: '#222222',
+                        },
+                        gold: {
+                            300: '#f3d078',
+                            400: '#e5b94c',
+                            500: '#d4af37',
+                            600: '#b59024',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-950 text-gray-100 font-sans antialiased selection:bg-gold-500 selection:text-dark-950 overflow-x-hidden">
+
+    <!-- Top Announcement Bar (Bilingual Dutch/English Relocation Notice) -->
+    <div class="bg-gradient-to-r from-dark-900 via-dark-800 to-dark-900 border-b border-gold-500/20 text-xs sm:text-sm py-2 px-4 text-center">
+        <p class="text-gray-300">
+            <span class="inline-block w-2 h-2 rounded-full bg-gold-500 mr-2 animate-pulse"></span>
+            <span class="text-gold-400 font-semibold">NIEUWE LOCATIE:</span> 
+            Verhuisd van Berlarij 132 naar onze gloednieuwe zaak op 
+            <a href="#location" class="underline decoration-gold-500 text-white font-medium hover:text-gold-400 transition">Berlarij 47, 2500 Lier</a>!
+        </p>
+    </div>
+
+    <!-- Sticky Glassmorphism Navigation Header -->
+    <header class="sticky top-0 z-40 bg-dark-950/85 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo with Barber Pole Accent -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <!-- Custom Inline SVG Barber Pole & Gold Crest -->
+                    <div class="w-10 h-10 rounded-xl bg-dark-800 border border-gold-500/40 flex items-center justify-center shadow-lg shadow-gold-500/10 group-hover:border-gold-400 transition">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="3" width="8" height="18" rx="4" stroke="#d4af37" stroke-width="1.8"/>
+                            <path d="M8.5 7.5L15.5 11.5" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M8.5 12.5L15.5 16.5" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="2" r="1.5" fill="#d4af37"/>
+                            <circle cx="12" cy="22" r="1.5" fill="#d4af37"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-display font-bold text-lg sm:text-xl tracking-wider text-white block leading-none">
+                            BARBERSHOP <span class="text-gold-500">LIER</span>
+                        </span>
+                        <span class="text-[10px] uppercase tracking-[0.25em] text-gray-400 block mt-1">Berlarij 47 • Belgium</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="text-gray-300 hover:text-gold-400 transition">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-gold-400 transition">Our New Shop</a>
+                    <a href="#services" class="text-gray-300 hover:text-gold-400 transition">Services & Pricing</a>
+                    <a href="#gallery" class="text-gray-300 hover:text-gold-400 transition">Lookbook</a>
+                    <a href="#location" class="text-gray-300 hover:text-gold-400 transition">Contact</a>
+                </nav>
+
+                <!-- CTA & Mobile Menu Toggle -->
+                <div class="flex items-center space-x-3">
+                    <a href="tel:+32489845808" class="hidden lg:flex items-center text-sm text-gray-300 hover:text-gold-400 transition mr-2">
+                        <i class="fa-solid fa-phone text-gold-500 mr-2"></i>
+                        0489 84 58 08
+                    </a>
+                    <button onclick="openBookingModal()" class="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-dark-950 font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-gold-500/20 transition transform hover:-translate-y-0.5 cursor-pointer">
+                        Book Now
+                    </button>
+                    <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="md:hidden p-2.5 rounded-xl bg-dark-800 border border-white/10 text-gray-300 hover:text-gold-400">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-900 border-b border-white/10 px-4 pt-2 pb-6 space-y-2">
+            <a href="#home" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-200 hover:bg-dark-800 hover:text-gold-400 font-medium">Home</a>
+            <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-200 hover:bg-dark-800 hover:text-gold-400 font-medium">Our New Shop</a>
+            <a href="#services" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-200 hover:bg-dark-800 hover:text-gold-400 font-medium">Services & Pricing</a>
+            <a href="#gallery" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-200 hover:bg-dark-800 hover:text-gold-400 font-medium">Lookbook</a>
+            <a href="#location" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-200 hover:bg-dark-800 hover:text-gold-400 font-medium">Contact & Hours</a>
+            <div class="pt-2 border-t border-white/10 flex flex-col gap-2">
+                <a href="tel:+32489845808" class="flex items-center justify-center gap-2 py-3 rounded-xl bg-dark-800 text-gold-400 font-semibold">
+                    <i class="fa-solid fa-phone"></i> Call 0489 84 58 08
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full-Screen Hero Section -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Hero Image with Dark Luxury Gradient Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1920&q=80" 
+                onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0d0d0d/d4af37?text=Barbershop+Lier';"
+                alt="Barbershop Lier Luxury Interior" 
+                class="w-full h-full object-cover object-center scale-105 opacity-40"
+            >
+            <!-- Subtle Hexagonal Pattern Overlay inspired by their signature LED ceiling lights -->
+            <div class="absolute inset-0 bg-gradient-to-b from-dark-950/90 via-dark-950/75 to-dark-950"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.12)_0%,transparent_70%)]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <!-- Flagship Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-dark-800/90 border border-gold-500/40 text-gold-400 text-xs sm:text-sm font-medium tracking-wide mb-6 shadow-lg">
+                <i class="fa-solid fa-crown text-gold-500"></i>
+                <span>BEST BARBER IN TOWN • LIER, BELGIUM</span>
+            </div>
+
+            <!-- Main Display Headline -->
+            <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                PRECISION CUTS &amp; <br class="hidden sm:inline">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300">
+                    LUXURY STYLING
+                </span>
+            </h1>
+
+            <!-- Bilingual Subheadline -->
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-gray-300 mb-4 leading-relaxed">
+                Welcome to our brand-new flagship barbershop &amp; hair salon at <strong class="text-white">Berlarij 47, 2500 Lier</strong>. 
+                From razor-sharp skin fades and hot towel shaves to radiant women's ombré transformations.
+            </p>
+            <p class="max-w-xl mx-auto text-sm text-gold-400/90 italic mb-10">
+                "U bent welkom in onze gloednieuwe zaak voor een fresh look!"
+            </p>
+
+            <!-- Hero Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-dark-950 font-bold text-base shadow-xl shadow-gold-500/20 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-regular fa-calendar-check text-lg"></i>
+                    <span>Book Your Fresh Look</span>
+                </button>
+                <a href="tel:+32489845808" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-dark-800/90 hover:bg-dark-700 border border-gold-500/40 text-white font-semibold text-base transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-phone text-gold-500"></i>
+                    <span>Call 0489 84 58 08</span>
+                </a>
+            </div>
+
+            <!-- Trust Badges Strip -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto pt-8 border-t border-white/10">
+                <div class="flex items-center justify-center gap-3 bg-dark-900/70 backdrop-blur-sm px-4 py-3.5 rounded-2xl border border-white/5">
+                    <i class="fa-solid fa-location-dot text-gold-500 text-lg"></i>
+                    <span class="text-sm font-medium text-gray-200">Berlarij 47, 2500 Lier</span>
+                </div>
+                <div class="flex items-center justify-center gap-3 bg-dark-900/70 backdrop-blur-sm px-4 py-3.5 rounded-2xl border border-white/5">
+                    <i class="fa-solid fa-clock text-gold-500 text-lg"></i>
+                    <span class="text-sm font-medium text-gray-200">Walk-ins &amp; Appointments</span>
+                </div>
+                <div class="flex items-center justify-center gap-3 bg-dark-900/70 backdrop-blur-sm px-4 py-3.5 rounded-2xl border border-white/5">
+                    <i class="fa-solid fa-scissors text-gold-500 text-lg"></i>
+                    <span class="text-sm font-medium text-gray-200">Men's Fades &amp; Women's Hair</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Relocation Story Section -->
+    <section id="about" class="py-20 sm:py-28 bg-dark-900 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Visual Showcase -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative rounded-3xl overflow-hidden border border-gold-500/30 shadow-2xl shadow-black">
+                        <img 
+                            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=80" 
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x900/161616/d4af37?text=Berlarij+47+Lier';"
+                            alt="Modern Barbershop Interior with LED Lighting" 
+                            class="w-full h-[440px] sm:h-[520px] object-cover"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent"></div>
+                        
+                        <!-- Floating Corner Location Card -->
+                        <div class="absolute bottom-5 left-5 right-5 sm:right-auto bg-dark-950/90 backdrop-blur-md border border-gold-500/40 p-4 rounded-2xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-11 h-11 rounded-xl bg-gold-500/20 flex items-center justify-center text-gold-400">
+                                    <i class="fa-solid fa-store text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gold-400 font-semibold uppercase tracking-wider">New Flagship Location</p>
+                                    <p class="text-white font-bold text-sm sm:text-base">Berlaarsestraat 47 (Berlarij 47)</p>
+                                    <p class="text-xs text-gray-400">2500 Lier, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Story & Highlights -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-gold-400 text-xs font-bold uppercase tracking-[0.2em]">
+                        <span class="w-8 h-[1px] bg-gold-500"></span>
+                        <span>OUR STORY &amp; NEW HOME</span>
+                    </div>
+
+                    <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                        A Brand-New Era of Grooming at <span class="text-gold-500">Berlarij 47</span>
+                    </h2>
+
+                    <div class="p-4 rounded-2xl bg-dark-800/80 border-l-4 border-gold-500 text-sm text-gray-300">
+                        <p class="font-medium text-white mb-1">Beste klanten,</p>
+                        <p class="italic text-gray-300">
+                            "Barbershop Lier is verhuisd van Berlarij 132 naar Berlarij 47 in Lier. U bent welkom in onze gloednieuwe zaak voor een fresh look!"
+                        </p>
+                    </div>
+
+                    <p class="text-gray-300 leading-relaxed">
+                        Housed in a charming historic corner building in the heart of Lier, our newly designed salon blends classic European street charm and iconic spinning barber poles with a sleek, modern interior illuminated by custom hexagonal LED lighting.
+                    </p>
+
+                    <p class="text-gray-400 leading-relaxed">
+                        Whether you're stopping in for a crisp curly skin fade, a sculpted beard trim, or a complete women's ombré and wavy blowout transformation, our team delivers precision craftsmanship in a welcoming atmosphere.
+                    </p>
+
+                    <!-- Key Feature Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-dark-800 border border-white/5 flex items-start gap-3">
+                            <i class="fa-solid fa-bolt text-gold-500 mt-1"></i>
+                            <div>
+                                <h3 class="font-semibold text-white text-sm">Modern Hexagon Studio</h3>
+                                <p class="text-xs text-gray-400 mt-1">Precision studio lighting for flawless fades and accurate color work.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-dark-800 border border-white/5 flex items-start gap-3">
+                            <i class="fa-solid fa-wand-magic-sparkles text-gold-500 mt-1"></i>
+                            <div>
+                                <h3 class="font-semibold text-white text-sm">Unisex Hair Expertise</h3>
+                                <p class="text-xs text-gray-400 mt-1">Dedicated specialists for men's barbering and women's ombré styling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing Section -->
+    <section id="services" class="py-20 sm:py-28 bg-dark-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-[0.25em]">SERVICES &amp; MENU</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-3 mb-4">
+                    Tailored Cuts &amp; <span class="text-gold-500">Color Artistry</span>
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    Transparent Belgian pricing with zero compromises on detail. Select a category below and book your session in seconds.
+                </p>
+            </div>
+
+            <!-- Interactive Category Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" role="tablist">
+                <button onclick="switchServiceTab('men')" id="tab-men" class="service-tab active px-6 py-3 rounded-2xl font-semibold text-sm transition bg-gold-500 text-dark-950 shadow-lg shadow-gold-500/20 cursor-pointer">
+                    <i class="fa-solid fa-scissors mr-2"></i>Men's Barbering &amp; Fades
+                </button>
+                <button onclick="switchServiceTab('women')" id="tab-women" class="service-tab px-6 py-3 rounded-2xl font-semibold text-sm transition bg-dark-800 text-gray-300 hover:text-white border border-white/10 cursor-pointer">
+                    <i class="fa-solid fa-sparkles mr-2"></i>Women's Hair &amp; Ombré
+                </button>
+                <button onclick="switchServiceTab('packages')" id="tab-packages" class="service-tab px-6 py-3 rounded-2xl font-semibold text-sm transition bg-dark-800 text-gray-300 hover:text-white border border-white/10 cursor-pointer">
+                    <i class="fa-solid fa-crown mr-2"></i>VIP Combos &amp; Kids
+                </button>
+            </div>
+
+            <!-- Men's Grooming Services Grid -->
+            <div id="panel-men" class="service-panel grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Service Item -->
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-400 bg-gold-500/10 px-2.5 py-1 rounded-lg">Most Popular</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Precision Haircut &amp; Skin Fade</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€20</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Custom skin fade, taper fade, burst fade, or curly top sculpting finished with razor-sharp linework and premium styling products.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 30 – 40 min</span>
+                        <button onclick="openBookingModal('Precision Haircut & Skin Fade (€20)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Item -->
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg">Beard Care</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Beard Trim &amp; Hot Towel Shave</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€15</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Detailed beard shaping, symmetrical cheek &amp; neckline detailing with a straight razor, soothing hot towel, and nourishing beard oil.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 25 min</span>
+                        <button onclick="openBookingModal('Beard Trim & Hot Towel Shave (€15)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Item -->
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg">Classic Style</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Scissor Cut &amp; Wash</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€22</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Tailored scissor-over-comb cut for medium to long men's hairstyles, including an invigorating wash and blow-dry finish.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 40 min</span>
+                        <button onclick="openBookingModal('Scissor Cut & Wash (€22)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Item -->
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg">Quick Refresh</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Buzz Cut &amp; Sharp Lineup</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€15</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Even clipper guard length all over paired with crisp temple, forehead, and neck razor edging.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 20 min</span>
+                        <button onclick="openBookingModal('Buzz Cut & Sharp Lineup (€15)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Women's Hair & Color Grid (Hidden by default) -->
+            <div id="panel-women" class="service-panel hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gold-400 bg-gold-500/10 px-2.5 py-1 rounded-lg">Signature Transformation</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Ombré &amp; Golden Balayage</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">from €85</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Seamless sun-kissed golden ombré and dimensional balayage blends, including toning gloss and luxury wavy blowout styling.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 120 – 180 min</span>
+                        <button onclick="openBookingModal('Ombré & Golden Balayage (from €85)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg">Cut &amp; Finish</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Women's Wash, Cut &amp; Blowdry</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€38</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Nourishing hair wash, precision layered or blunt trim, and voluminous salon blowdry finish.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 50 min</span>
+                        <button onclick="openBookingModal('Women\'s Wash, Cut & Blowdry (€38)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg">Event Styling</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Hollywood Waves &amp; Styling</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€30</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Glamorous soft curls, glossy waves, and heat-protected styling for special occasions or weekend nights out.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 40 min</span>
+                        <button onclick="openBookingModal('Hollywood Waves & Styling (€30)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg">Color Refresh</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Full Color &amp; Gloss Treatment</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">from €55</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Rich root-to-tip color application with shine-boosting keratin treatment for silky, healthy hair.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 90 min</span>
+                        <button onclick="openBookingModal('Full Color & Gloss Treatment (from €55)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIP Combos & Kids Grid (Hidden by default) -->
+            <div id="panel-packages" class="service-panel hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-dark-900 border border-gold-500/40 rounded-2xl p-6 transition group flex flex-col justify-between relative overflow-hidden">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-dark-950 bg-gold-500 px-2.5 py-1 rounded-lg">Best Value</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">The Full Fresh Look (Haircut + Beard)</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€30</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Our complete signature grooming package: custom skin fade or scissor cut, full beard sculpting, hot towel ritual, and razor finish.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 55 min</span>
+                        <button onclick="openBookingModal('The Full Fresh Look: Haircut + Beard (€30)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Package</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 border border-white/10 hover:border-gold-500/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start gap-4 mb-3">
+                            <div>
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-gray-400 bg-white/5 px-2.5 py-1 rounded-lg">Under 12 Years</span>
+                                <h3 class="text-xl font-bold text-white mt-2 group-hover:text-gold-400 transition">Kids Fresh Cut</h3>
+                            </div>
+                            <span class="text-2xl font-display font-bold text-gold-500">€15</span>
+                        </div>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-5">
+                            Patient, stylish haircuts and clean fades for young gentlemen in a friendly, relaxed chair experience.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 25 min</span>
+                        <button onclick="openBookingModal('Kids Fresh Cut (€15)')" class="text-sm font-semibold text-gold-400 hover:text-gold-300 flex items-center gap-1.5 cursor-pointer">
+                            <span>Book This Service</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Lookbook Gallery Section -->
+    <section id="gallery" class="py-20 sm:py-28 bg-dark-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-gold-400 text-xs font-bold uppercase tracking-[0.25em]">PORTFOLIO &amp; TRANSFORMATIONS</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-3">
+                        Fresh Looks From <span class="text-gold-500">Our Chair</span>
+                    </h2>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterGallery('all', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gold-500 text-dark-950 transition cursor-pointer">All Work</button>
+                    <button onclick="filterGallery('fades', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-dark-800 text-gray-300 hover:text-white border border-white/10 transition cursor-pointer">Fades &amp; Cuts</button>
+                    <button onclick="filterGallery('ombre', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-dark-800 text-gray-300 hover:text-white border border-white/10 transition cursor-pointer">Ombré &amp; Waves</button>
+                    <button onclick="filterGallery('shop', this)" class="gallery-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-dark-800 text-gray-300 hover:text-white border border-white/10 transition cursor-pointer">Berlarij 47 Studio</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1: Curly Taper Fade -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-dark-800 border border-white/10 aspect-[4/5]" data-category="fades">
+                    <img 
+                        src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x750/161616/d4af37?text=Curly+Taper+Fade';"
+                        alt="Curly Hair Taper Skin Fade" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Fades &amp; Cuts</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Curly Top &amp; Clean Taper Fade</h3>
+                        <p class="text-xs text-gray-300 mt-1">Precision scissor texture on top with a seamless temple &amp; nape fade.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Golden Ombré Waves -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-dark-800 border border-white/10 aspect-[4/5]" data-category="ombre">
+                    <img 
+                        src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x750/161616/d4af37?text=Golden+Ombre+Transformation';"
+                        alt="Before and After Golden Ombre Waves" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Ombré &amp; Color</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Warm Honey Ombré &amp; Waves</h3>
+                        <p class="text-xs text-gray-300 mt-1">Full color transformation with soft dimensional curls and high-shine finish.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Sharp High Fade -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-dark-800 border border-white/10 aspect-[4/5]" data-category="fades">
+                    <img 
+                        src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x750/161616/d4af37?text=Precision+Skin+Fade';"
+                        alt="Sharp Skin Fade and Beard Lineup" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Fades &amp; Cuts</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Razor Skin Fade &amp; Contour</h3>
+                        <p class="text-xs text-gray-300 mt-1">Crisp graduation crafted under our studio hexagon lights.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4: New Studio Interior -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-dark-800 border border-white/10 aspect-[4/5]" data-category="shop">
+                    <img 
+                        src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x750/161616/d4af37?text=Berlarij+47+Interior';"
+                        alt="Barbershop Lier Studio Stations" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Berlarij 47 Studio</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Luxury Styling Stations</h3>
+                        <p class="text-xs text-gray-300 mt-1">Ergonomic chairs, warm wood paneling, and signature geometric lighting.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Golden Blonde Balayage -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-dark-800 border border-white/10 aspect-[4/5]" data-category="ombre">
+                    <img 
+                        src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x750/161616/d4af37?text=Balayage+Styling';"
+                        alt="Golden Wavy Hair Styling" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Ombré &amp; Color</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Caramel Melt &amp; Blowout</h3>
+                        <p class="text-xs text-gray-300 mt-1">Healthy, radiant dimension tailored to complement natural tones.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Classic Barber Pole & Exterior -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-dark-800 border border-white/10 aspect-[4/5]" data-category="shop">
+                    <img 
+                        src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=800&q=80" 
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x750/161616/d4af37?text=Barbershop+Lier+Corner';"
+                        alt="Classic Barber Pole & Tools" 
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-6">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-wider">Berlarij 47 Studio</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Historic Lier Corner Charm</h3>
+                        <p class="text-xs text-gray-300 mt-1">Find us easily at Berlarij 47 with our illuminated gold signage &amp; barber poles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Booking & WhatsApp Reservation Section -->
+    <section id="booking" class="py-20 sm:py-28 bg-dark-950 border-t border-white/5 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 border border-gold-500/30 rounded-3xl p-6 sm:p-12 shadow-2xl">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-gold-400 text-xs font-bold uppercase tracking-[0.25em]">RESERVE YOUR CHAIR</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2 mb-3">
+                        Book Your Appointment
+                    </h2>
+                    <p class="text-gray-400 text-sm">
+                        Choose your preferred service and time below. Confirm instantly via WhatsApp (<strong class="text-white">0489 84 58 08</strong>) or submit an in-shop request.
+                    </p>
+                </div>
+
+                <form id="inline-booking-form" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Your Name *</label>
+                        <input type="text" id="inline-name" required placeholder="e.g. Lucas Janssens" class="w-full px-4 py-3.5 rounded-xl bg-dark-950 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Phone / WhatsApp *</label>
+                        <input type="tel" id="inline-phone" required placeholder="e.g. 0470 12 34 56" class="w-full px-4 py-3.5 rounded-xl bg-dark-950 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Select Service *</label>
+                        <select id="inline-service" class="w-full px-4 py-3.5 rounded-xl bg-dark-950 border border-white/15 text-white focus:outline-none focus:border-gold-500 transition">
+                            <option value="Precision Haircut & Skin Fade (€20)">Precision Haircut &amp; Skin Fade (€20)</option>
+                            <option value="The Full Fresh Look: Haircut + Beard (€30)">The Full Fresh Look: Haircut + Beard (€30)</option>
+                            <option value="Beard Trim & Hot Towel Shave (€15)">Beard Trim &amp; Hot Towel Shave (€15)</option>
+                            <option value="Kids Fresh Cut (€15)">Kids Fresh Cut (€15)</option>
+                            <option value="Ombré & Golden Balayage (from €85)">Women's Ombré &amp; Golden Balayage (from €85)</option>
+                            <option value="Women's Wash, Cut & Blowdry (€38)">Women's Wash, Cut &amp; Blowdry (€38)</option>
+                            <option value="Hollywood Waves & Styling (€30)">Hollywood Waves &amp; Styling (€30)</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Preferred Date *</label>
+                            <input type="date" id="inline-date" required class="w-full px-3 py-3.5 rounded-xl bg-dark-950 border border-white/15 text-white focus:outline-none focus:border-gold-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Time *</label>
+                            <input type="time" id="inline-time" value="14:00" required class="w-full px-3 py-3.5 rounded-xl bg-dark-950 border border-white/15 text-white focus:outline-none focus:border-gold-500 transition">
+                        </div>
+                    </div>
+
+                    <div class="sm:col-span-2 flex flex-col sm:flex-row gap-4 pt-3">
+                        <button type="button" onclick="submitWhatsAppBooking('inline')" class="flex-1 py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-dark-950 font-bold text-sm sm:text-base transition flex items-center justify-center gap-2 shadow-lg cursor-pointer">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Book via WhatsApp (0489 84 58 08)</span>
+                        </button>
+                        <button type="submit" class="flex-1 py-4 px-6 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-dark-950 font-bold text-sm sm:text-base transition flex items-center justify-center gap-2 shadow-lg cursor-pointer">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <span>Confirm Instant Request</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location, Opening Hours & Footer -->
+    <footer id="location" class="bg-dark-900 border-t border-gold-500/20 pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                <!-- Column 1: Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-xl bg-dark-800 border border-gold-500/40 flex items-center justify-center text-gold-500">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <span class="font-display font-bold text-xl tracking-wider text-white">
+                            BARBERSHOP <span class="text-gold-500">LIER</span>
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Best barber &amp; hair styling studio in Lier. Specializing in precision skin fades, classic beard grooming, and women's ombré color artistry.
+                    </p>
+                    <div class="flex items-center gap-3 pt-1">
+                        <a href="https://www.facebook.com/p/Barbershop-Lier-100056418228505/" target="_blank" rel="noopener noreferrer" aria-label="Barbershop Lier Facebook Page" class="w-10 h-10 rounded-xl bg-dark-800 hover:bg-gold-500 text-gray-300 hover:text-dark-950 border border-white/10 flex items-center justify-center transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/32489845808" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="w-10 h-10 rounded-xl bg-dark-800 hover:bg-[#25D366] text-gray-300 hover:text-dark-950 border border-white/10 flex items-center justify-center transition">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="tel:+32489845808" aria-label="Call Barbershop Lier" class="w-10 h-10 rounded-xl bg-dark-800 hover:bg-gold-500 text-gray-300 hover:text-dark-950 border border-white/10 flex items-center justify-center transition">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Contact & Location -->
+                <div class="space-y-4">
+                    <h3 class="font-display font-bold text-base text-white uppercase tracking-wider">Visit Our Shop</h3>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-gold-500 mt-1"></i>
+                            <div>
+                                <p class="text-white font-medium">Berlaarsestraat 47 (Berlarij 47)</p>
+                                <p>2500 Lier, Belgium</p>
+                                <span class="inline-block mt-1 text-[11px] text-gold-400 bg-gold-500/10 px-2 py-0.5 rounded">Relocated from Berlarij 132</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-gold-500"></i>
+                            <a href="tel:+32489845808" class="text-white hover:text-gold-400 font-medium transition">0489 84 58 08</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-building text-gold-500"></i>
+                            <span>BTW / VAT: <strong class="text-gray-300">BE0794473055</strong></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Opening Hours -->
+                <div class="space-y-4">
+                    <h3 class="font-display font-bold text-base text-white uppercase tracking-wider">Opening Hours</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex justify-between border-b border-white/5 pb-1.5">
+                            <span>Monday</span>
+                            <span class="text-gray-500">Closed</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-1.5">
+                            <span>Tuesday – Friday</span>
+                            <span class="text-white font-medium">09:30 – 19:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 pb-1.5">
+                            <span>Saturday</span>
+                            <span class="text-white font-medium">09:00 – 18:30</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span class="text-gold-400 font-medium">By Appointment</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Quick Map Card -->
+                <div class="space-y-4">
+                    <h3 class="font-display font-bold text-base text-white uppercase tracking-wider">Find Us in Lier</h3>
+                    <div class="rounded-2xl overflow-hidden border border-white/10 bg-dark-800 p-4 flex flex-col justify-between h-40 relative">
+                        <div class="z-10">
+                            <p class="text-xs text-gold-400 font-semibold uppercase">Corner Flagship Store</p>
+                            <p class="text-sm text-white font-bold mt-1">Berlarij 47, 2500 Lier</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Berlarij+47,+2500+Lier,+Belgium" target="_blank" rel="noopener noreferrer" class="z-10 inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-dark-950 font-bold text-xs transition">
+                            <i class="fa-solid fa-diamond-turn-right"></i>
+                            <span>Open in Google Maps</span>
+                        </a>
+                        <i class="fa-solid fa-map-location-dot text-6xl text-white/5 absolute -bottom-2 -right-2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Row -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <p>&copy; <span id="current-year"></span> Barbershop Lier (BE0794473055). All rights reserved.</p>
+                <p>Berlarij 47, 2500 Lier • Tel: 0489 84 58 08</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="bg-dark-900 border border-gold-500/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl animate-fade-in">
+            <button onclick="closeBookingModal()" aria-label="Close Modal" class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-dark-800 hover:bg-dark-700 text-gray-400 hover:text-white flex items-center justify-center transition cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-widest">BARBERSHOP LIER</span>
+                <h3 class="font-display text-2xl font-bold text-white mt-1">Book Your Fresh Look</h3>
+                <p class="text-xs text-gray-400 mt-1">Berlarij 47, 2500 Lier • Direct confirmation via WhatsApp or in-store</p>
+            </div>
+
+            <form id="modal-booking-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Full Name *</label>
+                    <input type="text" id="modal-name" required placeholder="Your Name" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Phone Number *</label>
+                    <input type="tel" id="modal-phone" required placeholder="04XX XX XX XX" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/15 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Service *</label>
+                    <select id="modal-service" class="w-full px-4 py-3 rounded-xl bg-dark-950 border border-white/15 text-white focus:outline-none focus:border-gold-500">
+                        <option value="Precision Haircut & Skin Fade (€20)">Precision Haircut &amp; Skin Fade (€20)</option>
+                        <option value="The Full Fresh Look: Haircut + Beard (€30)">The Full Fresh Look: Haircut + Beard (€30)</option>
+                        <option value="Beard Trim & Hot Towel Shave (€15)">Beard Trim &amp; Hot Towel Shave (€15)</option>
+                        <option value="Scissor Cut & Wash (€22)">Scissor Cut &amp; Wash (€22)</option>
+                        <option value="Buzz Cut & Sharp Lineup (€15)">Buzz Cut &amp; Sharp Lineup (€15)</option>
+                        <option value="Kids Fresh Cut (€15)">Kids Fresh Cut (€15)</option>
+                        <option value="Ombré & Golden Balayage (from €85)">Ombré &amp; Golden Balayage (from €85)</option>
+                        <option value="Women's Wash, Cut & Blowdry (€38)">Women's Wash, Cut &amp; Blowdry (€38)</option>
+                        <option value="Hollywood Waves & Styling (€30)">Hollywood Waves &amp; Styling (€30)</option>
+                        <option value="Full Color & Gloss Treatment (from €55)">Full Color &amp; Gloss Treatment (from €55)</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Date *</label>
+                        <input type="date" id="modal-date" required class="w-full px-3 py-3 rounded-xl bg-dark-950 border border-white/15 text-white focus:outline-none focus:border-gold-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Time *</label>
+                        <input type="time" id="modal-time" value="15:00" required class="w-full px-3 py-3 rounded-xl bg-dark-950 border border-white/15 text-white focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+
+                <div class="pt-3 flex flex-col gap-2.5">
+                    <button type="button" onclick="submitWhatsAppBooking('modal')" class="w-full py-3.5 px-5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-dark-950 font-bold text-sm transition flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Send Booking via WhatsApp</span>
+                    </button>
+                    <button type="submit" class="w-full py-3.5 px-5 rounded-xl bg-gold-500 hover:bg-gold-400 text-dark-950 font-bold text-sm transition cursor-pointer">
+                        Confirm Booking Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Toast / Confirmation Message Box (Replaces alert()) -->
+    <div id="toast-box" class="fixed bottom-6 right-6 z-50 max-w-sm bg-dark-800 border border-gold-500 text-white p-4 rounded-2xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <h4 id="toast-title" class="font-bold text-sm text-gold-400">Booking Confirmed</h4>
+                <p id="toast-message" class="text-xs text-gray-300 mt-1 leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Set default dates to tomorrow & current year in footer
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dateStr = tomorrow.toISOString().split('T')[0];
+            
+            const inlineDate = document.getElementById('inline-date');
+            const modalDate = document.getElementById('modal-date');
+            if (inlineDate) inlineDate.value = dateStr;
+            if (modalDate) modalDate.value = dateStr;
+        });
+
+        // Mobile Navigation Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Service Category Tabs Switcher
+        function switchServiceTab(category) {
+            // Reset all tab buttons
+            document.querySelectorAll('.service-tab').forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-dark-950', 'shadow-lg', 'shadow-gold-500/20');
+                btn.classList.add('bg-dark-800', 'text-gray-300', 'border', 'border-white/10');
+            });
+
+            // Activate clicked button
+            const activeBtn = document.getElementById(`tab-${category}`);
+            activeBtn.classList.remove('bg-dark-800', 'text-gray-300', 'border', 'border-white/10');
+            activeBtn.classList.add('bg-gold-500', 'text-dark-950', 'shadow-lg', 'shadow-gold-500/20');
+
+            // Hide all panels and show selected
+            document.querySelectorAll('.service-panel').forEach(panel => panel.classList.add('hidden'));
+            document.getElementById(`panel-${category}`).classList.remove('hidden');
+        }
+
+        // Gallery Filter Logic
+        function filterGallery(category, buttonEl) {
+            document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-dark-950');
+                btn.classList.add('bg-dark-800', 'text-gray-300', 'border', 'border-white/10');
+            });
+            buttonEl.classList.remove('bg-dark-800', 'text-gray-300', 'border', 'border-white/10');
+            buttonEl.classList.add('bg-gold-500', 'text-dark-950');
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // Modal Controls
+        const bookingModal = document.getElementById('booking-modal');
+        function openBookingModal(preselectedService = null) {
+            if (preselectedService) {
+                const selectEl = document.getElementById('modal-service');
+                for (let i = 0; i < selectEl.options.length; i++) {
+                    if (selectEl.options[i].value === preselectedService) {
+                        selectEl.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            bookingModal.classList.remove('hidden');
+            bookingModal.classList.add('flex');
+        }
+
+        function closeBookingModal() {
+            bookingModal.classList.add('hidden');
+            bookingModal.classList.remove('flex');
+        }
+
+        // Close modal on outside click
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) closeBookingModal();
+        });
+
+        // Custom Toast Notification Helper
+        function showToast(title, message) {
+            const toast = document.getElementById('toast-box');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-message').textContent = message;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 5500);
+        }
+
+        // Handle Direct Form Submissions
+        document.getElementById('inline-booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('inline-name').value.trim();
+            const service = document.getElementById('inline-service').value;
+            const date = document.getElementById('inline-date').value;
+            const time = document.getElementById('inline-time').value;
+            
+            showToast(
+                'Appointment Requested!',
+                `Thank you ${name}! Your request for ${service} on ${date} at ${time} (Berlarij 47, Lier) is received.`
+            );
+            e.target.reset();
+        });
+
+        document.getElementById('modal-booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('modal-name').value.trim();
+            const service = document.getElementById('modal-service').value;
+            const date = document.getElementById('modal-date').value;
+            const time = document.getElementById('modal-time').value;
+
+            closeBookingModal();
+            showToast(
+                'Appointment Requested!',
+                `Thank you ${name}! We look forward to welcoming you at Berlarij 47 on ${date} at ${time} for ${service}.`
+            );
+            e.target.reset();
+        });
+
+        // WhatsApp Pre-filled Booking Generator (+32 489 84 58 08)
+        function submitWhatsAppBooking(source) {
+            const name = document.getElementById(`${source}-name`).value.trim();
+            const phone = document.getElementById(`${source}-phone`).value.trim();
+            const service = document.getElementById(`${source}-service`).value;
+            const date = document.getElementById(`${source}-date`).value;
+            const time = document.getElementById(`${source}-time`).value;
+
+            if (!name || !date || !time) {
+                showToast('Missing Details', 'Please enter your name, preferred date, and time before sending via WhatsApp.');
+                return;
+            }
+
+            const text = `Hello Barbershop Lier! I would like to book an appointment at Berlarij 47:%0A%0A` +
+                         `• Name: ${encodeURIComponent(name)}%0A` +
+                         (phone ? `• Phone: ${encodeURIComponent(phone)}%0A` : '') +
+                         `• Service: ${encodeURIComponent(service)}%0A` +
+                         `• Date & Time: ${encodeURIComponent(date)} at ${encodeURIComponent(time)}`;
+
+            window.open(`https://wa.me/32489845808?text=${text}`, '_blank', 'noopener,noreferrer');
+            if (source === 'modal') closeBookingModal();
+        }
+    </script>
+</body>
+</html>
